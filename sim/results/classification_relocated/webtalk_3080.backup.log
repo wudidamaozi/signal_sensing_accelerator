@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Oct 31 18:42:29 2026
+# Process ID: 3080
+# Current directory: <release_workspace>/build/output/classification_relocated
+# Command line: wbtcv.exe -mode batch -source <release_workspace>/build/output/classification_relocated/xsim.dir/submission_sim/webtalk/xsim_webtalk.tcl -notrace
+# Log file: <release_workspace>/build/output/classification_relocated/webtalk.log
+# Journal file: <release_workspace>/build/output/classification_relocated\webtalk.jou
+#-----------------------------------------------------------
+source <release_workspace>/build/output/classification_relocated/xsim.dir/submission_sim/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Sat Oct 31 18:42:30 2026...

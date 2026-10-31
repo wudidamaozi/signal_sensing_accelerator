@@ -1,0 +1,18 @@
+{
+  "status": "PASS_RELOCATED_PACKAGE_FUNCTIONS",
+  "skills": 27,
+  "occupancy_golden_inputs": 30,
+  "rtl_dynamic_inputs": {
+    "occupancy": [
+      35629,
+      35629
+    ],
+    "classification": [
+      44381,
+      44381
+    ]
+  },
+  "firmware_sha256": "72bbe57ad52d149dea831e31248da85f91d73507adf518c94dd3e24ae922a689",
+  "new_board_measurement": false,
+  "source": "Fresh export offline, XSim and firmware checks; board images matched to recorded measurements"
+}

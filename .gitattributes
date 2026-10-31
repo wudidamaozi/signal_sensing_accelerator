@@ -1,0 +1,2 @@
+# Keep frozen source, model and evidence bytes identical across platforms.
+* -text

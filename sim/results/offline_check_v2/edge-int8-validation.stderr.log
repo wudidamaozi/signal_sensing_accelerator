@@ -1,0 +1,19 @@
+test_dtype (__main__.IntegerChecks.test_dtype) ... ok
+test_endianness (__main__.IntegerChecks.test_endianness) ... ok
+test_float (__main__.IntegerChecks.test_float) ... ok
+test_independent_equal_files (__main__.IntegerChecks.test_independent_equal_files) ... ok
+test_missing (__main__.IntegerChecks.test_missing) ... ok
+test_one_byte_changed (__main__.IntegerChecks.test_one_byte_changed) ... ok
+test_shape (__main__.IntegerChecks.test_shape) ... ok
+test_bad_route (__main__.TimingChecks.test_bad_route) ... ok
+test_missing_identity (__main__.TimingChecks.test_missing_identity) ... ok
+test_negative_slacks (__main__.TimingChecks.test_negative_slacks) ... ok
+test_nonfinite (__main__.TimingChecks.test_nonfinite) ... ok
+test_nonpositive_clock (__main__.TimingChecks.test_nonpositive_clock) ... ok
+test_valid (__main__.TimingChecks.test_valid) ... ok
+test_zero_slack (__main__.TimingChecks.test_zero_slack) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.077s
+
+OK

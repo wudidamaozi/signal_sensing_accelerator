@@ -1,0 +1,11 @@
+--- self_test.py
++++ self_test.py
+@@ -22,7 +22,7 @@
+ 
+ class Checks(unittest.TestCase):
+     def setUp(self):
+-        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
++        self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name).resolve()
+         for suffix in ('bit','hwh'): (self.root/('filter.'+suffix)).write_bytes(('synthetic-'+suffix).encode())
+         self.rec=dict(bit='filter.bit',hwh='filter.hwh',bit_sha256=sha256(self.root/'filter.bit'),hwh_sha256=sha256(self.root/'filter.hwh'),ip_name='filter_0',base_address=0x43c00000,address_range=4096)
+         FakeOverlay.downloads=0

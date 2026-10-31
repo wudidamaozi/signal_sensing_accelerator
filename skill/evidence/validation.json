@@ -1,0 +1,29 @@
+{
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "numpy": "2.4.6",
+  "board_access": false,
+  "runs": [
+    {
+      "skill": "edge-int8-validation",
+      "command": [
+        "python",
+        "edge-int8-validation/scripts/self_test.py"
+      ],
+      "exit_code": 0,
+      "kind": "host_only_synthetic_fixtures",
+      "stdout": "edge-int8-validation_tests.stdout.log",
+      "stderr": "edge-int8-validation_tests.stderr.log"
+    },
+    {
+      "skill": "pynq-overlay-preflight",
+      "command": [
+        "python",
+        "pynq-overlay-preflight/scripts/self_test.py"
+      ],
+      "exit_code": 0,
+      "kind": "host_only_synthetic_fixtures",
+      "stdout": "pynq-overlay-preflight_tests.stdout.log",
+      "stderr": "pynq-overlay-preflight_tests.stderr.log"
+    }
+  ]
+}

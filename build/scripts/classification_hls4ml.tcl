@@ -1,0 +1,88 @@
+set root [file normalize [file join [file dirname [info script]] ../..]]
+set out [file join $root build/output/classification_hls4ml]
+file mkdir $out
+cd $root
+set_param general.maxThreads 2
+create_project r14_hls_usb [file join $out project] -part xc7z020clg400-1
+create_ip -name vio -vendor xilinx.com -library ip -version 3.0 -module_name edgeai_o55_usb_vio
+set_property -dict [list CONFIG.C_NUM_PROBE_IN {10} CONFIG.C_NUM_PROBE_OUT {1} CONFIG.C_PROBE_OUT0_WIDTH {1} CONFIG.C_PROBE_OUT0_INIT_VAL {0x1} CONFIG.C_PROBE_IN0_WIDTH {32} CONFIG.C_PROBE_IN1_WIDTH {32} CONFIG.C_PROBE_IN2_WIDTH {32} CONFIG.C_PROBE_IN3_WIDTH {32} CONFIG.C_PROBE_IN4_WIDTH {32} CONFIG.C_PROBE_IN5_WIDTH {32} CONFIG.C_PROBE_IN6_WIDTH {32} CONFIG.C_PROBE_IN7_WIDTH {32} CONFIG.C_PROBE_IN8_WIDTH {32} CONFIG.C_PROBE_IN9_WIDTH {32}] [get_ips edgeai_o55_usb_vio]
+generate_target all [get_ips edgeai_o55_usb_vio]
+read_verilog [file join $root src/rtl/common/picorv32_0836050971.v]
+read_verilog [file join $root src/rtl/common/public_cnn_613a852ffb.v]
+read_verilog [file join $root src/rtl/common/public_cnn_compute_output_buffer_1d_array_ap_int_8_2u_array_ap_i_f963e03465.v]
+read_verilog [file join $root src/rtl/common/public_cnn_compute_output_buffer_1d_array_ap_int_8_32u_array_ap__8306ac9084.v]
+read_verilog [file join $root src/rtl/common/public_cnn_compute_output_buffer_1d_array_ap_int_8_64u_array_ap__76f975a701.v]
+read_verilog [file join $root src/rtl/common/public_cnn_conv_1d_cl_array_ap_int_8_2u_array_ap_int_32_32u_conf_8c45bdf6fb.v]
+read_verilog [file join $root src/rtl/common/public_cnn_conv_1d_cl_array_ap_int_8_32u_array_ap_int_32_64u_con_a865e45c8b.v]
+read_verilog [file join $root src/rtl/common/public_cnn_conv_1d_cl_array_ap_int_8_64u_array_ap_int_32_64u_con_ced2e0c10d.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_array_ap_int_8_64u_array_ap_int_32_4u_config11__b1404e3907.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_ee845bf7ef.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_812364fb16.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_0eb14951e0.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_16612c6930.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_3170edeac6.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_83562274df.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_4edea8b71d.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_05a0e2ae97.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_gt_nin_rem0_ap_int_8_ap_int_32_conf_f6bc840b84.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_leq_nin_ap_int_8_ap_int_32_config11_7f0264f9b0.v]
+read_verilog [file join $root src/rtl/common/public_cnn_dense_resource_rf_leq_nin_ap_int_8_ap_int_32_config11_0605cbb6cc.v]
+read_verilog [file join $root src/rtl/common/public_cnn_edge_gap_array_ap_int_8_64u_array_ap_int_8_64u_config_59c98af666.v]
+read_verilog [file join $root src/rtl/common/public_cnn_edge_requant_array_ap_int_32_32u_array_ap_int_8_32u_c_f088b455ca.v]
+read_verilog [file join $root src/rtl/common/public_cnn_edge_requant_array_ap_int_32_64u_array_ap_int_8_64u_c_c8b5be7ced.v]
+read_verilog [file join $root src/rtl/common/public_cnn_edge_requant_array_ap_int_32_64u_array_ap_int_8_64u_c_0c2435c09d.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w1024_d2_s_4359fc197e.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w16_d2_s_8f4cb74737.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w2048_d2_s_a7a66d2959.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w256_d2_s_690677c5bc.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w512_d1_s_ea1562b911.v]
+read_verilog [file join $root src/rtl/common/public_cnn_fifo_w512_d2_s_46d1deb5f7.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mac_muladd_8s_8s_16s_17_4_1_40efa62376.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mac_muladd_8s_8s_32ns_32_4_1_18172d5f05.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mul_8s_8s_16_1_1_e2bcf43006.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mux_164_8_1_1_4d54957741.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mux_42_32_1_1_5a4bb4b7b5.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mux_646_32_1_1_a496ced3c2.v]
+read_verilog [file join $root src/rtl/common/public_cnn_mux_646_8_1_1_faf9fe0a66.v]
+read_verilog [file join $root src/rtl/common/public_cnn_pooling1d_cl_array_ap_int_8_32u_array_ap_int_8_32u_co_f8a008766f.v]
+read_verilog [file join $root src/rtl/common/public_cnn_pooling1d_cl_array_ap_int_8_64u_array_ap_int_8_64u_co_a042e5c248.v]
+read_verilog [file join $root src/rtl/common/public_cnn_regslice_both_455fa0e3b6.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_conv_1d_cl_array_ap_int_8_2u_array_ap_int_3_fc5bb173f6.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_conv_1d_cl_array_ap_int_8_32u_array_ap_int__700c8c4683.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_conv_1d_cl_array_ap_int_8_64u_array_ap_int__f5fe1c8c80.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_dense_array_ap_int_8_64u_array_ap_int_32_4u_1f6f777111.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_edge_gap_array_ap_int_8_64u_array_ap_int_8__ca4464d58e.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_edge_requant_array_ap_int_32_32u_array_ap_i_4d4d6b3682.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_edge_requant_array_ap_int_32_64u_array_ap_i_9abb88d0a9.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_edge_requant_array_ap_int_32_64u_array_ap_i_6f36ac7276.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_pooling1d_cl_array_ap_int_8_32u_array_ap_in_1ae8a94765.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_pooling1d_cl_array_ap_int_8_64u_array_ap_in_56fe2aba35.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_zeropad1d_cl_array_ap_int_8_32u_array_ap_in_3bcb6ae762.v]
+read_verilog [file join $root src/rtl/common/public_cnn_start_for_zeropad1d_cl_array_ap_int_8_64u_array_ap_in_d10adf3a59.v]
+read_verilog [file join $root src/rtl/common/public_cnn_zeropad1d_cl_array_ap_int_8_2u_array_ap_int_8_2u_conf_7416b15e02.v]
+read_verilog [file join $root src/rtl/common/public_cnn_zeropad1d_cl_array_ap_int_8_32u_array_ap_int_8_32u_co_c487a04ace.v]
+read_verilog [file join $root src/rtl/common/public_cnn_zeropad1d_cl_array_ap_int_8_64u_array_ap_int_8_64u_co_c01829a652.v]
+read_verilog -sv [file join $root src/rtl/common/hls_network_mmio_cf8da6c49e.sv]
+read_verilog -sv [file join $root src/rtl/common/hls_picorv32_soc_1f9c38afa6.sv]
+read_verilog -sv [file join $root src/rtl/common/pynq_r14_hls_usb_top_c6f5b64761.sv]
+set_property top pynq_r14_hls_usb_top [current_fileset]
+read_xdc [file join $root board/constraints/classification_hls4ml.xdc]
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+if {[get_property PROGRESS [get_runs synth_1]] ne "100%"} {error "synthesis failed"}
+open_run synth_1
+opt_design
+place_design
+phys_opt_design
+route_design
+report_timing_summary -delay_type min_max -report_unconstrained -file [file join $out timing.rpt]
+report_utilization -file [file join $out utilization.rpt]
+report_route_status -file [file join $out route.rpt]
+report_drc -file [file join $out drc.rpt]
+write_debug_probes -force [file join $out debug.ltx]
+set s [get_property SLACK [get_timing_paths -delay_type max -max_paths 1]]
+set h [get_property SLACK [get_timing_paths -delay_type min -max_paths 1]]
+puts "HLS_USB_TIMING setup=$s hold=$h"
+if {$s < 0 || $h < 0} {error "timing failed"}
+write_bitstream -force [file join $out board.bit]
+exit

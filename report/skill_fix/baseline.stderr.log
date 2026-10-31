@@ -1,0 +1,27 @@
+test_bad_hash_before_download (__main__.Checks.test_bad_hash_before_download) ... ok
+test_bad_manifest_alignment (__main__.Checks.test_bad_manifest_alignment) ... ok
+test_explicit_program_once (__main__.Checks.test_explicit_program_once) ... ok
+test_file_preflight (__main__.Checks.test_file_preflight) ... FAIL
+test_inspection_no_download (__main__.Checks.test_inspection_no_download) ... ok
+test_malformed_hash (__main__.Checks.test_malformed_hash) ... ok
+test_missing_hwh (__main__.Checks.test_missing_hwh) ... ok
+test_mmio_bounds (__main__.Checks.test_mmio_bounds) ... ok
+test_mmio_first_last_words (__main__.Checks.test_mmio_first_last_words) ... ok
+test_other_project_map (__main__.Checks.test_other_project_map) ... ok
+test_path_escape (__main__.Checks.test_path_escape) ... ok
+test_unmatched_stems (__main__.Checks.test_unmatched_stems) ... ok
+test_wrong_ip_map (__main__.Checks.test_wrong_ip_map) ... ok
+
+======================================================================
+FAIL: test_file_preflight (__main__.Checks.test_file_preflight)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<research_workspace>\experiments\clean_submission_20261031\baseline_self_test.py", line 30, in test_file_preflight
+    def test_file_preflight(self): self.assertEqual(check_files(self.root,self.rec),self.root/'filter.bit')
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: WindowsPath('<user_home>/AppData/Local/Temp/tmpx7jn3_96/filter.bit') != WindowsPath('<user_home>/AppData/Local/Temp/tmpx7jn3_96/filter.bit')
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.074s
+
+FAILED (failures=1)

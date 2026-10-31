@@ -1,0 +1,35 @@
+{
+  "status": "PASS_R14_M37_USB_ROUTE_NO_BOARD",
+  "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+  "firmware_sha256": "2d12c55851855a4df5f11d24e6f6b52dae668e0cb9bf70a6d10d647610362f20",
+  "lut": 7484,
+  "ff": 7350,
+  "bram36": 18.5,
+  "dsp": 36,
+  "setup_ns": 3.02,
+  "hold_ns": 0.056,
+  "route_errors": 0,
+  "bit_sha256": "843f0e86def56e645a1de26798a3762be3d384e40ba9970adc2fc9a5f38ccc9c",
+  "ltx_sha256": "216527e0ed1c186f5cad3ff88d4761765949e64f2139b2137853b251310edd69",
+  "source_sha256": {
+    "picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+    "int8_accelerator_mmio_m33.sv": "3799ce2c5091b1c4cab2d323a27d904e99cd4c1e921f9d641374da0e7dbd5c42",
+    "int8_gemm_controller_m32.sv": "1716969adc13d9a1adfb040089affcd7a53eea65e913399a6ebf1a84f7d6a87f",
+    "int8_input_window_loader_m33.sv": "1b4d976766a05aaaf4f1dae65a510a881e07801246ef402fdfdfeba2b228b09a",
+    "int8_layer_postprocess_controller.sv": "28c6c0fac2def16d0997ce28b8018c58ded14e0806283316fdfa28305726e016",
+    "int8_max_pool2.sv": "0a0ae2d4c038b07912bd5d5c9d1a283f7d013ae3baf12c93f656a96183f354f6",
+    "int8_outer_product_4x4.sv": "0622b5f9d841cd4524ed090784fa53e959177287b651ce6208f42a9dee43add0",
+    "int8_requantize_relu.sv": "98dfb3d442fe66f51241beac2071b6bb616e2a3b3702859564817a5d6d4bb7d5",
+    "int8_stream_gap.sv": "971eea06c3c1fa7333ed29432d4fa280065a39ceb71a5ec8d138a5eb5cb8ddb0",
+    "int8_weight_tile_loader.sv": "4e199268223c310a155afc90adb580ee5cc50887871e1e90a9cc831842e6844b",
+    "m30_network_replay.sv": "6fcaa0b0447babeca571870b07c8fe1570c5dbf03010a2fd2267d2b5b3e3733e",
+    "picorv32_accel_soc.sv": "ba20cb8e85d2fe58cb432c39da43c83ca75f6150a40f582478978c2003a4a88a",
+    "pynq_r14_m37_usb_top.sv": "01f3283c1be98ab8286051c04170d91162d29f74b08e3e9bdf29a151a88d5255",
+    "simple_dual_port_bram_32.sv": "69316b4be8f8cfbf92bb7a776de3ff8bb35e143bc1467a037edd5bfefac7f52c",
+    "simple_dual_port_bram_8.sv": "8822d650fae987cf951af794479285e330ffeb33a836aeedd123ebe3ec95f7dc"
+  },
+  "inputs": {
+    "full_network.hex": "be74fa106c3ace2dd17acaa62c07f73299ba3a11f98a319824bdb7f231f52650",
+    "weights_words.hex": "acd8120ad615af7bde8a971af72bd4e855b4767f0d24cfebde970723842823af"
+  }
+}

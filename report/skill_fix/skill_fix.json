@@ -1,0 +1,39 @@
+{
+  "status": "PASS_COPY_ONLY_WINDOWS_PATH_FIX",
+  "rows": [
+    {
+      "label": "BASELINE",
+      "command": [
+        "<research_workspace>\\.venv-model\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "<research_workspace>\\experiments\\clean_submission_20261031\\baseline_self_test.py"
+      ],
+      "exit_status": 1,
+      "sha256": "721ce235524640c27474b7ceb75a1ef127a6efb4722a0dd627ffbd5882414dde"
+    },
+    {
+      "label": "MODIFIED",
+      "command": [
+        "<research_workspace>\\.venv-model\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "<research_workspace>\\experiments\\clean_submission_20261031\\MODIFIED_FILE.py"
+      ],
+      "exit_status": 0,
+      "sha256": "ccfe53c53bb0230b4b2977e4ef8c02669356b296b22586ae3357b91498448bda"
+    },
+    {
+      "label": "ROLLBACK",
+      "command": [
+        "<research_workspace>\\.venv-model\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "<research_workspace>\\experiments\\clean_submission_20261031\\restored_self_test.py"
+      ],
+      "exit_status": 1,
+      "sha256": "721ce235524640c27474b7ceb75a1ef127a6efb4722a0dd627ffbd5882414dde"
+    }
+  ],
+  "root_source_unchanged": true
+}

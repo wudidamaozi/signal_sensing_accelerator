@@ -1,0 +1,519 @@
+{
+  "status": "PASS_PHASE1_CONTROLLED_SIMULATION_SOFTWARE",
+  "scope": "user-approved fully synthetic first-version -10..18 dB software dataset/model/quantization/C/export handoff; NOT entire processor-deployment project",
+  "requirements": [
+    {
+      "requirement": "user-authorized occupied-source replacement recorded",
+      "status": "PASS",
+      "evidence": "user answer: 允许占用类改为可控仿真; original RadioML preserved"
+    },
+    {
+      "requirement": "11 modulation families, first-version SNR -10..18 dB",
+      "status": "PASS",
+      "evidence": "main manifest and generator + frozen plan"
+    },
+    {
+      "requirement": "balanced nonzero Gaussian H0 and H1=s+w, each class >10000",
+      "status": "PASS",
+      "evidence": "main quality report; components saved, independent noise streams, power metadata"
+    },
+    {
+      "requirement": "70/15/15 source-group split before cutting",
+      "status": "PASS",
+      "evidence": "group allocation before window extraction; package verify_data independently checked 211200 windows"
+    },
+    {
+      "requirement": "recorded signal/noise powers, realized SNR and RNG/group/window provenance",
+      "status": "PASS",
+      "evidence": "stored signal/noise arrays, group records and manifest; 44 source groups bit-exact replayed across datasets"
+    },
+    {
+      "requirement": "global training-derived input scale, no received per-window normalization",
+      "status": "PASS",
+      "evidence": "training calibration and network_config; C raw float input quantization test"
+    },
+    {
+      "requirement": "document CNN topology, parameter and MAC counts",
+      "status": "PASS",
+      "evidence": "loaded checkpoint topology, config and layer traces"
+    },
+    {
+      "requirement": "FP32 trained, checkpoint selected by validation",
+      "status": "PASS",
+      "evidence": "history/config and frozen best_fp32.pt; max30, early stopping allowed"
+    },
+    {
+      "requirement": "PTQ calibration and validation-only scale selection; no final-holdout tuning",
+      "status": "PASS",
+      "evidence": "frozen model hashes; final holdout generated afterward with new seed and source group namespace"
+    },
+    {
+      "requirement": "overall quantization loss within document ~1-2pp guideline",
+      "status": "PASS",
+      "evidence": "new source-group holdout: accuracy loss0.264pp, Pd loss0.279pp; QAT unnecessary after tuned PTQ"
+    },
+    {
+      "requirement": "INT8 weights INT32 bias, power-of-two scales, config and safe bounds",
+      "status": "PASS",
+      "evidence": "8 binary arrays reconstructed from network config, NPZ and bound checks; target layout not yet implemented"
+    },
+    {
+      "requirement": ">=10 independent NumPy/Torch/host C layer vectors",
+      "status": "PASS",
+      "evidence": "30 new holdout vectors, all intermediate layers exact; C float quantization and batch also checked"
+    },
+    {
+      "requirement": "full new-holdout final output C/int-reference equivalence",
+      "status": "PASS",
+      "evidence": "66000 final logits exact; no claim of full layer-by-layer checks for every sample"
+    },
+    {
+      "requirement": "accuracy/Pd/Pfa/SNR curves, actual-SNR bins and complexity reports",
+      "status": "PASS",
+      "evidence": "counts for each SNR/modulation; plot visually checked; group-based sampling interval recorded"
+    },
+    {
+      "requirement": "complete data artifact, extraction and exact regeneration",
+      "status": "PASS",
+      "evidence": "dataset ZIP 55 files, 211200 samples; both datasets regenerated with same raw-array/group-record hashes"
+    },
+    {
+      "requirement": "portable model export, extraction selftest and CLI",
+      "status": "PASS",
+      "evidence": "ZIP extraction: manifest206; FP32/C quant/C layers/C batch30; invalid2; INT8 and FP32 CLI; same host only"
+    },
+    {
+      "requirement": "no source weights overwritten; frozen model bytes preserved",
+      "status": "PASS",
+      "evidence": "frozen primary checkpoints and exported exact copies; historic RadioML and sister backup retained"
+    }
+  ],
+  "final_holdout_metrics": {
+    "fp32": {
+      "n": 66000,
+      "tp": 31657,
+      "tn": 32323,
+      "fp": 677,
+      "fn": 1343,
+      "accuracy": 0.9693939393939394,
+      "Pd": 0.9593030303030303,
+      "Pfa": 0.020515151515151514,
+      "by_nominal_snr": {
+        "-10": {
+          "n": 2200,
+          "Pd": 0.5790909090909091
+        },
+        "-8": {
+          "n": 2200,
+          "Pd": 0.8495454545454545
+        },
+        "-6": {
+          "n": 2200,
+          "Pd": 0.9709090909090909
+        },
+        "-4": {
+          "n": 2200,
+          "Pd": 0.9927272727272727
+        },
+        "-2": {
+          "n": 2200,
+          "Pd": 0.9981818181818182
+        },
+        "0": {
+          "n": 2200,
+          "Pd": 0.9995454545454545
+        },
+        "2": {
+          "n": 2200,
+          "Pd": 0.9995454545454545
+        },
+        "4": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "6": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "8": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "10": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "12": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "14": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "16": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "18": {
+          "n": 2200,
+          "Pd": 1.0
+        }
+      },
+      "by_modulation": {
+        "BPSK": {
+          "n": 3000,
+          "Pd": 0.9573333333333334
+        },
+        "QPSK": {
+          "n": 3000,
+          "Pd": 0.9603333333333334
+        },
+        "8PSK": {
+          "n": 3000,
+          "Pd": 0.955
+        },
+        "PAM4": {
+          "n": 3000,
+          "Pd": 0.9496666666666667
+        },
+        "QAM16": {
+          "n": 3000,
+          "Pd": 0.9506666666666667
+        },
+        "QAM64": {
+          "n": 3000,
+          "Pd": 0.95
+        },
+        "CPFSK": {
+          "n": 3000,
+          "Pd": 0.9726666666666667
+        },
+        "GFSK": {
+          "n": 3000,
+          "Pd": 0.974
+        },
+        "AM-DSB": {
+          "n": 3000,
+          "Pd": 0.952
+        },
+        "AM-SSB": {
+          "n": 3000,
+          "Pd": 0.952
+        },
+        "WBFM": {
+          "n": 3000,
+          "Pd": 0.9786666666666667
+        }
+      },
+      "by_actual_snr_bin": {
+        "-16..-14": {
+          "n": 47,
+          "Pd": 0.14893617021276595
+        },
+        "-14..-12": {
+          "n": 137,
+          "Pd": 0.38686131386861317
+        },
+        "-12..-10": {
+          "n": 1080,
+          "Pd": 0.5027777777777778
+        },
+        "-10..-8": {
+          "n": 2156,
+          "Pd": 0.7448979591836735
+        },
+        "-8..-6": {
+          "n": 2167,
+          "Pd": 0.9520073834794647
+        },
+        "-6..-4": {
+          "n": 2264,
+          "Pd": 0.9969081272084805
+        },
+        "-4..-2": {
+          "n": 2135,
+          "Pd": 1.0
+        },
+        "-2..0": {
+          "n": 2258,
+          "Pd": 1.0
+        },
+        "0..2": {
+          "n": 2155,
+          "Pd": 1.0
+        },
+        "2..4": {
+          "n": 2206,
+          "Pd": 1.0
+        },
+        "4..6": {
+          "n": 2216,
+          "Pd": 1.0
+        },
+        "6..8": {
+          "n": 2209,
+          "Pd": 1.0
+        },
+        "8..10": {
+          "n": 2171,
+          "Pd": 1.0
+        },
+        "10..12": {
+          "n": 2213,
+          "Pd": 1.0
+        },
+        "12..14": {
+          "n": 2181,
+          "Pd": 1.0
+        },
+        "14..16": {
+          "n": 2175,
+          "Pd": 1.0
+        },
+        "16..18": {
+          "n": 2055,
+          "Pd": 1.0
+        },
+        "18..20": {
+          "n": 1083,
+          "Pd": 1.0
+        },
+        "20..22": {
+          "n": 63,
+          "Pd": 1.0
+        },
+        "22..24": {
+          "n": 6,
+          "Pd": 1.0
+        }
+      }
+    },
+    "int8": {
+      "n": 66000,
+      "tp": 31565,
+      "tn": 32241,
+      "fp": 759,
+      "fn": 1435,
+      "accuracy": 0.9667575757575757,
+      "Pd": 0.9565151515151515,
+      "Pfa": 0.023,
+      "by_nominal_snr": {
+        "-10": {
+          "n": 2200,
+          "Pd": 0.5604545454545454
+        },
+        "-8": {
+          "n": 2200,
+          "Pd": 0.8313636363636364
+        },
+        "-6": {
+          "n": 2200,
+          "Pd": 0.9659090909090909
+        },
+        "-4": {
+          "n": 2200,
+          "Pd": 0.9927272727272727
+        },
+        "-2": {
+          "n": 2200,
+          "Pd": 0.9977272727272727
+        },
+        "0": {
+          "n": 2200,
+          "Pd": 0.9995454545454545
+        },
+        "2": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "4": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "6": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "8": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "10": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "12": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "14": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "16": {
+          "n": 2200,
+          "Pd": 1.0
+        },
+        "18": {
+          "n": 2200,
+          "Pd": 1.0
+        }
+      },
+      "by_modulation": {
+        "BPSK": {
+          "n": 3000,
+          "Pd": 0.955
+        },
+        "QPSK": {
+          "n": 3000,
+          "Pd": 0.9576666666666667
+        },
+        "8PSK": {
+          "n": 3000,
+          "Pd": 0.951
+        },
+        "PAM4": {
+          "n": 3000,
+          "Pd": 0.9456666666666667
+        },
+        "QAM16": {
+          "n": 3000,
+          "Pd": 0.9476666666666667
+        },
+        "QAM64": {
+          "n": 3000,
+          "Pd": 0.9456666666666667
+        },
+        "CPFSK": {
+          "n": 3000,
+          "Pd": 0.9693333333333334
+        },
+        "GFSK": {
+          "n": 3000,
+          "Pd": 0.9723333333333334
+        },
+        "AM-DSB": {
+          "n": 3000,
+          "Pd": 0.949
+        },
+        "AM-SSB": {
+          "n": 3000,
+          "Pd": 0.95
+        },
+        "WBFM": {
+          "n": 3000,
+          "Pd": 0.9783333333333334
+        }
+      },
+      "by_actual_snr_bin": {
+        "-16..-14": {
+          "n": 47,
+          "Pd": 0.14893617021276595
+        },
+        "-14..-12": {
+          "n": 137,
+          "Pd": 0.39416058394160586
+        },
+        "-12..-10": {
+          "n": 1080,
+          "Pd": 0.4777777777777778
+        },
+        "-10..-8": {
+          "n": 2156,
+          "Pd": 0.7272727272727273
+        },
+        "-8..-6": {
+          "n": 2167,
+          "Pd": 0.9400092293493308
+        },
+        "-6..-4": {
+          "n": 2264,
+          "Pd": 0.9960247349823321
+        },
+        "-4..-2": {
+          "n": 2135,
+          "Pd": 1.0
+        },
+        "-2..0": {
+          "n": 2258,
+          "Pd": 1.0
+        },
+        "0..2": {
+          "n": 2155,
+          "Pd": 1.0
+        },
+        "2..4": {
+          "n": 2206,
+          "Pd": 1.0
+        },
+        "4..6": {
+          "n": 2216,
+          "Pd": 1.0
+        },
+        "6..8": {
+          "n": 2209,
+          "Pd": 1.0
+        },
+        "8..10": {
+          "n": 2171,
+          "Pd": 1.0
+        },
+        "10..12": {
+          "n": 2213,
+          "Pd": 1.0
+        },
+        "12..14": {
+          "n": 2181,
+          "Pd": 1.0
+        },
+        "14..16": {
+          "n": 2175,
+          "Pd": 1.0
+        },
+        "16..18": {
+          "n": 2055,
+          "Pd": 1.0
+        },
+        "18..20": {
+          "n": 1083,
+          "Pd": 1.0
+        },
+        "20..22": {
+          "n": 63,
+          "Pd": 1.0
+        },
+        "22..24": {
+          "n": 6,
+          "Pd": 1.0
+        }
+      }
+    },
+    "quantization_loss": {
+      "accuracy_pp": 0.2636363636363659,
+      "Pd_pp": 0.27878787878787836,
+      "Pfa_change_pp": 0.24848484848484856
+    }
+  },
+  "artifacts": {
+    "model_zip": "D:\\FPGA\\fpga比赛\\频谱占用检测_CNN独立项目\\师姐交付_可追溯仿真_阶段一_v1.zip",
+    "model_sha256": "d21460856af96b093f2105338311a385ba633937a4efa537d10e78faec948e33",
+    "model_bytes": 672697,
+    "dataset_zip": "D:\\FPGA\\fpga比赛\\频谱占用检测_CNN独立项目\\师姐数据_可追溯仿真_阶段一_v1.zip",
+    "dataset_sha256": "854a0b60db4e055bf745c4d0472ca953d75d5daf44915854b3d2a4852270c2b2",
+    "dataset_bytes": 515013966
+  },
+  "explicitly_deferred": [
+    "processor ISA/layout/memory integration and layer equivalence",
+    "actual target cycles, clock, latency at1GHz or other clock, MAC/cycle",
+    "real RF receiver performance and different channel/noise distributions",
+    "competition project cascade integration"
+  ],
+  "limitations": [
+    "same explicitly defined generic simulation generator family, not standards-certified or field waveforms",
+    "-20..-12 dB not covered by this first version",
+    "low-SNR missed detections remain; no invented absolute Pd/Pfa gate",
+    "source-group bootstrap describes conditional synthetic sampling only",
+    "portable training CLIs syntax/help checked; original training actually executed; not retrained on independent machine"
+  ]
+}

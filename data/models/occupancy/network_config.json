@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "task": "controlled-simulation occupancy binary CNN, user-approved synthetic occupied source",
+  "input_shape": [
+    2,
+    128
+  ],
+  "input_layout": "I row then Q row, 128 contiguous samples",
+  "bound": 21.74724769592285,
+  "input_scale_exponent": -6,
+  "zero_point": 0,
+  "preprocessing": "clip raw simulated IQ +-bound then divide by bound; no window-wise received normalization",
+  "rounding": "half away from zero, saturating signed INT8",
+  "hidden_relu_range": [
+    0,
+    127
+  ],
+  "conv2_signed_range": [
+    -128,
+    127
+  ],
+  "bias_dtype": "int32 little endian, input_scale*weight_scale",
+  "accumulator": "int32 or wider subject to stated bounds, no processor validation",
+  "final_logit_scale_exponent": -8,
+  "final_logit_file_dtype": "int64 little-endian for host trace; numerical bounds verified INT32-compatible",
+  "decision": "logit1>logit0 => occupied=1, otherwise idle=0",
+  "layers": [
+    {
+      "name": "conv1",
+      "weight_shape": [
+        45,
+        2,
+        8
+      ],
+      "layout": "O,C,K",
+      "weight_file": "weights/conv1_weight.i8",
+      "bias_file": "weights/conv1_bias.i32le",
+      "weight_sha256": "89ea0a1bf0f0f29b0d44ee285cd7bcb54340174bbdcc8d9d597b30d0143143fa",
+      "bias_sha256": "73c30faffa0cd88845aad6df3092265909c01d934ce2520b69b46d1361236946",
+      "weight_scale_exponent": -7,
+      "output_scale_exponent": -5,
+      "right_shift": 8,
+      "relu": true,
+      "output_shape": [
+        45,
+        121
+      ],
+      "stride": 1,
+      "padding": 0
+    },
+    {
+      "name": "conv2",
+      "weight_shape": [
+        9,
+        45,
+        6
+      ],
+      "layout": "O,C,K",
+      "weight_file": "weights/conv2_weight.i8",
+      "bias_file": "weights/conv2_bias.i32le",
+      "weight_sha256": "9aac8fddd3b297bc1d695050173b44a119484a0ae9ef37ca1fa63760978fe015",
+      "bias_sha256": "bf69a5623fe94f3620a286472a86acbc62bdbd116e0460fa6fc1f8f1a449b812",
+      "weight_scale_exponent": -8,
+      "output_scale_exponent": -5,
+      "right_shift": 8,
+      "relu": false,
+      "output_shape": [
+        9,
+        116
+      ],
+      "stride": 1,
+      "padding": 0
+    },
+    {
+      "name": "fc1",
+      "weight_shape": [
+        32,
+        1044
+      ],
+      "layout": "O,I",
+      "weight_file": "weights/fc1_weight.i8",
+      "bias_file": "weights/fc1_bias.i32le",
+      "weight_sha256": "9fb5d172fcffd98bf48b957317ae27555c341b2a49c956f76abfd84d5cd18240",
+      "bias_sha256": "0cc9b8381e7e500ddb267d78249995e1afab164dbe8d8a2374f7b1750ea8ac69",
+      "weight_scale_exponent": -7,
+      "output_scale_exponent": 0,
+      "right_shift": 12,
+      "relu": true,
+      "output_shape": [
+        32
+      ],
+      "stride": 1,
+      "padding": 0
+    },
+    {
+      "name": "fc2",
+      "weight_shape": [
+        2,
+        32
+      ],
+      "layout": "O,I",
+      "weight_file": "weights/fc2_weight.i8",
+      "bias_file": "weights/fc2_bias.i32le",
+      "weight_sha256": "a86a66bfb3bdd43be1fa4ba06b4e47c0b6174cf8d5f9e333635d50d2038bff2b",
+      "bias_sha256": "ed79ca2e674a13abf8ab7c4841c6db12d2f7c3df74a5034ffa895ceb9317f8e3",
+      "weight_scale_exponent": -8,
+      "output_scale_exponent": -8,
+      "right_shift": null,
+      "relu": false,
+      "output_shape": [
+        2
+      ],
+      "stride": 1,
+      "padding": 0
+    }
+  ],
+  "flatten_order": "channel-major C,L",
+  "parameters": 36710,
+  "MACs_per_frame": 402472,
+  "frozen_fp32_sha256": "70acd96538f031814c87605afde70ad11126195a70f554e78f9ee0deab58388d",
+  "frozen_npz_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "scope": "software simulation only, -10..18 dB first version; no RF receiver or vector processor validation"
+}

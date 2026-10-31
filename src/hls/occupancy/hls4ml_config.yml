@@ -1,0 +1,64 @@
+Backend: Vivado
+ClockPeriod: 20
+HLSConfig:
+  LayerName:
+    conv1:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 48
+    conv1_q:
+      Precision:
+        result: ap_int<8>
+    conv2:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 270
+    conv2_q:
+      Precision:
+        result: ap_int<8>
+    fc1:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 2088
+    fc1_q:
+      Precision:
+        result: ap_int<8>
+    fc2:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 32
+    flatten:
+      Precision:
+        result: ap_int<8>
+    iq:
+      Precision:
+        result: ap_int<8>
+  Model:
+    ConvImplementation: LineBuffer
+    Precision: ap_int<32>
+    ReuseFactor: 1
+    Strategy: Resource
+IOType: io_stream
+InputShapes:
+  iq:
+  - 128
+  - 2
+OutputDir: <research_workspace>\build\occupancy_hls4ml_20261031_s3
+OutputShapes:
+  layer9_out:
+  - 2
+Part: xc7z020clg400-1
+ProjectName: occupancy_hls4ml
+Stamp: be518bb1

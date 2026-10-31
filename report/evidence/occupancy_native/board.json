@@ -1,0 +1,13 @@
+{
+  "status": "PASS_OCCUPANCY_LATENCY_USB_BOARD",
+  "board_tested": true,
+  "cycles": [
+    35629,
+    35629
+  ],
+  "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "bit_sha256": "2d67bcea1a5db3367a82f1075cd93f37921ba9c02a3acd26d2ef2cd5beeba1af",
+  "unique_frames": 2,
+  "calls": 4,
+  "scope": "8KiB CPU; CNN service rdcycle; nominal 50MHz; excludes JTAG/input quantization"
+}

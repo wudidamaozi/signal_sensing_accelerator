@@ -1,0 +1,60 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/picorv32_fd142889e8.v" into library work
+INFO: [VRFC 10-311] analyzing module picorv32
+INFO: [VRFC 10-311] analyzing module picorv32_regs
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_fast_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_div
+INFO: [VRFC 10-311] analyzing module picorv32_axi
+INFO: [VRFC 10-311] analyzing module picorv32_axi_adapter
+INFO: [VRFC 10-311] analyzing module picorv32_wb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_axi_lite_bridge_55b705aad1.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_axi_lite_bridge
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_host_mailbox_f4e1ea7b21.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_host_mailbox
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_o55_live_top_6721807c94.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_o55_live_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_vio_axi_master_a8d10c2cf1.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_vio_axi_master
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_accelerator_mmio_m33_8217e55dc2.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_accelerator_mmio_core_m30
+INFO: [VRFC 10-311] analyzing module int8_accelerator_mmio
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_gemm_controller_m32_8577552883.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_gemm_controller
+INFO: [VRFC 10-311] analyzing module int8_gemm_serial_controller
+INFO: [VRFC 10-311] analyzing module int8_gemm_writeback_overlap
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_input_window_loader_gather_81e9d471b7.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_input_window_loader_gather
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_input_window_loader_m33_e1834de3c9.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_input_window_loader
+INFO: [VRFC 10-311] analyzing module int8_input_window_loader_packed
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_layer_postprocess_controller_3c490b37c0.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_layer_postprocess_controller
+INFO: [VRFC 10-311] analyzing module int8_layer_postprocess_pipeline
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_max_pool2_7af1883049.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_max_pool2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_outer_product_4x4_cee69d734f.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_outer_product_4x4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_requantize_relu_005e3f0635.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_requantize_relu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_stream_gap_54922f62b9.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_stream_gap
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/int8_weight_tile_loader_581be3476b.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_weight_tile_loader
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/m30_network_replay_f81f05902d.sv" into library work
+INFO: [VRFC 10-311] analyzing module m30_network_replay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/occupancy_mailbox_77e3f5e48b.sv" into library work
+INFO: [VRFC 10-311] analyzing module occupancy_mailbox
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/occupancy_service_soc_8e02eb11ae.sv" into library work
+INFO: [VRFC 10-311] analyzing module occupancy_service_soc
+WARNING: [VRFC 10-8426] non-net output port 'address_fault' cannot be initialized at declaration in SystemVerilog mode [<release_workspace>/build/output/occupancy_relocated_v2/sources/occupancy_service_soc_8e02eb11ae.sv:9]
+WARNING: [VRFC 10-8426] non-net output port 'host_valid' cannot be initialized at declaration in SystemVerilog mode [<release_workspace>/build/output/occupancy_relocated_v2/sources/occupancy_service_soc_8e02eb11ae.sv:10]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/picorv32_accel_soc_host_bcc3fad12d.sv" into library work
+INFO: [VRFC 10-311] analyzing module picorv32_accel_soc_host
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/simple_dual_port_bram_32_e016a6dd21.sv" into library work
+INFO: [VRFC 10-311] analyzing module simple_dual_port_bram_32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/simple_dual_port_bram_8_1390076600.sv" into library work
+INFO: [VRFC 10-311] analyzing module simple_dual_port_bram_8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_vio_axi_master_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_vio_axi_master_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "<vendor_install>/Vivado/2020.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl

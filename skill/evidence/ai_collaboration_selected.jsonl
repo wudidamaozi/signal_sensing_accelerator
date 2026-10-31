@@ -1,0 +1,6 @@
+{"kind": "selected_actual_user_prompt", "text": "不是 我是问 我们这些优化资源消耗 是通过什么方式优化的？这是加速器的功劳 还是模型的功劳？"}
+{"kind": "actual_assistant_answer_excerpt", "text": "最近这一轮资源下降，主要是硬件实现和存储组织优化的功劳，不是通过重新训练或缩小 CNN 模型得到的。"}
+{"kind": "selected_actual_user_prompt", "text": "好了 那我们不再改了，按照这两个参赛文件的要求，对项目做一次最后的整体优化，做好除了上板验证数据前的所有步骤"}
+{"kind": "actual_assistant_answer_excerpt", "text": "技术报告可以先写设计和仿真部分，但不能因为历史结果接近，就把未上板的结果写成实测。"}
+{"kind": "observed_tool_self_correction", "failure": "Vivado2020.2 module reference rejects SystemVerilog top", "action": "Use Verilog interface wrapper and preserve SV compute", "evidence": "build/final_pynq_class_board_v1/vivado.log -> final_pynq_class_board_v2"}
+{"kind": "observed_tool_self_correction", "failure": "HWH export assumed .srcs, actual generated path .gen", "action": "Preserve completed bitstream; copy exact matching .gen HWH; fix future exporter", "evidence": "build/final_pynq_class_board_v2/handoff_export_correction.json"}

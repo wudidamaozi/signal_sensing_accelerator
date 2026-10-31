@@ -1,0 +1,8 @@
+{
+  "status": "PASS_REAL_AND_NEGATIVE_CHECKS",
+  "real_c_boundary_pairs": 160,
+  "c_implementations": 2,
+  "class_snr_cases": 80,
+  "export_contract": "Explicit range-checked canonical INT8 activations and little-endian INT32 logits. Frozen input_q copied from shared fixture, not independently dumped by C.",
+  "first_adapter_failure": "Reference NPZ stores logits in NumPy int64 container; C trace contains 4xINT32, first decoder used wrong element width. Checker rejected it. Adapter corrected explicitly; checker unchanged."
+}

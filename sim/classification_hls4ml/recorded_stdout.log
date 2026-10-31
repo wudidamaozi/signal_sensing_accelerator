@@ -1,0 +1,17 @@
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/r14hlsusb/xsim_script.tcl
+# xsim {r14hlsusb} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+source run.tcl
+## run all
+R14_HLS_USB_TOP_PASS calls=2 cycles0=46283 cycles1=46283 firmware_verified_all_logits
+$finish called at time : 1867745 ns : File "<research_workspace>/build/pynq_r14_hls_usb_20261030_sim/sources/pynq_r14_hls_usb_tb.sv" Line 10
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:00:24 . Memory (MB): peak = 929.426 ; gain = 0.000
+## exit
+INFO: [Common 17-206] Exiting xsim at Fri Oct 30 20:33:33 2026...

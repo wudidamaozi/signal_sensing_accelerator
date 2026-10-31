@@ -1,0 +1,239 @@
+{
+  "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+  "hls4ml_version": "1.3.0",
+  "fifo_depth_cap": 2,
+  "fifo_depths": {
+    "layer2_out": 2,
+    "layer3_out": 2,
+    "layer4_out": 2,
+    "layer5_out": 2,
+    "layer6_out": 2,
+    "layer7_out": 2,
+    "layer8_out": 2,
+    "layer9_out": 2,
+    "layer10_out": 1,
+    "layer12_out": 2,
+    "layer13_out": 2,
+    "layer14_out": 2
+  },
+  "reuse_scale": 1,
+  "explicit_reuse_factors": [
+    28,
+    640,
+    768,
+    16
+  ],
+  "effective_reuse_factors": {
+    "conv1": 28,
+    "conv2": 640,
+    "conv3": 768,
+    "classifier": 16
+  },
+  "config": {
+    "Backend": "Vivado",
+    "IOType": "io_stream",
+    "OutputDir": "<research_workspace>\\build\\dual_current_r14_hls",
+    "ProjectName": "public_cnn",
+    "Part": "xc7z020clg400-1",
+    "ClockPeriod": 20,
+    "HLSConfig": {
+      "Model": {
+        "Precision": "ap_int<32>",
+        "ReuseFactor": 1,
+        "Strategy": "Resource",
+        "ConvImplementation": "LineBuffer"
+      },
+      "LayerType": {
+        "ZeroPadding1D": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        }
+      },
+      "LayerName": {
+        "iq_input": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "conv1": {
+          "ReuseFactor": 28,
+          "Precision": {
+            "result": "ap_int<32>",
+            "accum": "ap_int<32>",
+            "weight": "ap_int<8>",
+            "bias": "ap_int<32>"
+          }
+        },
+        "conv1_rq": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "conv1_pool": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "conv2": {
+          "ReuseFactor": 640,
+          "Precision": {
+            "result": "ap_int<32>",
+            "accum": "ap_int<32>",
+            "weight": "ap_int<8>",
+            "bias": "ap_int<32>"
+          }
+        },
+        "conv2_rq": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "conv2_pool": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "conv3": {
+          "ReuseFactor": 768,
+          "Precision": {
+            "result": "ap_int<32>",
+            "accum": "ap_int<32>",
+            "weight": "ap_int<8>",
+            "bias": "ap_int<32>"
+          }
+        },
+        "conv3_rq": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "gap": {
+          "Precision": {
+            "result": "ap_int<8>"
+          }
+        },
+        "classifier": {
+          "ReuseFactor": 16,
+          "Precision": {
+            "result": "ap_int<32>",
+            "accum": "ap_int<32>",
+            "weight": "ap_int<8>",
+            "bias": "ap_int<32>"
+          }
+        }
+      }
+    },
+    "InputShapes": {
+      "iq_input": [
+        128,
+        2
+      ]
+    },
+    "OutputShapes": {
+      "layer11_out": [
+        4
+      ]
+    },
+    "Stamp": "71690afe"
+  },
+  "graph": [
+    "Input",
+    "ZeroPadding1D",
+    "Conv1D",
+    "ExactRequant",
+    "Pooling1D",
+    "ZeroPadding1D",
+    "Conv1D",
+    "ExactRequant",
+    "Pooling1D",
+    "ZeroPadding1D",
+    "Conv1D",
+    "ExactRequant",
+    "ExactGap",
+    "Dense"
+  ],
+  "scope": "Full INT8 classifier including custom arithmetic-contract-only requantization and rounded GAP",
+  "fixtures": [
+    {
+      "case": "class0_snr-20",
+      "sha256": "abe0d46841fdd8d57d8e8cfdf636bcb3d50692184236132547675413b28a8cea"
+    },
+    {
+      "case": "class0_snr-10",
+      "sha256": "a26dbd609a38cf58a54f22c23faedc3deabd74f8becaf6ed161193ffa417c04c"
+    },
+    {
+      "case": "class0_snr0",
+      "sha256": "fdc30831b4a0b9fac83f9550f27c3e7f3e2079b9490dae04bc56d1aa6b69185d"
+    },
+    {
+      "case": "class0_snr8",
+      "sha256": "50067c118159bc95644504c257868eade9e6c0572dc1162be3c8cbe283b19382"
+    },
+    {
+      "case": "class0_snr18",
+      "sha256": "e809c2b03ef78a3531acce8f8b45b6dc37291a9930c06d434c9e308bb7c77913"
+    },
+    {
+      "case": "class1_snr-20",
+      "sha256": "d639d523155369e1ccd258877573abd72e647152025b488b86314fb16cb36a18"
+    },
+    {
+      "case": "class1_snr-10",
+      "sha256": "b11e8c70c21ddbedd58837092369c4890d230d94032b71dfe784cef6a296d851"
+    },
+    {
+      "case": "class1_snr0",
+      "sha256": "4b9c9c842f6059ed6b18fae25fe308404112901d6a324d56a1459a5b5c4994b8"
+    },
+    {
+      "case": "class1_snr8",
+      "sha256": "2db747f282e84ac94db7532b8ee5b035140c7aab27dbc86989b7163835356796"
+    },
+    {
+      "case": "class1_snr18",
+      "sha256": "5be54ac5cdb6972c2d4fcef011b9fe45c5be6f1cff8b3af2c63d59380a748351"
+    },
+    {
+      "case": "class2_snr-20",
+      "sha256": "50e2605e8bf299b26317dcce8d3daec41b91130ebdbc9fa62c76a87e2ae2e63d"
+    },
+    {
+      "case": "class2_snr-10",
+      "sha256": "aafff40b13bf2db0a08c108aac0c22390cadbb6560e5c771238d49e2f6495df1"
+    },
+    {
+      "case": "class2_snr0",
+      "sha256": "c4b630db425ebf16ec9fbeae91ed96b8099f2d7be66979dffa39fb4d3197ff50"
+    },
+    {
+      "case": "class2_snr8",
+      "sha256": "11befdb5d74d113304db41c013bd2e5d79d6d12ca5b2065fcc34d93db76b8907"
+    },
+    {
+      "case": "class2_snr18",
+      "sha256": "0efc6d78ac8727526aae173c3df367a78466e8f5461cb69c9a5571b29e69ab0f"
+    },
+    {
+      "case": "class3_snr-20",
+      "sha256": "345b6d36b538b66ab875209c241ac81adeae1dc3b1246476fbdd42993b547f0b"
+    },
+    {
+      "case": "class3_snr-10",
+      "sha256": "4bdee994b017b28da4319fff283e2232a75fb8c0ace932097a296f9b5b157c32"
+    },
+    {
+      "case": "class3_snr0",
+      "sha256": "e3b9cb68da09214b4599c665118d1ae421317ce0532c2ffaec92472fea9af5ff"
+    },
+    {
+      "case": "class3_snr8",
+      "sha256": "ac1430b916aa0640ae9424d1a289b74545dfd0e9a9023112a7d4376a45f6f15c"
+    },
+    {
+      "case": "class3_snr18",
+      "sha256": "cf31ecbaab249a4a8cb99bfba05c8b712fbd6b0a77980ca85be9a84f51af6dfe"
+    }
+  ]
+}

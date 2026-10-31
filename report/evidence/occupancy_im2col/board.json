@@ -1,0 +1,17 @@
+{
+  "status": "IM2COL_USB_BOARD_PASS",
+  "board_tested": true,
+  "implementation": "<research_workspace>\\build\\pynq_im2col_usb_provisional_20261030",
+  "bit_sha256": "fdf45557b71b7a7a465ae9fd0e54c8b73116d0da3a557deced25e79f2ddc7a21",
+  "ltx_sha256": "274185bf4c3901998e1a7ab3e7cdab063dbf4cb6ed89f3402c3067e86b51ea58",
+  "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "scope": "Two fixed occupancy inputs, IM2COL service rdcycle, excludes JTAG and input preparation; 50MHz nominal; no PS/Flash",
+  "unique_frames": 2,
+  "calls": 4,
+  "cycles": [
+    6840614,
+    6851494,
+    6840614,
+    6851494
+  ]
+}

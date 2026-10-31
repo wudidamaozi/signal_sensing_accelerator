@@ -1,0 +1,20 @@
+#ifndef PUBLIC_CNN_H_
+#define PUBLIC_CNN_H_
+
+#include "ap_fixed.h"
+#include "ap_int.h"
+#include "hls_stream.h"
+
+#include "defines.h"
+
+
+// Prototype of top level function for C-synthesis
+void public_cnn(
+    hls::stream<input_t> &iq_input,
+    hls::stream<result_t> &layer11_out
+);
+
+// hls-fpga-machine-learning insert emulator-defines
+
+
+#endif

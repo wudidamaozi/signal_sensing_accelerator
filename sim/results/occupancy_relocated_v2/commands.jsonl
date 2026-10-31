@@ -1,0 +1,3 @@
+{"command": ["<vendor_install>/Vivado\\2020.2\\bin\\xvlog.bat", "-prj", "sources.prj"], "exit_status": 0, "stdout": "compile.stdout.log", "stderr": "compile.stderr.log"}
+{"command": ["<vendor_install>/Vivado\\2020.2\\bin\\xelab.bat", "edgeai_vio_axi_master_tb", "glbl", "-L", "unisims_ver", "-timescale", "1ns/1ps", "-s", "submission_sim"], "exit_status": 0, "stdout": "elaborate.stdout.log", "stderr": "elaborate.stderr.log"}
+{"command": ["<vendor_install>/Vivado\\2020.2\\bin\\xsim.bat", "submission_sim", "-tclbatch", "run.tcl"], "exit_status": 0, "stdout": "simulation.stdout.log", "stderr": "simulation.stderr.log"}

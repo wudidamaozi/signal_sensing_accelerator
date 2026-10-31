@@ -1,0 +1,18 @@
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/submission_sim/xsim_script.tcl
+# xsim {submission_sim} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+source run.tcl
+## run all
+DYNAMIC_AXI_CASE_PASS fixture=          0 cycles=35629
+DYNAMIC_AXI_CASE_PASS fixture=          1 cycles=35629
+DYNAMIC_AXI_MASTER_PASS two_runtime_inputs
+$finish called at time : 1536200 ns : File "<release_workspace>/build/output/occupancy_relocated_v2/sources/edgeai_vio_axi_master_tb.sv" Line 21
+## exit
+INFO: [Common 17-206] Exiting xsim at Sat Oct 31 18:42:25 2026...

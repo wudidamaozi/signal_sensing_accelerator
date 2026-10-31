@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "trial_id": "example_new_trial",
+  "hypothesis": "Replace with one testable change",
+  "parent_baseline": "accepted revision or trial identifier",
+  "source_identity": {"revision": "record actual revision", "dirty_patch_sha256": null},
+  "workload": {"model_sha256": "record actual hash", "input_sha256": "record actual hash", "compiler_flags": "record exact flags", "timing_boundary": "record start and end events"},
+  "environment": {"tool_version": "record exact version", "part": "record device", "clock_mhz": null, "board": null},
+  "command": ["record", "literal", "arguments"],
+  "correctness": {"checked_boundaries": [], "pass": null},
+  "results": {"measurement_kind": "xsim_or_implementation_or_board", "full_inference_cycles": null, "stage_cycles": {}, "firmware_bytes": null, "resources": {}},
+  "rollback": {"source_restored": null, "result_reproduced": null},
+  "decision": {"accepted": null, "reason": "record measured reason"}
+}

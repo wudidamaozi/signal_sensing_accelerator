@@ -1,0 +1,31 @@
+{
+  "source_revision": "1403f26",
+  "generated": "2026-10-31",
+  "sources": [
+    {
+      "source": "experiments/competition_preboard_20261023/skill_checks.json",
+      "sha256": "9e8425539732683b65ce7d3543c8eeb4d7ac8fc0fae1fcacb6af0cfb9d5d57c9"
+    },
+    {
+      "source": "release/pynq7020_v1/report/ai_collaboration_selected.jsonl",
+      "sha256": "fa6afc603193c1a6676d3f8f99b677157f19d8c51209f3ec70c1f401e61471c5"
+    },
+    {
+      "source": "host/pynq_transport.py",
+      "sha256": "a07d3bae7fc148f477cf5bd00033be0cf109566cb2c2fc9601a88cedac1e3f3f"
+    },
+    {
+      "source": "scripts/check_pynq_transport.py",
+      "sha256": "ac47d39b72636a182831b7d0adc2116723bd2b2ab02cc7db38fb652732a20fe7"
+    },
+    {
+      "source": "skill/check_npz_equivalence.py",
+      "sha256": "5c93ed478bf6dd18040803f9c421c0c5e10da16d9a2e6c4a332716d0776c0f72"
+    },
+    {
+      "source": "skill/check_routed_summary.py",
+      "sha256": "403e5c735e76b07d42f3bd44fd2b8e3d81b535390b8fee739d02875277f24c29"
+    }
+  ],
+  "history": "historical_checks.json is an excerpt; original commands remain in the source archive"
+}

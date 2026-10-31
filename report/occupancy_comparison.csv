@@ -1,0 +1,4 @@
+﻿method,physical_array,cycles,nominal_50mhz_ms,lut,ff,bram36,dsp,board_calls,unique_board_inputs
+O55 previous,4x8,141452,2.82904,7529,6765,15.5,28,4,2
+Fixed4x8 optimized,4x8,35629,0.71258,8556,8019,20.0,30,4,2
+hls4ml,hls4ml-generated,37552,0.75104,28586,46590,20.0,46,4,2

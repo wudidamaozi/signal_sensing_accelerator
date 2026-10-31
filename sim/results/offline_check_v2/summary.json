@@ -1,0 +1,116 @@
+{
+  "status": "PASS_OFFLINE_CLEAN_PACKAGE",
+  "manifest_files": 638,
+  "occupancy_golden_inputs": 30,
+  "skills": [
+    {
+      "skill": "edge-int8-validation",
+      "exit_status": 0,
+      "cases": 14
+    },
+    {
+      "skill": "pynq-overlay-preflight",
+      "exit_status": 0,
+      "cases": 13
+    }
+  ],
+  "model_hashes": {
+    "classification": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+    "occupancy": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b"
+  },
+  "comparison": {
+    "clock_mhz": 50,
+    "classification": [
+      {
+        "name": "自研 M37",
+        "cycles": [
+          44343,
+          44343
+        ],
+        "lut": 7484,
+        "ff": 7350,
+        "bram36": 18.5,
+        "dsp": 36,
+        "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+        "board_source": "report/evidence/classification_native/board.json",
+        "physical_source": "report/evidence/classification_native/physical.json"
+      },
+      {
+        "name": "hls4ml",
+        "cycles": [
+          46283,
+          46283
+        ],
+        "lut": 36386,
+        "ff": 42260,
+        "bram36": 17.0,
+        "dsp": 68,
+        "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+        "board_source": "report/evidence/classification_hls4ml/board.json",
+        "physical_source": "report/evidence/classification_hls4ml/physical.json"
+      },
+      {
+        "name": "Caffe im2col移植 + 4×8 GEMM",
+        "cycles": [
+          1554656
+        ],
+        "lut": 7473,
+        "ff": 7349,
+        "bram36": 18.5,
+        "dsp": 36,
+        "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+        "board_source": "report/evidence/classification_im2col/board.json",
+        "physical_source": "report/evidence/classification_im2col/physical.json"
+      }
+    ],
+    "occupancy": [
+      {
+        "name": "信号感知加速系统（占用）",
+        "cycles": [
+          35629,
+          35629
+        ],
+        "lut": 8556,
+        "ff": 8019,
+        "bram36": 20.0,
+        "dsp": 30,
+        "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+        "board_source": "report/evidence/occupancy_native/board.json",
+        "physical_source": "report/evidence/occupancy_native/physical.json"
+      },
+      {
+        "name": "hls4ml",
+        "cycles": [
+          37552,
+          37552
+        ],
+        "lut": 28586,
+        "ff": 46590,
+        "bram36": 20.0,
+        "dsp": 46,
+        "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+        "board_source": "report/evidence/occupancy_hls4ml/board.json",
+        "physical_source": "report/evidence/occupancy_hls4ml/physical.json"
+      },
+      {
+        "name": "Caffe im2col移植 + 4×8 GEMM",
+        "cycles": [
+          6840614,
+          6851494,
+          6840614,
+          6851494
+        ],
+        "lut": 6881,
+        "ff": 6615,
+        "bram36": 53.5,
+        "dsp": 36,
+        "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+        "board_source": "report/evidence/occupancy_im2col/board.json",
+        "physical_source": "report/evidence/occupancy_im2col/physical.json"
+      }
+    ],
+    "classification_unique_inputs": 1,
+    "occupancy_unique_inputs": 2
+  },
+  "board_operated": false
+}

@@ -1,0 +1,56 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "<release_workspace>/build/output/classification_relocated/sources/picorv32_0836050971.v" into library work
+INFO: [VRFC 10-311] analyzing module picorv32
+INFO: [VRFC 10-311] analyzing module picorv32_regs
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_fast_mul
+INFO: [VRFC 10-311] analyzing module picorv32_pcpi_div
+INFO: [VRFC 10-311] analyzing module picorv32_axi
+INFO: [VRFC 10-311] analyzing module picorv32_axi_adapter
+INFO: [VRFC 10-311] analyzing module picorv32_wb
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/edgeai_axi_lite_bridge_9947dc2c55.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_axi_lite_bridge
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/edgeai_class_live_top_dc3e55a420.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_class_live_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/edgeai_host_mailbox_c78a5b511c.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_host_mailbox
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/edgeai_vio_axi_master_fc7a07e9af.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_vio_axi_master
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_accelerator_mmio_m33_3799ce2c50.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_accelerator_mmio_core_m30
+INFO: [VRFC 10-311] analyzing module int8_accelerator_mmio
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_gemm_controller_m32_1716969adc.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_gemm_controller
+INFO: [VRFC 10-311] analyzing module int8_gemm_serial_controller
+INFO: [VRFC 10-311] analyzing module int8_gemm_writeback_overlap
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_input_window_loader_m33_1b4d976766.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_input_window_loader
+INFO: [VRFC 10-311] analyzing module int8_input_window_loader_packed
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_layer_postprocess_controller_28c6c0fac2.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_layer_postprocess_controller
+INFO: [VRFC 10-311] analyzing module int8_layer_postprocess_pipeline
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_max_pool2_0a0ae2d4c0.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_max_pool2
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_outer_product_4x4_0622b5f9d8.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_outer_product_4x4
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_requantize_relu_98dfb3d442.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_requantize_relu
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_stream_gap_971eea06c3.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_stream_gap
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/int8_weight_tile_loader_4e19926822.sv" into library work
+INFO: [VRFC 10-311] analyzing module int8_weight_tile_loader
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/m30_network_replay_6fcaa0b044.sv" into library work
+INFO: [VRFC 10-311] analyzing module m30_network_replay
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/picorv32_accel_soc_host_d49f64ce85.sv" into library work
+INFO: [VRFC 10-311] analyzing module picorv32_accel_soc_host
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/pynq_o55_jtag_stimulus_2779553507.sv" into library work
+INFO: [VRFC 10-311] analyzing module pynq_o55_jtag_stimulus
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/pynq_o55_jtag_top_04bbe199fb.sv" into library work
+INFO: [VRFC 10-311] analyzing module pynq_o55_jtag_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/simple_dual_port_bram_32_69316b4be8.sv" into library work
+INFO: [VRFC 10-311] analyzing module simple_dual_port_bram_32
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/simple_dual_port_bram_8_8822d650fa.sv" into library work
+INFO: [VRFC 10-311] analyzing module simple_dual_port_bram_8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "<release_workspace>/build/output/classification_relocated/sources/edgeai_vio_class_master_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module edgeai_vio_class_master_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "<vendor_install>/Vivado/2020.2/data/verilog/src/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl

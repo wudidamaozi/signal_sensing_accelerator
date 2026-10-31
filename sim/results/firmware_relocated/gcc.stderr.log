@@ -1,0 +1,40 @@
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c: In function 'layer':
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:52:38: warning: unused parameter 'x' [-Wunused-parameter]
+   52 | static void layer(const signed char *x,uint32_t length,uint32_t channels,uint32_t kernel,
+      |                   ~~~~~~~~~~~~~~~~~~~^
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c: In function 'main':
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:156:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  156 |         if(!job_error)layer(conv1,121,45,6,w_conv2,b_conv2,9,SHIFT_CONV2,0,conv2,0);t[3]=cycles();
+      |         ^~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:156:85: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  156 |         if(!job_error)layer(conv1,121,45,6,w_conv2,b_conv2,9,SHIFT_CONV2,0,conv2,0);t[3]=cycles();
+      |                                                                                     ^
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:158:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  158 |         if(!job_error)layer(conv2,1044,1,1044,w_fc1,b_fc1,32,SHIFT_FC1,1,fc1,0);t[4]=cycles();
+      |         ^~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:158:81: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  158 |         if(!job_error)layer(conv2,1044,1,1044,w_fc1,b_fc1,32,SHIFT_FC1,1,fc1,0);t[4]=cycles();
+      |                                                                                 ^
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:160:9: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+  160 |         if(!job_error)layer(fc1,32,1,32,w_fc2,b_fc2,2,0,0,0,logits);t[5]=cycles();
+      |         ^~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:160:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  160 |         if(!job_error)layer(fc1,32,1,32,w_fc2,b_fc2,2,0,0,0,logits);t[5]=cycles();
+      |                                                                     ^
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c: At top level:
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:43:17: warning: 'hash' defined but not used [-Wunused-function]
+   43 | static uint32_t hash(const signed char *x,uint32_t n){uint32_t h=0x811c9dc5u;for(uint32_t i=0;i<n;++i){h^=(uint32_t)x[i]&255u;h*=0x01000193u;}return h;}
+      |                 ^~~~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:42:13: warning: 'emit' defined but not used [-Wunused-function]
+   42 | static void emit(uint32_t tag,uint32_t v){HOST=tag;HOST=v;}
+      |             ^~~~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:33:13: warning: 'q_download' defined but not used [-Wunused-function]
+   33 | static void q_download(signed char *p,uint32_t n,uint32_t base){
+      |             ^~~~~~~~~~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:30:13: warning: 'preload' defined but not used [-Wunused-function]
+   30 | static void preload(const signed char *w,uint32_t k_total,uint32_t outputs,uint32_t stride,uint32_t base){
+      |             ^~~~~~~
+D:\FPGA\fpga姣旇禌\competition_delivery_20261031\signal_sensing_accelerator\src\firmware\occupancy\firmware.c:22:13: warning: 'q_upload' defined but not used [-Wunused-function]
+   22 | static void q_upload(const signed char *p,uint32_t n,uint32_t base){
+      |             ^~~~~~~~
+<research_workspace>/tools/toolchains/xpack-riscv-none-elf-gcc-15.2.0-1/bin/../lib/gcc/riscv-none-elf/15.2.0/../../../../riscv-none-elf/bin/ld.exe: warning: D:\FPGA\fpga比赛\competition_delivery_20261031\signal_sensing_accelerator\build\output\firmware_relocated\program.elf has a LOAD segment with RWX permissions

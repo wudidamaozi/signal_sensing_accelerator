@@ -1,0 +1,444 @@
+{
+    "ltx_root": {
+        "version": 4,
+        "minor": 0,
+        "ltx_data": [
+            {
+                "name": "EDA_PROBESET",
+                "active": true,
+                "debug_cores": [
+                    {
+                        "type": "XSDB_V3",
+                        "name": "dbg_hub",
+                        "spec": "labtools_xsdbm_v3",
+                        "clk_input_freq_hz": "50000000"
+                    },
+                    {
+                        "type": "VIO_V2",
+                        "name": "vio",
+                        "spec": "labtools_vio_v3",
+                        "ipName": "vio",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 0,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "1BE27D511A4C50DC974F3E22D2C609B9",
+                        "pins": [
+                            {
+                                "name": "probe_in0",
+                                "id": 0,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "ack",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in0",
+                                "id": 1,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 1,
+                                "rightIndex": 1,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "error",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in0",
+                                "id": 2,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 2,
+                                "rightIndex": 2,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "locked",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in0",
+                                "id": 3,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 3,
+                                "rightIndex": 3,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "trap",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in0",
+                                "id": 4,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 4,
+                                "rightIndex": 4,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "fault",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_in1",
+                                "id": 5,
+                                "type": "DATA",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "response",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "response[31]"
+                                            },
+                                            {
+                                                "name": "response[30]"
+                                            },
+                                            {
+                                                "name": "response[29]"
+                                            },
+                                            {
+                                                "name": "response[28]"
+                                            },
+                                            {
+                                                "name": "response[27]"
+                                            },
+                                            {
+                                                "name": "response[26]"
+                                            },
+                                            {
+                                                "name": "response[25]"
+                                            },
+                                            {
+                                                "name": "response[24]"
+                                            },
+                                            {
+                                                "name": "response[23]"
+                                            },
+                                            {
+                                                "name": "response[22]"
+                                            },
+                                            {
+                                                "name": "response[21]"
+                                            },
+                                            {
+                                                "name": "response[20]"
+                                            },
+                                            {
+                                                "name": "response[19]"
+                                            },
+                                            {
+                                                "name": "response[18]"
+                                            },
+                                            {
+                                                "name": "response[17]"
+                                            },
+                                            {
+                                                "name": "response[16]"
+                                            },
+                                            {
+                                                "name": "response[15]"
+                                            },
+                                            {
+                                                "name": "response[14]"
+                                            },
+                                            {
+                                                "name": "response[13]"
+                                            },
+                                            {
+                                                "name": "response[12]"
+                                            },
+                                            {
+                                                "name": "response[11]"
+                                            },
+                                            {
+                                                "name": "response[10]"
+                                            },
+                                            {
+                                                "name": "response[9]"
+                                            },
+                                            {
+                                                "name": "response[8]"
+                                            },
+                                            {
+                                                "name": "response[7]"
+                                            },
+                                            {
+                                                "name": "response[6]"
+                                            },
+                                            {
+                                                "name": "response[5]"
+                                            },
+                                            {
+                                                "name": "response[4]"
+                                            },
+                                            {
+                                                "name": "response[3]"
+                                            },
+                                            {
+                                                "name": "response[2]"
+                                            },
+                                            {
+                                                "name": "response[1]"
+                                            },
+                                            {
+                                                "name": "response[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_out0",
+                                "id": 6,
+                                "type": "DATA",
+                                "direction": "OUT",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "reset_request",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_out1",
+                                "id": 7,
+                                "type": "DATA",
+                                "direction": "OUT",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "command_toggle",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_out2",
+                                "id": 8,
+                                "type": "DATA",
+                                "direction": "OUT",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "command_write",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_out3",
+                                "id": 9,
+                                "type": "DATA",
+                                "direction": "OUT",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 11,
+                                "portIndex": 3,
+                                "nets": [
+                                    {
+                                        "name": "command_addr",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "command_addr[11]"
+                                            },
+                                            {
+                                                "name": "command_addr[10]"
+                                            },
+                                            {
+                                                "name": "command_addr[9]"
+                                            },
+                                            {
+                                                "name": "command_addr[8]"
+                                            },
+                                            {
+                                                "name": "command_addr[7]"
+                                            },
+                                            {
+                                                "name": "command_addr[6]"
+                                            },
+                                            {
+                                                "name": "command_addr[5]"
+                                            },
+                                            {
+                                                "name": "command_addr[4]"
+                                            },
+                                            {
+                                                "name": "command_addr[3]"
+                                            },
+                                            {
+                                                "name": "command_addr[2]"
+                                            },
+                                            {
+                                                "name": "command_addr[1]"
+                                            },
+                                            {
+                                                "name": "command_addr[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe_out4",
+                                "id": 10,
+                                "type": "DATA",
+                                "direction": "OUT",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 31,
+                                "portIndex": 4,
+                                "nets": [
+                                    {
+                                        "name": "command_data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "command_data[31]"
+                                            },
+                                            {
+                                                "name": "command_data[30]"
+                                            },
+                                            {
+                                                "name": "command_data[29]"
+                                            },
+                                            {
+                                                "name": "command_data[28]"
+                                            },
+                                            {
+                                                "name": "command_data[27]"
+                                            },
+                                            {
+                                                "name": "command_data[26]"
+                                            },
+                                            {
+                                                "name": "command_data[25]"
+                                            },
+                                            {
+                                                "name": "command_data[24]"
+                                            },
+                                            {
+                                                "name": "command_data[23]"
+                                            },
+                                            {
+                                                "name": "command_data[22]"
+                                            },
+                                            {
+                                                "name": "command_data[21]"
+                                            },
+                                            {
+                                                "name": "command_data[20]"
+                                            },
+                                            {
+                                                "name": "command_data[19]"
+                                            },
+                                            {
+                                                "name": "command_data[18]"
+                                            },
+                                            {
+                                                "name": "command_data[17]"
+                                            },
+                                            {
+                                                "name": "command_data[16]"
+                                            },
+                                            {
+                                                "name": "command_data[15]"
+                                            },
+                                            {
+                                                "name": "command_data[14]"
+                                            },
+                                            {
+                                                "name": "command_data[13]"
+                                            },
+                                            {
+                                                "name": "command_data[12]"
+                                            },
+                                            {
+                                                "name": "command_data[11]"
+                                            },
+                                            {
+                                                "name": "command_data[10]"
+                                            },
+                                            {
+                                                "name": "command_data[9]"
+                                            },
+                                            {
+                                                "name": "command_data[8]"
+                                            },
+                                            {
+                                                "name": "command_data[7]"
+                                            },
+                                            {
+                                                "name": "command_data[6]"
+                                            },
+                                            {
+                                                "name": "command_data[5]"
+                                            },
+                                            {
+                                                "name": "command_data[4]"
+                                            },
+                                            {
+                                                "name": "command_data[3]"
+                                            },
+                                            {
+                                                "name": "command_data[2]"
+                                            },
+                                            {
+                                                "name": "command_data[1]"
+                                            },
+                                            {
+                                                "name": "command_data[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

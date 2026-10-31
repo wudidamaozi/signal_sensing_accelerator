@@ -1,0 +1,51 @@
+{
+  "status": "PASS_LATENCY_USB_ROUTE_NO_BOARD",
+  "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "cycles": [
+    35629,
+    35629
+  ],
+  "lut": 8556,
+  "ff": 8019,
+  "bram36": 20.0,
+  "dsp": 30,
+  "setup_ns": 4.824,
+  "hold_ns": 0.03,
+  "route_errors": 0,
+  "bit_sha256": "2d67bcea1a5db3367a82f1075cd93f37921ba9c02a3acd26d2ef2cd5beeba1af",
+  "ltx_sha256": "274185bf4c3901998e1a7ab3e7cdab063dbf4cb6ed89f3402c3067e86b51ea58",
+  "sources": {
+    "edgeai_axi_lite_bridge.sv": "55b705aad1243abe3ca5bd0834d890332468d7533b52c94e65825fb2e5da20cb",
+    "edgeai_host_mailbox.sv": "f4e1ea7b218d951002e08718261ddf6ec86ed042deb3e45a1104e8923358b58c",
+    "int8_accelerator_mmio_m33.sv": "1239cc12dafae55a1b91436e94558246f2b41a4d380d43200a372833dc609cc9",
+    "int8_gemm_controller_m32.sv": "857755288320765b7777d7cf5cdfdd8e0fb520bfa10410560552c25122a23579",
+    "int8_input_window_loader_gather.sv": "81e9d471b7139139cd8ccc66a1cac7ec57e70bbf3e2d87af341dd5bb9503e0c9",
+    "int8_input_window_loader_m33.sv": "e1834de3c9fea3d29eb899c4ef5a67f2d8e0dbb59eca2fc4f6c26accba23e364",
+    "int8_layer_postprocess_controller.sv": "3c490b37c012895bdad0cd8a0c0a717f75690593363e1f6e789c904488d777eb",
+    "int8_max_pool2.sv": "7af1883049bd1947d44ba363a9d2f4928db47bb310808b7fb371312104321093",
+    "int8_outer_product_4x4.sv": "cee69d734f4846ea83a18f8a7dd972b57c0a3116a4a9c89e1dd7d9798aacac7d",
+    "int8_requantize_relu.sv": "005e3f0635f83ea0ab3098f2032db315a3d653ab57e40ed4352791c30ed08b8f",
+    "int8_stream_gap.sv": "54922f62b903aba9a0c9ce34250b98ca2ec480ccb9d3ad25b4edc070bebcf527",
+    "int8_weight_tile_loader.sv": "581be3476b2c2a36bf51d1c8d837844a616a56e1b93b971c7afa9b043f7c52d3",
+    "m30_network_replay.sv": "f81f05902d5bd000b6b7245eb9c3e43ccabf8283def7bc0078aeb0d93d6c3b51",
+    "occupancy_mailbox.sv": "77e3f5e48b9e1314049438da38cd21c575048c4fb4832c85f520d8c5f7fbb16b",
+    "occupancy_service_soc.sv": "28c17311dd118dcc9d150112b08ee64c4685bf1aff92de44838c89793b7d0248",
+    "picorv32.v": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+    "picorv32_accel_soc_host.sv": "bcc3fad12db9fc31f7a4e59ed75467ffb1c28dc0ac297d3cb6bdfc6f09ba0d9b",
+    "pynq_o55_jtag_stimulus.sv": "a811f60df410f700908870bd8e6bcf85adaf46244db6fd3e9d8755a0edcd43c4",
+    "pynq_o55_jtag_top.sv": "a0fa454a59ecdbf4923fcce6367b3aa6b54a52f7af1b958f6a83b70c7c4f4537",
+    "simple_dual_port_bram_32.sv": "e016a6dd21eb91b7e3b0732757c34a6f830b7e3da068f8271339cdebd646ade6",
+    "simple_dual_port_bram_8.sv": "13900766003f78df215d9f38cd887d9b7c28908b7de5a4f8dc571e05fb95e8b4"
+  },
+  "inputs": {
+    "axi_host_tasks.svh": "c3df73e0fd0dc6861933c709fa18d5fb12e90ed163480112a48c969376c6d540",
+    "expected_hashes.hex": "6954cc79b810803dd2968c4f0b38800cf46c3a4895d6ff216a545bd259ebc56e",
+    "expected_logits.hex": "a09f9444e38ed17088552bb67d9d9bbdaccc5f04fbd8d2b7a29795a028403788",
+    "inputs.hex": "3d351b4a0cbc0c4d541ebcf2f5d5025661cefeb202e8e9e59f877951fee86103",
+    "program.hex": "62f35a7d7537702116e4791e444dbe24dd3bfaaee7b0e3d842a71ee26d80004f",
+    "service_config.svh": "decab0405f027e073513c45876324fc784c36d8251983a91dc860db628adc14b",
+    "weight_init.hex": "06e64920a54e438c4abb2b0eb9fa5c59cadf9b7026ccd37950c305b997dca303",
+    "weight_init_high.hex": "ee75fb975cd487763576776e0d51f26fe7e2d95d9ec14cdeb91a4ae089e2ed23",
+    "weight_init_low.hex": "433dc0e8648e11491f351bc8a4af32b28a14adb0db62947b26df90cc6990fd67"
+  }
+}

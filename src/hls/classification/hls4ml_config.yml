@@ -1,0 +1,74 @@
+Backend: Vivado
+ClockPeriod: 20
+HLSConfig:
+  LayerName:
+    classifier:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 16
+    conv1:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 28
+    conv1_pool:
+      Precision:
+        result: ap_int<8>
+    conv1_rq:
+      Precision:
+        result: ap_int<8>
+    conv2:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 640
+    conv2_pool:
+      Precision:
+        result: ap_int<8>
+    conv2_rq:
+      Precision:
+        result: ap_int<8>
+    conv3:
+      Precision:
+        accum: ap_int<32>
+        bias: ap_int<32>
+        result: ap_int<32>
+        weight: ap_int<8>
+      ReuseFactor: 768
+    conv3_rq:
+      Precision:
+        result: ap_int<8>
+    gap:
+      Precision:
+        result: ap_int<8>
+    iq_input:
+      Precision:
+        result: ap_int<8>
+  LayerType:
+    ZeroPadding1D:
+      Precision:
+        result: ap_int<8>
+  Model:
+    ConvImplementation: LineBuffer
+    Precision: ap_int<32>
+    ReuseFactor: 1
+    Strategy: Resource
+IOType: io_stream
+InputShapes:
+  iq_input:
+  - 128
+  - 2
+OutputDir: <research_workspace>\build\dual_current_r14_hls
+OutputShapes:
+  layer11_out:
+  - 4
+Part: xc7z020clg400-1
+ProjectName: public_cnn
+Stamp: 71690afe

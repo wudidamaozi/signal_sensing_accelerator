@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "mode": "detect_then_classify",
+  "assets": {
+    "occupancy_parameters": {
+      "path": "model/occupancy_v1/doc_int8_parameters.npz",
+      "sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b"
+    },
+    "occupancy_config": {
+      "path": "model/occupancy_v1/network_config.json",
+      "sha256": "95f9e1188cc89d3a6450ac158468a235eec2c640af80fca46b7e0836c627107d"
+    },
+    "classifier_parameters": {
+      "path": "experiments/r14_m33_hybrid_20261023/model/parameters.npz",
+      "sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3"
+    },
+    "classifier_head": {
+      "path": "experiments/r14_m33_hybrid_20261023/model/software_branch.npz",
+      "sha256": "48c1a017fff10adcbe89697e47c8b9ec7854e2cc2f18bcf74ece01a0d721de74"
+    }
+  },
+  "execution": "host reference only; occupancy not ported to M37; existing classification hardware path unchanged",
+  "input": "raw IQ to detector, classifier-only L1 adapter after occupied decision; no SNR or truth labels supplied",
+  "scope": "integrated taxonomy idle/BPSK/QPSK/8PSK/16QAM; no unknown modulation rejection",
+  "base_revision": "d18bcfdea028ac87154e57d9647305804290db5c"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "PASS_OCCUPANCY_HLS4ML_USB_BOARD",
+  "board_tested": true,
+  "cycles": [
+    37552,
+    37552
+  ],
+  "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "bit_sha256": "0803057b753f4bebacf7759d6ed72a73b131b32c4f594b383c924d9bf8364a12",
+  "unique_frames": 2,
+  "calls": 4,
+  "scope": "8KiB CPU; CNN service rdcycle; nominal 50MHz; excludes JTAG/input quantization"
+}

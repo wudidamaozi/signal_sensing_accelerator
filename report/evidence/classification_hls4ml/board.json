@@ -1,0 +1,15 @@
+{
+  "status": "R14_HLS_USB_BOARD_PASS",
+  "board_tested": true,
+  "implementation": "<research_workspace>\\build\\pynq_r14_hls_usb_20261030",
+  "bit_sha256": "0f551e0a23abe1ec20de97b316b9168a02adadc8f719b70f745806aa724198aa",
+  "ltx_sha256": "216527e0ed1c186f5cad3ff88d4761765949e64f2139b2137853b251310edd69",
+  "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+  "scope": "One fixed current R14 classification input, HLS firmware rdcycle, excludes JTAG and input preparation; 50MHz nominal; no PS/Flash",
+  "unique_frames": 1,
+  "calls": 2,
+  "cycles": [
+    46283,
+    46283
+  ]
+}

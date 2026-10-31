@@ -1,0 +1,82 @@
+'use strict';
+const $=id=>document.getElementById(id), colors=['#176bcc','#d97720','#8054c4','#ca435d','#008a98'];
+let report, current={};
+const pct=x=>(100*x).toFixed(2)+'%', fmt=x=>Number(x).toLocaleString('en-US');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function api(url,options){const res=await fetch(url,options);const data=await res.json();if(!res.ok)throw Error(data.error||res.status);return data;}
+function download(name,data,type='application/json'){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([data],{type}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function table(headers,rows){return '<table><thead><tr>'+headers.map(v=>'<th>'+esc(v)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(v=>'<td>'+esc(v??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';}
+function metrics(rows){return rows.map(([name,value])=>'<div><small>'+esc(name)+'</small><strong>'+esc(value)+'</strong></div>').join('');}
+function page(name){document.querySelectorAll('[data-panel]').forEach(n=>n.hidden=n.dataset.panel!==name);document.querySelectorAll('[data-page]').forEach(n=>{n.classList.toggle('active',n.dataset.page===name);n.setAttribute('aria-current',n.dataset.page===name?'page':'false');});location.hash=name;}
+function chart(id,series,{xmin=0,xmax=127,ymin=null,ymax=null,xlabel='',ylabel='',width=620,height=290}={}){
+ const svg=$(id),m={l:48,r:18,t:15,b:42},all=series.flatMap(s=>s.values.map(p=>p[1]));if(ymin===null)ymin=Math.min(...all);if(ymax===null)ymax=Math.max(...all);if(ymax-ymin<1e-10){ymin-=1;ymax+=1;}
+ const X=x=>m.l+(x-xmin)/(xmax-xmin)*(width-m.l-m.r),Y=y=>height-m.b-(y-ymin)/(ymax-ymin)*(height-m.t-m.b);
+ let html='';for(let i=0;i<=4;i++){const y=ymin+(ymax-ymin)*i/4;html+=`<line x1="${m.l}" x2="${width-m.r}" y1="${Y(y)}" y2="${Y(y)}" stroke="#e1e8f1"/><text x="${m.l-7}" y="${Y(y)+4}" text-anchor="end">${Math.abs(y)<1e-8?'0':y.toFixed(Math.abs(ymax-ymin)>4?0:2)}</text>`;}
+ for(let i=0;i<=4;i++){const x=xmin+(xmax-xmin)*i/4;html+=`<text x="${X(x)}" y="${height-m.b+19}" text-anchor="middle">${x.toFixed(xmax-xmin>5?0:2)}</text>`;}
+ html+=`<text x="${width/2}" y="${height-5}" text-anchor="middle">${esc(xlabel)}</text><text x="8" y="12">${esc(ylabel)}</text>`;
+ for(const [i,s] of series.entries()){const color=s.color||colors[i%colors.length];html+=`<polyline fill="none" stroke="${color}" stroke-width="2" points="${s.values.map(([x,y])=>X(x)+','+Y(y)).join(' ')}"/>`;for(const [x,y,note] of s.values){html+=`<circle cx="${X(x)}" cy="${Y(y)}" r="${s.values.length>40?1:3.5}" fill="${color}"><title>${esc(s.name)} · ${x}: ${y.toFixed(3)}${note?' · '+esc(note):''}</title></circle>`;}}
+ svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.innerHTML=html;
+}
+function scatter(id,iq){const svg=$(id),w=280,h=240,m=25,max=Math.max(...iq.flat().map(Math.abs),1e-8)*1.1;let html=`<line x1="${m}" x2="${w-m}" y1="${h/2}" y2="${h/2}" stroke="#d2dce9"/><line x1="${w/2}" x2="${w/2}" y1="${m}" y2="${h-m}" stroke="#d2dce9"/><text x="${w-m}" y="${h/2-6}">I</text><text x="${w/2+6}" y="20">Q</text>`;for(let i=0;i<128;i++){const x=w/2+iq[0][i]/max*(w/2-m),y=h/2-iq[1][i]/max*(h/2-m);html+=`<circle cx="${x}" cy="${y}" r="2.5" fill="#176bcc" opacity=".7"><title>#${i}: I=${iq[0][i].toFixed(5)}, Q=${iq[1][i].toFixed(5)}</title></circle>`;}svg.innerHTML=html;}
+function showResult(task,r){const prefix=task==='classification'?'class':'occ';current[prefix]=r;const meta=r.metadata;$(prefix+'-result').innerHTML=`<div class="result-strip"><div><small>当前预测</small><div class="prediction">${esc(r.prediction)}</div></div><div class="result-meta">${meta?`样本 #${meta.sample_index} · 真实：${esc(meta.truth)} · ${meta.snr_db===null?'纯噪声 / 无信号SNR':'SNR '+meta.snr_db+' dB'}${meta.noise_power!==null?' · 噪声功率 '+meta.noise_power.toFixed(3):''}<br>`:''}${esc(r.execution_scope)}<br>${r.board_cycles===null?'等待板上结果':'FPGA实测 '+fmt(r.board_cycles)+' 周期；USB/配置/推理耗时 '+r.end_to_end_ms.toFixed(1)+' ms'}</div></div><div class="score-row">${r.classes.map((v,i)=>'<span>'+esc(v)+': '+r.scores[i].toFixed(3)+'</span>').join('')}</div>`;
+ chart(prefix+'-wave',[{name:'I',values:r.iq[0].map((v,i)=>[i,v])},{name:'Q',values:r.iq[1].map((v,i)=>[i,v])}],{xlabel:'采样点',ylabel:'幅度',width:560,height:240});if(task==='classification')scatter('class-scatter',r.iq);else chart('occ-spectrum',[{name:'功率谱',color:colors[4],values:r.spectrum_db.map((v,i)=>[(i-64)/128,v])}],{xmin:-.5,xmax:.5,xlabel:'归一化频率 / cycles·sample⁻¹',ylabel:'dB',width:360,height:240});
+ $(prefix+'-status').textContent=meta?(r.matches_label?'本次预测与标签一致。':'本次预测与标签不同，保留真实误判。'):'自备IQ：没有真实标签。';
+}
+async function sample(task){const prefix=task==='classification'?'class':'occ',button=$(prefix+'-next');button.disabled=true;$(prefix+'-result').innerHTML='';$(prefix+'-status').textContent='正在配置板卡并推理，请等待约一分钟…';try{const body={task,class_id:$(prefix+'-label').value,snr:$(prefix+'-snr').value};showResult(task,await api('/api/dual/sample',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}));}catch(e){$(prefix+'-status').textContent='运行失败：'+e.message;}finally{button.disabled=false;}}
+function renderReport(r){const a=r.accelerator,c=r.classification.metrics,o=r.occupancy.metrics;
+ $('overview-metrics').innerHTML=[['并行阵列','4 × 8','两个任务 · 相同32PE规格'],['分类板内推理',(r.board_comparison.classification[0].cycles[0]/50000).toFixed(5)+' ms','50 MHz · 板测周期换算'],['占用板内推理',(r.board_comparison.occupancy[0].cycles[0]/50000).toFixed(5)+' ms','双缓冲预取 · 层内自主调度'],['占用INT8准确率',pct(o.accuracy),'独立留出集 · 模型不变']].map(v=>`<article><small>${v[0]}</small><strong>${v[1]}</strong><span>${v[2]}</span></article>`).join('');
+ $('class-metrics').innerHTML=metrics([['全SNR正确率',pct(c.accuracy)],['SNR ≥ 0 dB',pct(c.high_snr_accuracy)],['正确 / 总数',`${fmt(c.correct)} / ${fmt(c.count)}`]]);
+ const bins=Object.keys(c.by_snr).map(Number).sort((a,b)=>a-b), series=r.classification.classes.map((name,i)=>({name,values:bins.map(s=>{const b=c.by_snr[s].by_class[i];return [s,b.accuracy*100,`${b.correct}/${b.count}`];})}));
+ chart('class-curve',series,{xmin:-20,xmax:18,ymin:0,ymax:100,xlabel:'SNR / dB',ylabel:'准确率 / %'});$('class-legend').innerHTML=r.classification.classes.map((v,i)=>`<span><i style="background:${colors[i]}"></i>${v}</span>`).join('');
+ $('class-confusion').innerHTML=table(['真实 / 预测',...r.classification.classes],c.confusion.map((row,i)=>[r.classification.classes[i],...row]));
+ $('class-details').innerHTML=table(['SNR / dB',...r.classification.classes,'全体'],bins.map(s=>[s,...r.classification.classes.map((_,i)=>{const v=c.by_snr[s].by_class[i];return `${v.correct}/${v.count} · ${pct(v.accuracy)}`;}),pct(c.by_snr[s].accuracy)]));
+ $('occ-metrics').innerHTML=metrics([['二分类准确率',pct(o.accuracy)],['检出率 Pd',pct(o.Pd)],['误报率 Pfa',pct(o.Pfa)],['样本总数',fmt(o.n)]]);
+ chart('occ-curve',[{name:'INT8检出率',color:colors[4],values:Object.keys(o.by_nominal_snr).map(Number).sort((a,b)=>a-b).map(s=>[s,100*o.by_nominal_snr[s].Pd,`n=${o.by_nominal_snr[s].n}`])}],{xmin:-10,xmax:18,ymin:0,ymax:100,xlabel:'占用信号SNR / dB',ylabel:'Pd / %'});
+ $('occ-summary').innerHTML=table(['指标','FP32','INT8'],[['准确率',pct(r.occupancy.fp32.accuracy),pct(o.accuracy)],['Pd',pct(r.occupancy.fp32.Pd),pct(o.Pd)],['Pfa',pct(r.occupancy.fp32.Pfa),pct(o.Pfa)],['检出 TP','—',fmt(o.tp)],['正确空闲 TN','—',fmt(o.tn)],['误报 FP','—',fmt(o.fp)],['漏检 FN','—',fmt(o.fn)]]);
+ const board=r.board_comparison,cp=board.classification,op=board.occupancy,period=board.clock_mhz;
+ const panel=document.querySelector('[data-panel="performance"]'),sections=panel.querySelectorAll('article.card');
+ panel.querySelector('.section-head h2').textContent='板上速度与资源：同任务算法对照';
+ panel.querySelector('.section-head p.muted').textContent='实板周期与 PL 资源对照';
+ sections[0].querySelector('h3').textContent='调制识别：信号感知加速系统 / hls4ml / im2col';
+ sections[0].querySelector('p.footnote').textContent='分类：1 个样本，CNN 板内周期；50 MHz 设计频率，不含 USB 与主机融合。';
+ sections[1].querySelector('h3').textContent='频谱占用：信号感知加速系统 / hls4ml / im2col';
+ sections[1].querySelector('p.footnote').textContent='占用：2 个样本。im2col CPU RAM 为 128 KiB，自研及 hls4ml 为 8 KiB；资源含调试逻辑。';
+ const ms=x=>(x/(period*1000)).toFixed(5),ratio=(a,b)=>(a/b).toFixed(2)+'×';
+ const displayName=v=>v.name==='自研 M37'?'信号感知加速系统（分类）':v.name==='自研 O55'?'信号感知加速系统（占用）':v.name;
+ const max=Math.max(...cp.map(v=>Math.log10(v.cycles[0]+1)));$('performance-bars').innerHTML=cp.map(v=>`<div class="bar-row"><span>${esc(displayName(v))}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.log10(v.cycles[0]+1)/max*100}%"></div></div><strong>${fmt(v.cycles[0])} 周期</strong></div>`).join('')+'<p class="footnote">长度按对数刻度显示；以数字为准。</p>';
+ const race=document.createElement('article');race.className='card';race.id='speed-race';
+ race.innerHTML=`<h3>速度竞赛 · 同任务对照</h3><p class="muted">同一任务，同时起跑；按实板测得的周期比例回放。</p><div class="controls"><label>任务<select id="race-task"><option value="classification">调制识别</option><option value="occupancy">频谱占用</option></select></label><label>占用样本<select id="race-input" disabled><option value="0">空闲</option><option value="1">占用</option></select></label><label>对照<select id="race-opponents"><option value="both">hls4ml + im2col</option><option value="hls">只对比 hls4ml</option><option value="im2col">只对比 im2col</option></select></label><button id="race-start" class="primary">开始竞速回放</button></div><div id="race-lanes" aria-live="polite"></div><p id="race-status" class="footnote" role="status">分类 1 个样本，占用 2 个样本。</p>`;
+ panel.insertBefore(race,sections[0]);let raceFrame=null;
+ const rt=race.querySelector('#race-task'),ri=race.querySelector('#race-input'),ro=race.querySelector('#race-opponents'),lanes=race.querySelector('#race-lanes'),status=race.querySelector('#race-status');
+ const clearRace=()=>{if(raceFrame!==null){cancelAnimationFrame(raceFrame);raceFrame=null;}lanes.replaceChildren();status.textContent='已切换条件，请重新开始回放。';};
+ rt.addEventListener('change',()=>{ri.disabled=rt.value!=='occupancy';clearRace();});ri.addEventListener('change',clearRace);ro.addEventListener('change',clearRace);
+ race.querySelector('#race-start').addEventListener('click',()=>{
+  if(raceFrame!==null)cancelAnimationFrame(raceFrame);
+  const group=rt.value==='classification'?cp:op,index=rt.value==='classification'?0:Number(ri.value),selected=ro.value==='both'?group:ro.value==='hls'?[group[0],group[1]]:[group[0],group[2]],runs=selected.map(v=>({name:displayName(v),cycles:v.cycles[index]}));
+  const slowest=Math.max(...runs.map(v=>v.cycles)),duration=18000,start=performance.now();
+  lanes.innerHTML=runs.map((v,i)=>`<div class="bar-row"><span>${esc(v.name)}</span><div class="bar-track" role="progressbar" aria-label="${esc(v.name)} 回放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar-fill" style="width:0%;background:${i===0?'#008a98':i===1?'#176bcc':'#d97720'}"></div></div><strong id="race-time-${i}">等待起跑</strong></div>`).join('');
+  const tracks=lanes.querySelectorAll('[role="progressbar"]'),times=runs.map((_,i)=>race.querySelector('#race-time-'+i));
+  status.textContent='板测周期回放中 · 50 MHz 换算';
+  function frame(now){const elapsed=Math.min((now-start)/duration,1)*slowest;
+   runs.forEach((v,i)=>{const fraction=Math.min(elapsed/v.cycles,1),done=fraction>=1;tracks[i].firstElementChild.style.width=(fraction*100).toFixed(1)+'%';tracks[i].setAttribute('aria-valuenow',String(Math.round(fraction*100)));times[i].textContent=(done?'完成 · ':'回放 · ')+ms(Math.min(elapsed,v.cycles))+' ms';});
+   if(elapsed<slowest)raceFrame=requestAnimationFrame(frame);else{raceFrame=null;status.textContent='回放完成 · 板内周期，不含 USB 时间';}
+  }
+  raceFrame=requestAnimationFrame(frame);
+ });
+ $('performance-table').innerHTML=table(['算法','实板周期','50 MHz换算 / ms','相对自研周期','LUT','FF','BRAM36','DSP'],cp.map(v=>[displayName(v),fmt(v.cycles[0]),ms(v.cycles[0]),ratio(v.cycles[0],cp[0].cycles[0]),fmt(v.lut),fmt(v.ff),v.bram36,v.dsp]));
+ $('baseline-groups').innerHTML=table(['算法','空闲 / 周期','占用 / 周期','空闲 / ms','占用 / ms','相对自研周期','LUT','FF','BRAM36','DSP'],op.map(v=>[displayName(v),fmt(v.cycles[0]),fmt(v.cycles[1]),ms(v.cycles[0]),ms(v.cycles[1]),ratio(v.cycles[0],op[0].cycles[0])+' / '+ratio(v.cycles[1],op[0].cycles[1]),fmt(v.lut),fmt(v.ff),v.bram36,v.dsp]));
+ $('baseline-groups').insertAdjacentHTML('afterbegin',`<div class="mini-metrics">${metrics([['比 hls4ml 时延降低',pct(1-op[0].cycles[0]/op[1].cycles[0])],['LUT 减少',pct(1-op[0].lut/op[1].lut)],['DSP 减少',pct(1-op[0].dsp/op[1].dsp)],['物理计算阵列','4 × 8 · 不加宽']])}</div>`);
+ $('baseline-groups').innerHTML+=`<div class="notice"><b>效果指标单独统计</b><p>分类：软件留出集，INT8 CNN + 主机FP32统计融合，准确率 ${pct(c.accuracy)}；占用：可控仿真留出集，INT8准确率 ${pct(o.accuracy)}、Pd ${pct(o.Pd)}、Pfa ${pct(o.Pfa)}。准确率来自软件留出集；速度来自少量实板样本。</p></div>`;
+ $('verification-table').innerHTML=table(['项目','证据与范围'],[['分类软件全测试',`${c.correct}/${c.count}，不是全测试集逐帧板测`],['分类RTL',r.readiness.classification_rtl],['占用软件',`66000帧；C与整数参考最终输出一致；30帧逐层向量`],['占用RTL',r.readiness.occupancy_rtl],['实板后端',r.readiness.hardware_backend],['模型使用方式',r.readiness.software_models],['占用4×8 · 完整PL实现',`${op[0].lut} LUT / ${op[0].ff} FF / ${op[0].bram36} BRAM36 / ${op[0].dsp} DSP；35,629周期`]]);
+ $('model-identities').textContent=JSON.stringify(r.model_hashes,null,2);$('global-status').textContent='演示系统已就绪';
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{page(b.dataset.jump);scrollTo({top:0,behavior:'smooth'});}));
+for(let s=18;s>=-20;s-=2)$('class-snr').add(new Option(s,s,s===8,s===8));for(let s=18;s>=-10;s-=2)$('occ-snr').add(new Option(s,s,s===8,s===8));
+function rtlOptions(){const rtl=$('class-backend').value==='rtl';Array.from($('class-snr').options).forEach(o=>o.disabled=rtl&&![-20,-10,0,8,18].includes(Number(o.value)));if($('class-snr').selectedOptions[0].disabled)$('class-snr').value=8;}
+ $('class-backend').addEventListener('change',rtlOptions);$('occ-label').addEventListener('change',()=>{$('occ-snr').disabled=$('occ-label').value==='0';});$('class-next').onclick=()=>sample('classification');$('occ-next').onclick=()=>sample('occupancy');
+ ['class','occ'].forEach(k=>$(k+'-export').onclick=()=>{if(current[k])download(`${k}-${current[k].id}.json`,JSON.stringify(current[k],null,2));});
+ document.querySelectorAll('[data-svg]').forEach(b=>b.onclick=()=>download(b.dataset.svg+'.svg',new XMLSerializer().serializeToString($(b.dataset.svg)),'image/svg+xml'));
+ $('report-export').onclick=()=>download('dual-4x8-evidence.json',JSON.stringify(report,null,2));
+ $('performance-export').onclick=()=>{const b=report.board_comparison,rows=[['任务','方法','样本','板内周期','50MHz换算ms','LUT','FF','BRAM36','DSP','证据范围']];for(const [task,group] of [['分类',b.classification],['占用',b.occupancy]])for(const v of group){const count=task==='分类'?1:2;for(let i=0;i<count;i++)rows.push([task,(v.name==='自研 M37'||v.name==='自研 O55')?'信号感知加速系统':v.name,task==='分类'?'class0/-20dB':['vector00 空闲','vector29 占用'][i],v.cycles[i],(v.cycles[i]/(b.clock_mhz*1000)).toFixed(5),v.lut,v.ff,v.bram36,v.dsp,'7020实板小样本；PL资源含调试；不含USB']);}download('fpga-board-algorithm-comparison.csv','\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n'),'text/csv;charset=utf-8');};
+ $('custom-run').onclick=async()=>{try{let lines=$('custom-iq').value.trim().split(/\r?\n/);if(/^\s*i\s*,\s*q\s*$/i.test(lines[0]))lines.shift();const rows=lines.map(l=>l.split(',').map(Number));if(rows.length!==128||rows.some(r=>r.length!==2||r.some(v=>!Number.isFinite(v))))throw Error('需要128行有限数值I,Q');const iq=[rows.map(v=>v[0]),rows.map(v=>v[1])],r=await api('/api/dual/infer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task:$('custom-task').value,iq})});$('custom-result').textContent=JSON.stringify({prediction:r.prediction,integer_logits:r.integer_logits,execution_scope:r.execution_scope,id:r.id},null,2);}catch(e){$('custom-result').textContent='输入或运行失败：'+e.message;}};
+api('/api/dual/overview').then(r=>{report=r;renderReport(r);page(['overview','classification','occupancy','performance','verification'].includes(location.hash.slice(1))?location.hash.slice(1):'overview');}).catch(e=>{$('global-status').textContent='加载失败：'+e.message;});
