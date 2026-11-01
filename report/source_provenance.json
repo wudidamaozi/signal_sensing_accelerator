@@ -4590,5 +4590,15 @@
       "original_sha256": "9e953c7fe8b9a9b98eab8912fef06384cbc44480a0489ae9f68fc11254b587a7",
       "export_sha256": "9e953c7fe8b9a9b98eab8912fef06384cbc44480a0489ae9f68fc11254b587a7"
     }
-  ]
+  ],
+  "release_path_renames": {
+    "report/design_report.docx": {
+      "current_path": "report/fpga_signal_sensing_acceleration_system_technical_document.docx",
+      "sha256_unchanged": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f"
+    },
+    "report/design_report.pdf": {
+      "current_path": "report/fpga_signal_sensing_acceleration_system_technical_document.pdf",
+      "sha256_unchanged": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923"
+    }
+  }
 }

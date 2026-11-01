@@ -13,6 +13,6 @@ AMD指南推荐2026.1/2025.2，也要求采用其他版本时说明并保证可�
 
 ## 最终发布补充
 
-当前正式报告为design_report.pdf / design_report.docx。分类完整11982帧测试子集已包含，可运行python sim/reevaluate_classification.py --output build/output/full_test（从仓库根目录）。这只是软件参考重评，不表示全部帧已上板。
+当前正式报告为fpga_signal_sensing_acceleration_system_technical_document.pdf / fpga_signal_sensing_acceleration_system_technical_document.docx。分类完整11982帧测试子集已包含，可运行python sim/reevaluate_classification.py --output build/output/full_test（从仓库根目录）。这只是软件参考重评，不表示全部帧已上板。
 
 两项纯CPU构建、仿真和USB/JTAG入口见根README的新增复现入口。python sim/verify_release.py --output build/output/release_check --full-test 可检查包身份、两项参考、27项技能测试、10个variant依赖、4种方法各任务的8行数据、报告身份、本机HTTP入口及完整分类重评，不操作板卡。

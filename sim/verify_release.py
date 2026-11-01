@@ -21,8 +21,8 @@ def main():
     with np.load(ROOT/'data/fixtures/classification_test.npz',allow_pickle=False) as z:
         assert z['iq'].shape==(11982,2,128) and len(np.unique(z['sample_index']))==11982 and np.isfinite(z['iq']).all()
     identity=json.loads((ROOT/'report/release_identity.json').read_text(encoding='utf8'))
-    for n,key in [('design_report.docx','report_docx_sha256'),('design_report.pdf','report_pdf_sha256')]:assert sha256((ROOT/'report'/n).read_bytes()).hexdigest()==identity[key]
-    with ZipFile(ROOT/'report/design_report.docx') as z:
+    for n,key in [('fpga_signal_sensing_acceleration_system_technical_document.docx','report_docx_sha256'),('fpga_signal_sensing_acceleration_system_technical_document.pdf','report_pdf_sha256')]:assert sha256((ROOT/'report'/n).read_bytes()).hexdigest()==identity[key]
+    with ZipFile(ROOT/'report/fpga_signal_sensing_acceleration_system_technical_document.docx') as z:
         t=''.join(ET.fromstring(z.read('word/document.xml')).itertext());assert '3.4 大模型辅助设计与工程验证' in t and '你从4乘8' not in t
     from scripts import run_dual_fpga_hls4ml as app
     server=app.ThreadingHTTPServer(('127.0.0.1',0),app.Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start();port=server.server_port

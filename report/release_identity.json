@@ -13,5 +13,10 @@
     "formal AI collaboration summary plus original selected records"
   ],
   "main_accelerator_model_and_bitstreams_unchanged": true,
-  "new_board_measurements_this_release": false
+  "new_board_measurements_this_release": false,
+  "technical_document_title": "基于FPGA的信号感知加速系统技术文档",
+  "technical_document_files": {
+    "docx": "report/fpga_signal_sensing_acceleration_system_technical_document.docx",
+    "pdf": "report/fpga_signal_sensing_acceleration_system_technical_document.pdf"
+  }
 }

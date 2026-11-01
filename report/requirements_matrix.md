@@ -22,7 +22,7 @@
 
 ## 2026-11-01 文件补齐
 
-- 正式设计报告：design_report.pdf和design_report.docx，已确认V8，共28页。
+- 正式设计报告：fpga_signal_sensing_acceleration_system_technical_document.pdf和fpga_signal_sensing_acceleration_system_technical_document.docx，已确认V8，共28页。
 - 四方数据与图表：four_method_board_results.csv、figures和evidence，包括纯CPU对照。
 - 大模型协作：ai_collaboration.md为正式过程整理；ai_collaboration.jsonl保留原始选段；Skill和skill_fix保留使用说明、自测及纠错证据。
 - 工程：保留src/sim/build/board/data/skill/report推荐结构；补入两项CPU-only依赖与分类完整重评功能，未把开发历史、缓存、训练环境和完整训练数据带入。

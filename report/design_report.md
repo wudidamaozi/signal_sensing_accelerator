@@ -1,6 +1,6 @@
 # 基于FPGA的信号感知加速系统
 
-正式设计报告以本目录的[PDF](design_report.pdf)与[可编辑Word](design_report.docx)为准，两者对应已确认的V8，共28页。报告按最终提交工程和CPU补充结果撰写，不用历史候选版本替代最终成果。
+正式设计报告以本目录的[PDF](fpga_signal_sensing_acceleration_system_technical_document.pdf)与[可编辑Word](fpga_signal_sensing_acceleration_system_technical_document.docx)为准，两者对应已确认的V8，共28页。报告按最终提交工程和CPU补充结果撰写，不用历史候选版本替代最终成果。
 
 四种实现为RISC-V纯软件、自研4×8加速器、hls4ml和Caffe im2col移植＋4×8 GEMM。原始数值见four_method_board_results.csv；模型准确率与板内CNN计时采用报告中各自的测试范围。
 

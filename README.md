@@ -1,6 +1,11 @@
-# Signal Sensing Accelerator
+# 基于FPGA的信号感知加速系统
 
-最终提交工程，2026-11-01更新。正式设计报告：[PDF](report/design_report.pdf) / [Word](report/design_report.docx)；协作记录与图表见`report/`。
+## 基于FPGA的信号感知加速系统技术文档
+
+**[在线阅读 PDF](report/fpga_signal_sensing_acceleration_system_technical_document.pdf) · [下载可编辑 Word](report/fpga_signal_sensing_acceleration_system_technical_document.docx)**
+
+这是已确认的V8最终技术文档，共28页。报告配图、实板照片、大模型协作记录及性能数据在[报告资料目录](report/README.md)。仓库实际文件名按比赛要求保持英文，入口使用完整中文题目。
+
 
 基于 AMD PYNQ-Z2（XC7Z020CLG400-1）的信号感知加速系统。RISC-V 软核负责任务配置，4×8 并行阵列执行 INT8 乘法、INT32 累加；支持无线调制识别与频谱占用检测。两个任务分别加载各自镜像，网页负责输入、量化与展示；分类另有主机 FP32 统计融合分支。
 
