@@ -18,3 +18,12 @@
 本包不替代三分钟演示视频、承诺与授权签署件、平台表单、最终技术报告PDF、作品全貌照。平台要求RAR时，应上传真正的RAR；ZIP仅作同内容备份，不能改扩展名冒充RAR。上传前核对平台大小限制、报告模板、匿名要求、Github链接与可访问性。
 
 舍友已有Word报告在研发仓库中保留，未以旧数据版本冒充本次封版报告，也未覆盖其个人编辑。写正式报告时应以本包当前表格、架构和证据为准。
+
+
+## 2026-11-01 文件补齐
+
+- 正式设计报告：design_report.pdf和design_report.docx，已确认V8，共28页。
+- 四方数据与图表：four_method_board_results.csv、figures和evidence，包括纯CPU对照。
+- 大模型协作：ai_collaboration.md为正式过程整理；ai_collaboration.jsonl保留原始选段；Skill和skill_fix保留使用说明、自测及纠错证据。
+- 工程：保留src/sim/build/board/data/skill/report推荐结构；补入两项CPU-only依赖与分类完整重评功能，未把开发历史、缓存、训练环境和完整训练数据带入。
+- 独立RAR工程包由发布流程在仓库外生成，避免将归档重复塞进源码仓库。视频、签署授权书、平台上传和最终人工确认仍由参赛者按平台要求办理。

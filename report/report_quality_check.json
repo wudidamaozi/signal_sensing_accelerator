@@ -1,0 +1,78 @@
+{
+  "report_title": "基于FPGA的信号感知加速系统",
+  "pages": 28,
+  "numbered_figures": 17,
+  "numbered_tables": 8,
+  "inline_images": 18,
+  "native_tables": 9,
+  "changed_package_parts": [
+    "word/document.xml",
+    "word/_rels/document.xml.rels"
+  ],
+  "added_package_parts": [
+    "word/media/image24.png"
+  ],
+  "all_original_native_table_xml_unchanged": true,
+  "original_styles_geometry_headers_footers_media_unchanged": true,
+  "original_relationships_preserved": true,
+  "inherited_evidence_files_verified": 52,
+  "raw_csv_cpu_zip_and_source_evidence_unchanged": true,
+  "eight_result_rows_resources_and_cycles_verified": true,
+  "contents_24_entries_match": true,
+  "official_overview_limits_pass": true,
+  "ai_excerpts_source_instance_and_board_identity_verified": true,
+  "workflow_is_process_summary_not_autonomous_agent_claim": true,
+  "goal_checks": {
+    "concrete_innovation_names": true,
+    "formal_ai_section": true,
+    "chat_table_removed": true,
+    "workflow_figure_present": true,
+    "three_technical_cases": true,
+    "no_chat_quotes_or_audit_ids_in_body": true,
+    "numbered_figures": 17,
+    "numbered_tables": 8,
+    "inline_images": 18,
+    "native_tables": 9,
+    "sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f"
+  },
+  "source_original_sha256": "822a0d4f16b6ad9957fb07cfc0b7119c0566dc9065dac5d3cd998c5b38c3d34a",
+  "source_original_unchanged": true,
+  "docx_sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f",
+  "pdf_sha256": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923",
+  "visual_QA": {
+    "page_count": 28,
+    "already_reviewed_parent_pages_byte_identical": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      26,
+      27,
+      28
+    ],
+    "final_changed_or_added_pages_viewed": [
+      2,
+      5,
+      22,
+      23,
+      24,
+      25
+    ],
+    "finding": "PASS: Concrete innovations on page5; workflow figure17 readable on page22; three formal cases on page23. Chat table and colloquial quotes absent from report; original plots/photos/results preserved. All28 pages verified by six final-page reviews and22 pixel-identical previously reviewed parent pages."
+  }
+}

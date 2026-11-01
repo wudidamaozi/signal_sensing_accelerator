@@ -9,3 +9,10 @@
 7. 原始固定基准、交互接口和主机软件计时分别使用，不能把44381的交互分类记录改成44343，也不能把USB分钟级配置过程说成0.7ms整机响应。
 
 AMD指南推荐2026.1/2025.2，也要求采用其他版本时说明并保证可复现。本包明确冻结Vivado/Vitis HLS2020.2、xPack RISC-V GCC15.2.0、hls4ml1.3.0、Python3.12与NumPy2.4.6，未宣称跨版本零修改验证。源和参数SHA用于核对身份，旧报告用于追溯，不替代本机重建日志。
+
+
+## 最终发布补充
+
+当前正式报告为design_report.pdf / design_report.docx。分类完整11982帧测试子集已包含，可运行python sim/reevaluate_classification.py --output build/output/full_test（从仓库根目录）。这只是软件参考重评，不表示全部帧已上板。
+
+两项纯CPU构建、仿真和USB/JTAG入口见根README的新增复现入口。python sim/verify_release.py --output build/output/release_check --full-test 可检查包身份、两项参考、27项技能测试、10个variant依赖、4种方法各任务的8行数据、报告身份、本机HTTP入口及完整分类重评，不操作板卡。

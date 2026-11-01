@@ -1,5 +1,5 @@
 {
-  "research_commit": "b720e374f2fb70aee8f7ade27e6c6970a65c4b61",
+  "research_commit": "ffe9c67",
   "files": [
     {
       "source": "<research_workspace>\\experiments\\r14_m33_hybrid_20261023\\model\\parameters.npz",
@@ -4182,6 +4182,413 @@
       "original_sha256": "e5b01dd7bc8aba648a6eb23f380c2b3f87b67d1b825bec6a7b4d2e3d80ae723e",
       "destination": "skill/README.md",
       "export_sha256": "bddf7026f9e98984f27a9f01a96adc24d0ad0f707ed9786a21cd92427b97bc0b"
+    }
+  ],
+  "release_extension_files": [
+    {
+      "source": "<research_workspace>\\experiments\\classification_reevaluate_20261101\\candidate\\demo\\dual_live_present.html",
+      "destination": "src/web/index.html",
+      "original_sha256": "49f1df8c7c110d66073ea39ce5c580dbc2a82f3021ac41faa46dd8d07cea5dc8",
+      "export_sha256": "49f1df8c7c110d66073ea39ce5c580dbc2a82f3021ac41faa46dd8d07cea5dc8"
+    },
+    {
+      "source": "<research_workspace>\\experiments\\classification_reevaluate_20261101\\candidate\\demo\\dual_live_hls4ml.js",
+      "destination": "src/web/dual_live.js",
+      "original_sha256": "a5fa4866093f453686e1621a87ec18f0c2b461a4e123b151173b127978182740",
+      "export_sha256": "a5fa4866093f453686e1621a87ec18f0c2b461a4e123b151173b127978182740"
+    },
+    {
+      "source": "<research_workspace>\\experiments\\classification_reevaluate_20261101\\actual_result_final.json",
+      "destination": "report/evidence/classification_reevaluation/recorded_result.json",
+      "original_sha256": "edf3105dd37c15f175dddcfd7cf20d362f3a1eae5843737597116d0f00f800d5",
+      "export_sha256": "edf3105dd37c15f175dddcfd7cf20d362f3a1eae5843737597116d0f00f800d5"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\full_network.hex",
+      "destination": "data/memory/classification_cpu/full_network.hex",
+      "original_sha256": "5860db31fa2846ebb8c314d94d9c44afe90c577662dd2b915b1271056b2e9616",
+      "export_sha256": "5860db31fa2846ebb8c314d94d9c44afe90c577662dd2b915b1271056b2e9616"
+    },
+    {
+      "source": "<cpu_baseline>/assets/classification/sources/cpu_only_board_top.sv",
+      "destination": "src/rtl/cpu_only/classification/cpu_only_board_top.sv",
+      "original_sha256": "6cdf46a242da849e6da8e9541405699467f25df756687bce67b0714fb34020d8",
+      "export_sha256": "0cb1ef0811ec4db19625fcb04cd9341da165e79d1917452a14dc297c684efc3a",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/classification/sources/picorv32.v",
+      "destination": "src/rtl/cpu_only/classification/picorv32.v",
+      "original_sha256": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+      "export_sha256": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/classification/sources/picorv32_accel_soc.sv",
+      "destination": "src/rtl/cpu_only/classification/picorv32_accel_soc.sv",
+      "original_sha256": "7419f8bb40e65b32880c73d91a85056feaf0c1121806a601f11f328ef0fb18da",
+      "export_sha256": "7bcf4da0e04364084b51a505e313a6555b081b7f274f65ad65310eff2679e8af",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\board.xdc",
+      "destination": "board/constraints/classification_cpu.xdc",
+      "original_sha256": "a545eb53bdc5fa66ceb5a2d70bb5b4af8584d6d098c372b5f65542cdb95be2e4",
+      "export_sha256": "a545eb53bdc5fa66ceb5a2d70bb5b4af8584d6d098c372b5f65542cdb95be2e4"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\board.bit",
+      "destination": "board/benchmarks/classification_cpu/board.bit",
+      "original_sha256": "22a552d0c766ac311aa8a6470468eee59a43dea99428f9640ca0b6b3e2d11c99",
+      "export_sha256": "22a552d0c766ac311aa8a6470468eee59a43dea99428f9640ca0b6b3e2d11c99"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\debug.ltx",
+      "destination": "board/benchmarks/classification_cpu/debug.ltx",
+      "original_sha256": "216527e0ed1c186f5cad3ff88d4761765949e64f2139b2137853b251310edd69",
+      "export_sha256": "216527e0ed1c186f5cad3ff88d4761765949e64f2139b2137853b251310edd69"
+    },
+    {
+      "source": "<cpu_baseline>\\raw\\classification\\board\\program.tcl",
+      "destination": "board/program_classification_cpu.tcl",
+      "original_sha256": "11ffbd55bd53b1dac97fab409258ed621df7448cca738e2ebdb60f30401be9a6",
+      "export_sha256": "11ffbd55bd53b1dac97fab409258ed621df7448cca738e2ebdb60f30401be9a6"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\firmware.c",
+      "destination": "src/firmware/cpu_only/classification/firmware.c",
+      "original_sha256": "da744f8023c718ca92f9d92e3f437e6a30c29f2ddf517c01cde4089801f31600",
+      "export_sha256": "da744f8023c718ca92f9d92e3f437e6a30c29f2ddf517c01cde4089801f31600"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\model_data.h",
+      "destination": "src/firmware/cpu_only/classification/model_data.h",
+      "original_sha256": "2154d59cec810ac55c523be56cb1b47009c8c43f9d90e1b78db5d9245120e975",
+      "export_sha256": "2154d59cec810ac55c523be56cb1b47009c8c43f9d90e1b78db5d9245120e975"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\classification\\program.bin",
+      "destination": "src/firmware/cpu_only/classification/program.bin",
+      "original_sha256": "77b63a6977b702817e63a598485926d0a6358ec093326b66080417592794d4ed",
+      "export_sha256": "77b63a6977b702817e63a598485926d0a6358ec093326b66080417592794d4ed"
+    },
+    {
+      "source": "<research_workspace>\\build\\cpu_only_20261101\\classification\\linker.ld",
+      "destination": "src/firmware/cpu_only/classification/linker.ld",
+      "original_sha256": "14af3b65f804a5b260311a39378f3928f39d9c55f4637358d5caca4199eefc5c",
+      "export_sha256": "14af3b65f804a5b260311a39378f3928f39d9c55f4637358d5caca4199eefc5c"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\program.hex",
+      "destination": "data/memory/occupancy_cpu/program.hex",
+      "original_sha256": "ff4640b68c12b6e4b7953dbdcf4eb3b7693ebfccd2453944541160967ffe60a2",
+      "export_sha256": "ff4640b68c12b6e4b7953dbdcf4eb3b7693ebfccd2453944541160967ffe60a2"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\inputs.hex",
+      "destination": "data/memory/occupancy_cpu/inputs.hex",
+      "original_sha256": "3d351b4a0cbc0c4d541ebcf2f5d5025661cefeb202e8e9e59f877951fee86103",
+      "export_sha256": "3d351b4a0cbc0c4d541ebcf2f5d5025661cefeb202e8e9e59f877951fee86103"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\expected_logits.hex",
+      "destination": "data/memory/occupancy_cpu/expected_logits.hex",
+      "original_sha256": "a09f9444e38ed17088552bb67d9d9bbdaccc5f04fbd8d2b7a29795a028403788",
+      "export_sha256": "a09f9444e38ed17088552bb67d9d9bbdaccc5f04fbd8d2b7a29795a028403788"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/cpu_only_board_top.sv",
+      "destination": "src/rtl/cpu_only/occupancy/cpu_only_board_top.sv",
+      "original_sha256": "44d4fa2be1b2fe4ce7b6cfbc340e8e73fa4712546c83aa78033cd32b8a643530",
+      "export_sha256": "de07d8b0f230debec76fd2e500a7576ad3e09a1dbb6d0e5ba101b372689b74da",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/edgeai_axi_lite_bridge.sv",
+      "destination": "src/rtl/cpu_only/occupancy/edgeai_axi_lite_bridge.sv",
+      "original_sha256": "55b705aad1243abe3ca5bd0834d890332468d7533b52c94e65825fb2e5da20cb",
+      "export_sha256": "9947dc2c55cd2d07f448c919b15161ad41a36b6abd321ad6caea5154a4622158",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/occupancy_mailbox.sv",
+      "destination": "src/rtl/cpu_only/occupancy/occupancy_mailbox.sv",
+      "original_sha256": "77e3f5e48b9e1314049438da38cd21c575048c4fb4832c85f520d8c5f7fbb16b",
+      "export_sha256": "7499c2dfb61148f2ff3fff872395ee88b3a425f8ba77ea982d63e3ac1788f5ea",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/occupancy_service_soc.sv",
+      "destination": "src/rtl/cpu_only/occupancy/occupancy_service_soc.sv",
+      "original_sha256": "1fae5927ae7ca05931bac20597aa08d7858f415036a03910087fac7c1057d597",
+      "export_sha256": "5f131c3920304f1f2f2028a6d3c872dd5c614dfae35a4a7f2b342fb7b57bd31c",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/picorv32.v",
+      "destination": "src/rtl/cpu_only/occupancy/picorv32.v",
+      "original_sha256": "fd142889e8178ef67f1cff17cb2d18b3adae56fcae2badf7cbcc4c4f5ac7960e",
+      "export_sha256": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>/assets/occupancy/sources/pynq_o55_jtag_stimulus.sv",
+      "destination": "src/rtl/cpu_only/occupancy/pynq_o55_jtag_stimulus.sv",
+      "original_sha256": "92c23ad9c388d012a6929785d23ab0f50d191261fcfb30d28e3c4e32d56e89da",
+      "export_sha256": "d4a58945619f227cafddd35345d678aea124ba4c99b8ae78d399757babd2c9ec",
+      "transformation": "memory path relocation only"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\board.xdc",
+      "destination": "board/constraints/occupancy_cpu.xdc",
+      "original_sha256": "a545eb53bdc5fa66ceb5a2d70bb5b4af8584d6d098c372b5f65542cdb95be2e4",
+      "export_sha256": "a545eb53bdc5fa66ceb5a2d70bb5b4af8584d6d098c372b5f65542cdb95be2e4"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\board.bit",
+      "destination": "board/benchmarks/occupancy_cpu/board.bit",
+      "original_sha256": "8dd106c2d342d6efa8df319ef2a07b2f4e1fad1ac9ec9a1de4d1fa7948c1c8ef",
+      "export_sha256": "8dd106c2d342d6efa8df319ef2a07b2f4e1fad1ac9ec9a1de4d1fa7948c1c8ef"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\debug.ltx",
+      "destination": "board/benchmarks/occupancy_cpu/debug.ltx",
+      "original_sha256": "274185bf4c3901998e1a7ab3e7cdab063dbf4cb6ed89f3402c3067e86b51ea58",
+      "export_sha256": "274185bf4c3901998e1a7ab3e7cdab063dbf4cb6ed89f3402c3067e86b51ea58"
+    },
+    {
+      "source": "<cpu_baseline>\\raw\\occupancy\\board\\program.tcl",
+      "destination": "board/program_occupancy_cpu.tcl",
+      "original_sha256": "2118c14d4460f53d1e4c827ae6f8d8caa8f1e41a0ca0d3360150cf394a1342b2",
+      "export_sha256": "2118c14d4460f53d1e4c827ae6f8d8caa8f1e41a0ca0d3360150cf394a1342b2"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\occupancy_compare_cpu.c",
+      "destination": "src/firmware/cpu_only/occupancy/occupancy_compare_cpu.c",
+      "original_sha256": "8ac93fb50bb2f0e29a078441006298eca93a197c9377422f1e2fd3bbb94c3390",
+      "export_sha256": "8ac93fb50bb2f0e29a078441006298eca93a197c9377422f1e2fd3bbb94c3390"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\occupancy_data.h",
+      "destination": "src/firmware/cpu_only/occupancy/occupancy_data.h",
+      "original_sha256": "65dd36c3ffaf8f9625a1aae814836f7de824825d97e7fecfe06b54e6f4664724",
+      "export_sha256": "65dd36c3ffaf8f9625a1aae814836f7de824825d97e7fecfe06b54e6f4664724"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\accelerator_regs.h",
+      "destination": "src/firmware/cpu_only/occupancy/accelerator_regs.h",
+      "original_sha256": "546b891e90e9adc3cee2b18ce53fc310771eb499e3f461f8ff37376d1d6f8b19",
+      "export_sha256": "546b891e90e9adc3cee2b18ce53fc310771eb499e3f461f8ff37376d1d6f8b19"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\linker.ld",
+      "destination": "src/firmware/cpu_only/occupancy/linker.ld",
+      "original_sha256": "9958ad9664c9aa2b01a9145e6c07e1df4c65806e10a400ee9f0a79697b9cb89f",
+      "export_sha256": "9958ad9664c9aa2b01a9145e6c07e1df4c65806e10a400ee9f0a79697b9cb89f"
+    },
+    {
+      "source": "<cpu_baseline>\\assets\\occupancy\\program.bin",
+      "destination": "src/firmware/cpu_only/occupancy/program.bin",
+      "original_sha256": "1a091da2d42c3adf8490e10f6be41e48b0026be6ac608b8fa810f6f9f9917075",
+      "export_sha256": "1a091da2d42c3adf8490e10f6be41e48b0026be6ac608b8fa810f6f9f9917075"
+    },
+    {
+      "source": "<final_report>\\signal_sensing_accelerator_report_v8.docx",
+      "destination": "report/design_report.docx",
+      "original_sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f",
+      "export_sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f"
+    },
+    {
+      "source": "<final_report>\\signal_sensing_accelerator_report_v8.pdf",
+      "destination": "report/design_report.pdf",
+      "original_sha256": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923",
+      "export_sha256": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923"
+    },
+    {
+      "source": "<final_report>\\four_method_board_results.csv",
+      "destination": "report/four_method_board_results.csv",
+      "original_sha256": "d4005a8cd8b8bf7f45fef91cdc461c4871c43ebb1f0089383a239bab27fa414a",
+      "export_sha256": "d4005a8cd8b8bf7f45fef91cdc461c4871c43ebb1f0089383a239bab27fa414a"
+    },
+    {
+      "source": "<final_report>\\comparison_calculations.json",
+      "destination": "report/comparison_calculations.json",
+      "original_sha256": "98e082302fc85f0c242e350d7004c7558fd0a412f57dfaffbf6e50f5140d2b9f",
+      "export_sha256": "98e082302fc85f0c242e350d7004c7558fd0a412f57dfaffbf6e50f5140d2b9f"
+    },
+    {
+      "source": "<final_report>\\ai_case_sources.json",
+      "destination": "report/ai_case_sources.json",
+      "original_sha256": "36a80d9094369dee1de9e9218897bbf5a703acc0a6d1f206fa356984c250499f",
+      "export_sha256": "36a80d9094369dee1de9e9218897bbf5a703acc0a6d1f206fa356984c250499f"
+    },
+    {
+      "source": "<final_report>\\figures\\achievement_overview.png",
+      "destination": "report/figures/achievement_overview.png",
+      "original_sha256": "6b89bcb2ee6367e8a2e25ec3b96b53b82c324966cf7f19aa97ae7bcf9538aae2",
+      "export_sha256": "6b89bcb2ee6367e8a2e25ec3b96b53b82c324966cf7f19aa97ae7bcf9538aae2"
+    },
+    {
+      "source": "<final_report>\\figures\\achievement_overview.svg",
+      "destination": "report/figures/achievement_overview.svg",
+      "original_sha256": "1be5d1ba5c29b636681a32af7c10c456922790002825cdf0a9db9834bb15cfb8",
+      "export_sha256": "1be5d1ba5c29b636681a32af7c10c456922790002825cdf0a9db9834bb15cfb8"
+    },
+    {
+      "source": "<final_report>\\figures\\application_tasks.png",
+      "destination": "report/figures/application_tasks.png",
+      "original_sha256": "c7f4139c0493a523c3d35edd0048085f03f3d36f3a27e889c9c3e793b6defb44",
+      "export_sha256": "c7f4139c0493a523c3d35edd0048085f03f3d36f3a27e889c9c3e793b6defb44"
+    },
+    {
+      "source": "<final_report>\\figures\\application_tasks.svg",
+      "destination": "report/figures/application_tasks.svg",
+      "original_sha256": "3584459ab130f9a5b0846b0b7021c2ea1a67e9c1e51a4aa1cc8ace4f2f18e507",
+      "export_sha256": "3584459ab130f9a5b0846b0b7021c2ea1a67e9c1e51a4aa1cc8ace4f2f18e507"
+    },
+    {
+      "source": "<final_report>\\figures\\classification_four_resources.png",
+      "destination": "report/figures/classification_four_resources.png",
+      "original_sha256": "a651aad61e26d08b9bbfa1878f4965cc25486a026472b582b1281f0f039eb702",
+      "export_sha256": "a651aad61e26d08b9bbfa1878f4965cc25486a026472b582b1281f0f039eb702"
+    },
+    {
+      "source": "<final_report>\\figures\\classification_four_resources.svg",
+      "destination": "report/figures/classification_four_resources.svg",
+      "original_sha256": "fd59471c1b799b4f06ff494ed1586030d8d2c09afeba748614fc4e0a04608d48",
+      "export_sha256": "fd59471c1b799b4f06ff494ed1586030d8d2c09afeba748614fc4e0a04608d48"
+    },
+    {
+      "source": "<final_report>\\figures\\compute_datapath.png",
+      "destination": "report/figures/compute_datapath.png",
+      "original_sha256": "0cc41a6b9150046407976b36888466a40fdc6d47a02992964c974afd47f4d9cb",
+      "export_sha256": "0cc41a6b9150046407976b36888466a40fdc6d47a02992964c974afd47f4d9cb"
+    },
+    {
+      "source": "<final_report>\\figures\\compute_datapath.svg",
+      "destination": "report/figures/compute_datapath.svg",
+      "original_sha256": "87e2e3d9ac0091657785c5e8b7e982bce12f26b28aac5da60f4a344b2720927a",
+      "export_sha256": "87e2e3d9ac0091657785c5e8b7e982bce12f26b28aac5da60f4a344b2720927a"
+    },
+    {
+      "source": "<final_report>\\figures\\four_method_latency.png",
+      "destination": "report/figures/four_method_latency.png",
+      "original_sha256": "7893f0f6deeb344a910055c812738bcdacbddba706a37d962d78eee98a2b3acf",
+      "export_sha256": "7893f0f6deeb344a910055c812738bcdacbddba706a37d962d78eee98a2b3acf"
+    },
+    {
+      "source": "<final_report>\\figures\\four_method_latency.svg",
+      "destination": "report/figures/four_method_latency.svg",
+      "original_sha256": "45fa51b9909c38bd16b79219e0c8950762388d2a7a64a02b6d892f1e240efcc3",
+      "export_sha256": "45fa51b9909c38bd16b79219e0c8950762388d2a7a64a02b6d892f1e240efcc3"
+    },
+    {
+      "source": "<final_report>\\figures\\implementation_paths.png",
+      "destination": "report/figures/implementation_paths.png",
+      "original_sha256": "606b8e2997b2bca6d2c0416b9192478acd1737bfbfbc262b1ed582981dedeea4",
+      "export_sha256": "606b8e2997b2bca6d2c0416b9192478acd1737bfbfbc262b1ed582981dedeea4"
+    },
+    {
+      "source": "<final_report>\\figures\\implementation_paths.svg",
+      "destination": "report/figures/implementation_paths.svg",
+      "original_sha256": "919a9a73d8fec2285dc569905a2bfea54d72581b60f52a0f4fee31c2eff46bdf",
+      "export_sha256": "919a9a73d8fec2285dc569905a2bfea54d72581b60f52a0f4fee31c2eff46bdf"
+    },
+    {
+      "source": "<final_report>\\figures\\latency_resource_map.png",
+      "destination": "report/figures/latency_resource_map.png",
+      "original_sha256": "268c0f4aa8767d214aca6884664c0d5d5814b5c7a4934fd34c6cbd2f96d1b271",
+      "export_sha256": "268c0f4aa8767d214aca6884664c0d5d5814b5c7a4934fd34c6cbd2f96d1b271"
+    },
+    {
+      "source": "<final_report>\\figures\\latency_resource_map.svg",
+      "destination": "report/figures/latency_resource_map.svg",
+      "original_sha256": "c6af23208da67685e885ff1d4e1f83e1b73524f3c6bb1ce1e69588bbb87165e4",
+      "export_sha256": "c6af23208da67685e885ff1d4e1f83e1b73524f3c6bb1ce1e69588bbb87165e4"
+    },
+    {
+      "source": "<final_report>\\figures\\occupancy_four_resources.png",
+      "destination": "report/figures/occupancy_four_resources.png",
+      "original_sha256": "35e009fd0f47f37b1d0e474847cd5ceb9a1b6bf2a0e8565f83cd6cc9524a09d6",
+      "export_sha256": "35e009fd0f47f37b1d0e474847cd5ceb9a1b6bf2a0e8565f83cd6cc9524a09d6"
+    },
+    {
+      "source": "<final_report>\\figures\\occupancy_four_resources.svg",
+      "destination": "report/figures/occupancy_four_resources.svg",
+      "original_sha256": "1a605a850cc6efb6495c5dd3476fa1c3635a69bd88c908a2b61727e187f480c0",
+      "export_sha256": "1a605a850cc6efb6495c5dd3476fa1c3635a69bd88c908a2b61727e187f480c0"
+    },
+    {
+      "source": "<final_report>\\figures\\timing_boundaries.png",
+      "destination": "report/figures/timing_boundaries.png",
+      "original_sha256": "715cf7317137053af57318c91572c96e3991f7cc5e9494d49dd23dd0054600bf",
+      "export_sha256": "715cf7317137053af57318c91572c96e3991f7cc5e9494d49dd23dd0054600bf"
+    },
+    {
+      "source": "<final_report>\\figures\\timing_boundaries.svg",
+      "destination": "report/figures/timing_boundaries.svg",
+      "original_sha256": "b00cb010011354fd3e855e15f6e634db33616cc86cb9c10ff323b90163334b84",
+      "export_sha256": "b00cb010011354fd3e855e15f6e634db33616cc86cb9c10ff323b90163334b84"
+    },
+    {
+      "source": "<final_report>\\figures\\ai_development_workflow.png",
+      "destination": "report/figures/ai_development_workflow.png",
+      "original_sha256": "6239fc786cde64958f4a3e0533ead10467cd7141e9e79dcb482c04c7f1dd5fca",
+      "export_sha256": "6239fc786cde64958f4a3e0533ead10467cd7141e9e79dcb482c04c7f1dd5fca"
+    },
+    {
+      "source": "<final_report>\\figures\\ai_development_workflow.svg",
+      "destination": "report/figures/ai_development_workflow.svg",
+      "original_sha256": "45591b20dbf7ffe551167e0158d93561b3fd2c8fb0657317a2cda279ff00832b",
+      "export_sha256": "45591b20dbf7ffe551167e0158d93561b3fd2c8fb0657317a2cda279ff00832b"
+    },
+    {
+      "source": "<final_report>\\figures\\board_oblique.jpg",
+      "destination": "report/figures/board_oblique.jpg",
+      "original_sha256": "3e7deed7589aa50d23fa010c5032ac10b0d2ee087d09641ffc7dd6b5ad3dc981",
+      "export_sha256": "3e7deed7589aa50d23fa010c5032ac10b0d2ee087d09641ffc7dd6b5ad3dc981"
+    },
+    {
+      "source": "<final_report>\\figures\\board_top.jpg",
+      "destination": "report/figures/board_top.jpg",
+      "original_sha256": "701478127f9bdb0ac9b0cb792bbe40c9d846e48646b73798d345aeb5e5a79577",
+      "export_sha256": "701478127f9bdb0ac9b0cb792bbe40c9d846e48646b73798d345aeb5e5a79577"
+    },
+    {
+      "source": "<final_report>\\figures\\classification_result.png",
+      "destination": "report/figures/classification_result.png",
+      "original_sha256": "461a8ad87c9459bc74d886aaf73359f03b1cfe7afebfbd519a92849144a022be",
+      "export_sha256": "461a8ad87c9459bc74d886aaf73359f03b1cfe7afebfbd519a92849144a022be"
+    },
+    {
+      "source": "<final_report>\\figures\\occupancy_result.png",
+      "destination": "report/figures/occupancy_result.png",
+      "original_sha256": "21936e5629e050aed91537dba165e20ed9c7c90e16bfdf4f63d3ec810d5ff0c0",
+      "export_sha256": "21936e5629e050aed91537dba165e20ed9c7c90e16bfdf4f63d3ec810d5ff0c0"
+    },
+    {
+      "source": "<final_report>\\figures\\classification_evaluation.png",
+      "destination": "report/figures/classification_evaluation.png",
+      "original_sha256": "3f66eca552f1a10db2b53741ab5bad9852bff8b2ff716a3a2324e021ed95db0b",
+      "export_sha256": "3f66eca552f1a10db2b53741ab5bad9852bff8b2ff716a3a2324e021ed95db0b"
+    },
+    {
+      "source": "<final_report>\\figures\\fusion_occupancy.png",
+      "destination": "report/figures/fusion_occupancy.png",
+      "original_sha256": "59291ee6d1c8fa96eb18aafd62dcf09075479457cdbc194c6f9abcc6b99c0b20",
+      "export_sha256": "59291ee6d1c8fa96eb18aafd62dcf09075479457cdbc194c6f9abcc6b99c0b20"
+    },
+    {
+      "source": "<final_report>\\figures\\system_architecture.png",
+      "destination": "report/figures/system_architecture.png",
+      "original_sha256": "a92624061157698fe0c587f44495c306022e1bbd37ad020522fdeed8c83862a1",
+      "export_sha256": "a92624061157698fe0c587f44495c306022e1bbd37ad020522fdeed8c83862a1"
+    },
+    {
+      "source": "<final_report>\\figures\\software_flow.png",
+      "destination": "report/figures/software_flow.png",
+      "original_sha256": "9e953c7fe8b9a9b98eab8912fef06384cbc44480a0489ae9f68fc11254b587a7",
+      "export_sha256": "9e953c7fe8b9a9b98eab8912fef06384cbc44480a0489ae9f68fc11254b587a7"
     }
   ]
 }

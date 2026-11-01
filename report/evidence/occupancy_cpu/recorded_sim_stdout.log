@@ -1,0 +1,17 @@
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/cpu_run/xsim_script.tcl
+# xsim {cpu_run} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+source run.tcl
+## run all
+CPU_SIM_PASS cycles0=27075892 cycles1=27082616
+$finish called at time : 1083204170 ns : File "<research_workspace>/build/cpu_only_20261101/occupancy/cpu_tb.sv" Line 7
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:08:27 . Memory (MB): peak = 916.691 ; gain = 0.000
+## exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  1 16:02:38 2026...

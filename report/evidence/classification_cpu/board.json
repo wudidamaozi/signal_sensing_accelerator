@@ -1,0 +1,35 @@
+{
+  "status": "PASS_CURRENT_CPU_ONLY_USB_BOARD",
+  "task": "classification",
+  "board_measured": true,
+  "unique_inputs": 1,
+  "calls": 4,
+  "cycles": [
+    72713190,
+    72713190,
+    72713190,
+    72713190
+  ],
+  "nominal_clock_mhz": 50,
+  "latency_ms": [
+    1454.2638,
+    1454.2638,
+    1454.2638,
+    1454.2638
+  ],
+  "full_pl_resources": {
+    "lut": 2827,
+    "ff": 3541,
+    "bram36": 32.0,
+    "dsp": 4,
+    "setup_ns": 10.152,
+    "hold_ns": 0.049,
+    "route_errors": 0,
+    "cnn_cells": 0
+  },
+  "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+  "bit_sha256": "22a552d0c766ac311aa8a6470468eee59a43dea99428f9640ca0b6b3e2d11c99",
+  "ltx_sha256": "216527e0ed1c186f5cad3ff88d4761765949e64f2139b2137853b251310edd69",
+  "scope": "CNN only, fixed resident quantized inputs and weights; verification and USB outside timed intervals. classification=blocked4 C, 5 stage cycle sum; occupancy=mailbox input-copy through final logits. 128KiB CPU RAM; no dedicated CNN hardware.",
+  "log_sha256": "8e2489d30e8729e958984234015083a3bd9665ee01a084e5c3796983fcb9544b"
+}

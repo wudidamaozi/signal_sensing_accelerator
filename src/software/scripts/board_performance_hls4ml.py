@@ -7,9 +7,16 @@ def pair(name,board,physical,expected_status,bram_key):
  if b['status']!=expected_status or not b['board_tested']:raise ValueError('Unverified board result: '+board)
  if b['bit_sha256']!=p['bit_sha256'] or b['model_sha256']!=p['model_sha256']:raise ValueError('Board and routed image identity mismatch: '+board)
  return {'name':name,'cycles':b['cycles'],'lut':p['lut'],'ff':p['ff'],'bram36':p[bram_key],'dsp':p['dsp'],'model_sha256':b['model_sha256'],'board_source':board,'physical_source':physical}
+def cpu_pair(task):
+ board=f'report/evidence/{task}_cpu/board.json';physical=f'report/evidence/{task}_cpu/build_summary.json'
+ b=read(board);p=read(physical)
+ if b['status']!='PASS_CURRENT_CPU_ONLY_USB_BOARD' or not b['board_measured'] or b['bit_sha256']!=p['bit_sha256']:raise ValueError('Unverified CPU-only result')
+ return dict(name='RISC-V纯软件（无CNN加速器）',cycles=b['cycles'][:2],lut=p['lut'],ff=p['ff'],bram36=p['bram36'],dsp=p['dsp'],model_sha256=b['model_sha256'],board_source=board,physical_source=physical)
+
 def load_board_comparison():
  c=[pair('自研 M37','report/evidence/classification_native/board.json','report/evidence/classification_native/physical.json','R14_M37_USB_BOARD_PASS','bram36'),pair('hls4ml','report/evidence/classification_hls4ml/board.json','report/evidence/classification_hls4ml/physical.json','R14_HLS_USB_BOARD_PASS','bram36'),pair('Caffe im2col移植 + 4×8 GEMM','report/evidence/classification_im2col/board.json','report/evidence/classification_im2col/physical.json','R14_IM2COL_USB_BOARD_PASS','bram36')]
  o=[pair('信号感知加速系统（占用）','report/evidence/occupancy_native/board.json','report/evidence/occupancy_native/physical.json','PASS_OCCUPANCY_LATENCY_USB_BOARD','bram36'),pair('hls4ml','report/evidence/occupancy_hls4ml/board.json','report/evidence/occupancy_hls4ml/physical.json','PASS_OCCUPANCY_HLS4ML_USB_BOARD','bram36'),pair('Caffe im2col移植 + 4×8 GEMM','report/evidence/occupancy_im2col/board.json','report/evidence/occupancy_im2col/physical.json','IM2COL_USB_BOARD_PASS','bram36')]
+ c.append(cpu_pair('classification'));o.append(cpu_pair('occupancy'))
  for group in (c,o):
   if len({v['model_sha256'] for v in group})!=1:raise ValueError('Different model identities within comparison')
  return {'clock_mhz':50,'classification':c,'occupancy':o,'classification_unique_inputs':1,'occupancy_unique_inputs':2}

@@ -1,0 +1,26 @@
+{
+  "classification": {
+    "cpu_speedup": 1639.789594750017,
+    "im2col_speedup_min": 35.05978395688158,
+    "im2col_speedup_max": 35.05978395688158,
+    "hls_speedup": 1.0437498590532892,
+    "hls_latency_reduction_pct": 4.191603828619583,
+    "lut_reduction_vs_hls_pct": 79.43164953553564,
+    "ff_reduction_vs_hls_pct": 82.60766682442025,
+    "bram36_reduction_vs_hls_pct": -8.823529411764696,
+    "dsp_reduction_vs_hls_pct": 47.05882352941176,
+    "lut_increase_vs_im2col_pct": 0.14719657433426292
+  },
+  "occupancy": {
+    "cpu_speedup": 759.9397120323332,
+    "im2col_speedup_min": 191.99567767829578,
+    "im2col_speedup_max": 192.3010468999972,
+    "hls_speedup": 1.0539728872547645,
+    "hls_latency_reduction_pct": 5.1208990200255595,
+    "lut_reduction_vs_hls_pct": 70.06926467501575,
+    "ff_reduction_vs_hls_pct": 82.78815196394076,
+    "bram36_reduction_vs_hls_pct": 0.0,
+    "dsp_reduction_vs_hls_pct": 34.78260869565217,
+    "lut_increase_vs_im2col_pct": 24.34239209417235
+  }
+}

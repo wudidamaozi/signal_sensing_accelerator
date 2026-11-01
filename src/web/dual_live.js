@@ -8,12 +8,12 @@ function download(name,data,type='application/json'){const a=document.createElem
 function table(headers,rows){return '<table><thead><tr>'+headers.map(v=>'<th>'+esc(v)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(v=>'<td>'+esc(v??'—')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';}
 function metrics(rows){return rows.map(([name,value])=>'<div><small>'+esc(name)+'</small><strong>'+esc(value)+'</strong></div>').join('');}
 function page(name){document.querySelectorAll('[data-panel]').forEach(n=>n.hidden=n.dataset.panel!==name);document.querySelectorAll('[data-page]').forEach(n=>{n.classList.toggle('active',n.dataset.page===name);n.setAttribute('aria-current',n.dataset.page===name?'page':'false');});location.hash=name;}
-function chart(id,series,{xmin=0,xmax=127,ymin=null,ymax=null,xlabel='',ylabel='',width=620,height=290}={}){
+function chart(id,series,{xmin=0,xmax=127,ymin=null,ymax=null,xlabel='',ylabel='',width=620,height=290,xticks=null}={}){
  const svg=$(id),m={l:48,r:18,t:15,b:42},all=series.flatMap(s=>s.values.map(p=>p[1]));if(ymin===null)ymin=Math.min(...all);if(ymax===null)ymax=Math.max(...all);if(ymax-ymin<1e-10){ymin-=1;ymax+=1;}
  const X=x=>m.l+(x-xmin)/(xmax-xmin)*(width-m.l-m.r),Y=y=>height-m.b-(y-ymin)/(ymax-ymin)*(height-m.t-m.b);
  let html='';for(let i=0;i<=4;i++){const y=ymin+(ymax-ymin)*i/4;html+=`<line x1="${m.l}" x2="${width-m.r}" y1="${Y(y)}" y2="${Y(y)}" stroke="#e1e8f1"/><text x="${m.l-7}" y="${Y(y)+4}" text-anchor="end">${Math.abs(y)<1e-8?'0':y.toFixed(Math.abs(ymax-ymin)>4?0:2)}</text>`;}
- for(let i=0;i<=4;i++){const x=xmin+(xmax-xmin)*i/4;html+=`<text x="${X(x)}" y="${height-m.b+19}" text-anchor="middle">${x.toFixed(xmax-xmin>5?0:2)}</text>`;}
- html+=`<text x="${width/2}" y="${height-5}" text-anchor="middle">${esc(xlabel)}</text><text x="8" y="12">${esc(ylabel)}</text>`;
+ for(const x of (xticks||Array.from({length:5},(_,i)=>xmin+(xmax-xmin)*i/4))){html+=`<text x="${X(x)}" y="${height-m.b+19}" text-anchor="middle">${x.toFixed(xmax-xmin>5?0:2)}</text>`;}
+ html+=`<text x="${width/2}" y="${height-5}" text-anchor="middle">${esc(xlabel)}</text>`+(id==='class-curve'?`<text x="13" y="${height/2}" transform="rotate(-90 13 ${height/2})" text-anchor="middle">${esc(ylabel)}</text>`:`<text x="8" y="12">${esc(ylabel)}</text>`);
  for(const [i,s] of series.entries()){const color=s.color||colors[i%colors.length];html+=`<polyline fill="none" stroke="${color}" stroke-width="2" points="${s.values.map(([x,y])=>X(x)+','+Y(y)).join(' ')}"/>`;for(const [x,y,note] of s.values){html+=`<circle cx="${X(x)}" cy="${Y(y)}" r="${s.values.length>40?1:3.5}" fill="${color}"><title>${esc(s.name)} · ${x}: ${y.toFixed(3)}${note?' · '+esc(note):''}</title></circle>`;}}
  svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.innerHTML=html;
 }
@@ -27,7 +27,7 @@ function renderReport(r){const a=r.accelerator,c=r.classification.metrics,o=r.oc
  $('overview-metrics').innerHTML=[['并行阵列','4 × 8','两个任务 · 相同32PE规格'],['分类板内推理',(r.board_comparison.classification[0].cycles[0]/50000).toFixed(5)+' ms','50 MHz · 板测周期换算'],['占用板内推理',(r.board_comparison.occupancy[0].cycles[0]/50000).toFixed(5)+' ms','双缓冲预取 · 层内自主调度'],['占用INT8准确率',pct(o.accuracy),'独立留出集 · 模型不变']].map(v=>`<article><small>${v[0]}</small><strong>${v[1]}</strong><span>${v[2]}</span></article>`).join('');
  $('class-metrics').innerHTML=metrics([['全SNR正确率',pct(c.accuracy)],['SNR ≥ 0 dB',pct(c.high_snr_accuracy)],['正确 / 总数',`${fmt(c.correct)} / ${fmt(c.count)}`]]);
  const bins=Object.keys(c.by_snr).map(Number).sort((a,b)=>a-b), series=r.classification.classes.map((name,i)=>({name,values:bins.map(s=>{const b=c.by_snr[s].by_class[i];return [s,b.accuracy*100,`${b.correct}/${b.count}`];})}));
- chart('class-curve',series,{xmin:-20,xmax:18,ymin:0,ymax:100,xlabel:'SNR / dB',ylabel:'准确率 / %'});$('class-legend').innerHTML=r.classification.classes.map((v,i)=>`<span><i style="background:${colors[i]}"></i>${v}</span>`).join('');
+ chart('class-curve',series,{xmin:-20,xmax:18,ymin:0,ymax:100,xlabel:'SNR / dB',ylabel:'准确率 / %',xticks:[-20,-10,0,10,18]});$('class-legend').innerHTML=r.classification.classes.map((v,i)=>`<span><i style="background:${colors[i]}"></i>${v}</span>`).join('');
  $('class-confusion').innerHTML=table(['真实 / 预测',...r.classification.classes],c.confusion.map((row,i)=>[r.classification.classes[i],...row]));
  $('class-details').innerHTML=table(['SNR / dB',...r.classification.classes,'全体'],bins.map(s=>[s,...r.classification.classes.map((_,i)=>{const v=c.by_snr[s].by_class[i];return `${v.correct}/${v.count} · ${pct(v.accuracy)}`;}),pct(c.by_snr[s].accuracy)]));
  $('occ-metrics').innerHTML=metrics([['二分类准确率',pct(o.accuracy)],['检出率 Pd',pct(o.Pd)],['误报率 Pfa',pct(o.Pfa)],['样本总数',fmt(o.n)]]);
@@ -37,10 +37,10 @@ function renderReport(r){const a=r.accelerator,c=r.classification.metrics,o=r.oc
  const panel=document.querySelector('[data-panel="performance"]'),sections=panel.querySelectorAll('article.card');
  panel.querySelector('.section-head h2').textContent='板上速度与资源：同任务算法对照';
  panel.querySelector('.section-head p.muted').textContent='实板周期与 PL 资源对照';
- sections[0].querySelector('h3').textContent='调制识别：信号感知加速系统 / hls4ml / im2col';
+ sections[0].querySelector('h3').textContent='调制识别：信号感知加速系统 / hls4ml / im2col / 纯CPU';
  sections[0].querySelector('p.footnote').textContent='分类：1 个样本，CNN 板内周期；50 MHz 设计频率，不含 USB 与主机融合。';
- sections[1].querySelector('h3').textContent='频谱占用：信号感知加速系统 / hls4ml / im2col';
- sections[1].querySelector('p.footnote').textContent='占用：2 个样本。im2col CPU RAM 为 128 KiB，自研及 hls4ml 为 8 KiB；资源含调试逻辑。';
+ sections[1].querySelector('h3').textContent='频谱占用：信号感知加速系统 / hls4ml / im2col / 纯CPU';
+ sections[1].querySelector('p.footnote').textContent='占用：2 个样本。纯CPU和im2col RAM为128 KiB，自研及hls4ml为8 KiB；资源含调试逻辑。';
  const ms=x=>(x/(period*1000)).toFixed(5),ratio=(a,b)=>(a/b).toFixed(2)+'×';
  const displayName=v=>v.name==='自研 M37'?'信号感知加速系统（分类）':v.name==='自研 O55'?'信号感知加速系统（占用）':v.name;
  const max=Math.max(...cp.map(v=>Math.log10(v.cycles[0]+1)));$('performance-bars').innerHTML=cp.map(v=>`<div class="bar-row"><span>${esc(displayName(v))}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.log10(v.cycles[0]+1)/max*100}%"></div></div><strong>${fmt(v.cycles[0])} 周期</strong></div>`).join('')+'<p class="footnote">长度按对数刻度显示；以数字为准。</p>';
@@ -79,4 +79,8 @@ function rtlOptions(){const rtl=$('class-backend').value==='rtl';Array.from($('c
  $('report-export').onclick=()=>download('dual-4x8-evidence.json',JSON.stringify(report,null,2));
  $('performance-export').onclick=()=>{const b=report.board_comparison,rows=[['任务','方法','样本','板内周期','50MHz换算ms','LUT','FF','BRAM36','DSP','证据范围']];for(const [task,group] of [['分类',b.classification],['占用',b.occupancy]])for(const v of group){const count=task==='分类'?1:2;for(let i=0;i<count;i++)rows.push([task,(v.name==='自研 M37'||v.name==='自研 O55')?'信号感知加速系统':v.name,task==='分类'?'class0/-20dB':['vector00 空闲','vector29 占用'][i],v.cycles[i],(v.cycles[i]/(b.clock_mhz*1000)).toFixed(5),v.lut,v.ff,v.bram36,v.dsp,'7020实板小样本；PL资源含调试；不含USB']);}download('fpga-board-algorithm-comparison.csv','\uFEFF'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n'),'text/csv;charset=utf-8');};
  $('custom-run').onclick=async()=>{try{let lines=$('custom-iq').value.trim().split(/\r?\n/);if(/^\s*i\s*,\s*q\s*$/i.test(lines[0]))lines.shift();const rows=lines.map(l=>l.split(',').map(Number));if(rows.length!==128||rows.some(r=>r.length!==2||r.some(v=>!Number.isFinite(v))))throw Error('需要128行有限数值I,Q');const iq=[rows.map(v=>v[0]),rows.map(v=>v[1])],r=await api('/api/dual/infer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({task:$('custom-task').value,iq})});$('custom-result').textContent=JSON.stringify({prediction:r.prediction,integer_logits:r.integer_logits,execution_scope:r.execution_scope,id:r.id},null,2);}catch(e){$('custom-result').textContent='输入或运行失败：'+e.message;}};
-api('/api/dual/overview').then(r=>{report=r;renderReport(r);page(['overview','classification','occupancy','performance','verification'].includes(location.hash.slice(1))?location.hash.slice(1):'overview');}).catch(e=>{$('global-status').textContent='加载失败：'+e.message;});
+api('/api/dual/overview').then(r=>{report=r;window.archivedClassMetrics=structuredClone(r.classification.metrics);renderReport(r);page(['overview','classification','occupancy','performance','verification'].includes(location.hash.slice(1))?location.hash.slice(1):'overview');}).catch(e=>{$('global-status').textContent='加载失败：'+e.message;});
+
+let currentReevaluation=null;
+$('class-revert').onclick=()=>{if(!report)return;report.classification.metrics=structuredClone(window.archivedClassMetrics);renderReport(report);$('class-reevaluate-status').textContent='当前显示归档完整测试集结果。';};
+$('class-reevaluate').onclick=async()=>{const button=$('class-reevaluate');button.disabled=true;try{await api('/api/dual/reevaluate/start',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});while(true){await new Promise(resolve=>setTimeout(resolve,500));const state=await api('/api/dual/reevaluate/status');$('class-reevaluate-status').textContent=`本机软件逐帧评估：${state.done} / ${state.total}；未调用FPGA。`;if(state.phase==='error')throw Error(state.error);if(state.phase==='complete'){currentReevaluation=state.result;report.classification.metrics=state.result.metrics;renderReport(report);$('class-reevaluate-status').textContent=`评估完成：${state.done}帧；与原归档预测不同 ${state.result.recorded_prediction_disagreements} 帧。原始点未平滑，鼠标悬停查看正确数/样本数。`;break;}}}catch(e){$('class-reevaluate-status').textContent='评估失败：'+e.message;}finally{button.disabled=false;}};

@@ -41,11 +41,41 @@ def infer_board(task,result):
   if result['metadata'] is not None:result['matches_label']=result['predicted_index']==result['metadata']['truth_index']
   return finite(result)
 
+
+eval_lock=threading.Lock()
+eval_state={'phase':'idle','done':0,'total':11982}
+
+def evaluate_full_test():
+ global eval_state
+ try:
+  with np.load(ROOT/'data/fixtures/classification_test.npz',allow_pickle=False) as z:data={k:z[k] for k in z.files}
+  indices=np.arange(len(data['label']))
+  if len(indices)!=11982:raise RuntimeError('完整冻结测试集应为11982帧，不能用演示池代替')
+  recorded={'hybrid_logits':data['recorded_hybrid_logits']}
+  bins=sorted(map(int,np.unique(data['snr'][indices])));by={str(v):{'count':0,'correct':0,'by_class':{str(k):{'count':0,'correct':0} for k in range(4)}} for v in bins};conf=np.zeros((4,4),dtype=np.int64);wrong_reference=0;correct_high=total_high=0
+  for pos,i in enumerate(indices):
+   truth=int(data['label'][i]);snr=int(data['snr'][i]);pred=int(service.classifier.classify(data['iq'][i],int(data['sample_index'][i]))['predicted_class']);conf[truth,pred]+=1;ok=int(pred==truth);row=by[str(snr)];row['count']+=1;row['correct']+=ok;cell=row['by_class'][str(truth)];cell['count']+=1;cell['correct']+=ok
+   wrong_reference+=int(pred!=int(np.argmax(recorded['hybrid_logits'][pos])))
+   if snr>=0:total_high+=1;correct_high+=ok
+   if (pos+1)%64==0:
+    with eval_lock:eval_state['done']=pos+1
+  for row in by.values():
+   row['accuracy']=row['correct']/row['count']
+   for cell in row['by_class'].values():cell['accuracy']=cell['correct']/cell['count'] if cell['count'] else None
+  metrics={'count':len(indices),'correct':int(np.trace(conf)),'accuracy':float(np.trace(conf)/len(indices)),'high_snr_accuracy':correct_high/total_high,'confusion':conf.tolist(),'by_snr':by}
+  result={'metrics':metrics,'model_sha256':service.model_hashes['classification'],'method':'完整留出集逐帧重跑本机 INT8 CNN 数值参考及 FP32 统计融合；未使用 FPGA','recorded_prediction_disagreements':wrong_reference,'dataset':'RadioML 四类固定测试划分','smoothing':'无','count':len(indices)}
+  with eval_lock:eval_state={'phase':'complete','done':len(indices),'total':len(indices),'result':result}
+ except Exception as exc:
+  with eval_lock:eval_state={'phase':'error','done':eval_state['done'],'total':11982,'error':str(exc)}
+
 class Handler(BaseHTTPRequestHandler):
  def reply(self,data,status=200):
   raw=json.dumps(data,ensure_ascii=False,allow_nan=False).encode('utf8');self.send_response(status);self.send_header('Content-Type','application/json; charset=utf-8');self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(raw)
  def do_GET(self):
   u=urlparse(self.path)
+  if u.path=='/api/dual/reevaluate/status':
+   with eval_lock: self.reply(dict(eval_state))
+   return
   if u.path in ('/','/dual_live.js','/dual.css'):
    file={'/':'index.html','/dual_live.js':'dual_live.js','/dual.css':'dual.css'}[u.path];raw=(ROOT/'src/web'/file).read_bytes();self.send_response(200);self.send_header('Content-Type',('text/html' if u.path=='/' else 'text/css' if u.path.endswith('.css') else 'application/javascript')+'; charset=utf-8');self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(raw);return
   if u.path=='/hardware-architecture.svg':
@@ -53,11 +83,18 @@ class Handler(BaseHTTPRequestHandler):
   if u.path=='/api/dual/overview':
    try:r=service.report();r['board_comparison']=load_board_comparison()
    except (ValueError,KeyError,OSError) as e:self.reply({'error':'对照证据不可用：'+str(e)},503);return
-   r['readiness']['occupancy_rtl']='固定4×8：30输入加重放，31调用、93层摘要、62logits一致；实板两输入各两次，35629周期';r['readiness']['hardware_backend']='USB FPGA动态样本；占用4×8双缓冲优化版，分类保持原版';r['live_occupancy']={'implementation':'fixed4x8-20261031','expected_cycles':35629,'array':[4,8],'assets':'board/live/occupancy'};r['occupancy']['accelerator']=r['board_comparison']['occupancy'][0];r['baseline_groups']=[{'name':'同任务：信号感知加速系统 / hls4ml / Caffe im2col移植 + 4×8 GEMM','scope':'7020实板周期；资源采用统一基准测试工程，交互接口另建镜像'}];self.reply(r);return
+   r['readiness']['occupancy_rtl']='固定4×8：30输入加重放，31调用、93层摘要、62logits一致；实板两输入各两次，35629周期';r['readiness']['hardware_backend']='USB FPGA动态样本；占用4×8双缓冲优化版，分类保持原版';r['live_occupancy']={'implementation':'fixed4x8-20261031','expected_cycles':35629,'array':[4,8],'assets':'board/live/occupancy'};r['occupancy']['accelerator']=r['board_comparison']['occupancy'][0];r['baseline_groups']=[{'name':'同任务：信号感知加速系统 / hls4ml / Caffe im2col移植 + 4×8 GEMM / RISC-V纯软件','scope':'7020实板周期；资源采用统一基准测试工程，交互接口另建镜像'}];self.reply(r);return
   if u.path=='/api/dual/metrics.csv':
    raw=service.metric_csv();self.send_response(200);self.send_header('Content-Type','text/csv; charset=utf-8');self.send_header('Content-Disposition','attachment; filename="dual-task-metrics.csv"');self.end_headers();self.wfile.write(raw);return
   self.reply({'error':'Not found'},404)
  def do_POST(self):
+  global eval_state
+  if self.path=='/api/dual/reevaluate/start':
+   if self.headers.get('Origin')!='http://127.0.0.1:'+str(self.server.server_port):self.reply({'error':'仅允许本机网页发起'},403);return
+   with eval_lock:
+    if eval_state['phase']=='running':self.reply({'error':'完整评估正在运行'},409);return
+    eval_state={'phase':'running','done':0,'total':11982};threading.Thread(target=evaluate_full_test,daemon=True).start()
+   self.reply({'phase':'running'});return
   if self.path not in ('/api/dual/infer','/api/dual/sample'):self.reply({'error':'Not found'},404);return
   if self.headers.get('Origin')!='http://127.0.0.1:'+str(self.server.server_port) or self.headers.get_content_type()!='application/json':self.reply({'error':'Only the local demo page may control the FPGA'},403);return
   try:
@@ -72,4 +109,4 @@ class Handler(BaseHTTPRequestHandler):
   except (ValueError,KeyError) as e:self.reply({'error':str(e)},400)
   except (RuntimeError,subprocess.TimeoutExpired) as e:self.reply({'error':str(e)},500)
 if __name__=='__main__':
- print('FPGA_LIVE_WEB http://127.0.0.1:8771/ original=http://127.0.0.1:8768/',flush=True);ThreadingHTTPServer(('127.0.0.1',8771),Handler).serve_forever()
+ print('FPGA_LIVE_WEB http://127.0.0.1:8772/ original=http://127.0.0.1:8768/',flush=True);ThreadingHTTPServer(('127.0.0.1',8772),Handler).serve_forever()

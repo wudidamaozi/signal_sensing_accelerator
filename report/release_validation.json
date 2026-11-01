@@ -1,0 +1,39 @@
+{
+  "status": "PASS_FINAL_RELEASE_SOURCE_FIRMWARE_AND_FULL_TEST",
+  "offline": {
+    "status": "PASS_FINAL_RELEASE_OFFLINE_HTTP",
+    "variants": 10,
+    "comparison_rows": 8,
+    "report_revision": "V8",
+    "full_test_recomputed": true,
+    "full_test_count": 11982,
+    "full_test_correct": 8160,
+    "board_operated": false
+  },
+  "firmware_identity": {
+    "classification": {
+      "status": "PASS_CPU_FIRMWARE_IDENTITY",
+      "task": "classification",
+      "bytes": 31764,
+      "sha256": "77b63a6977b702817e63a598485926d0a6358ec093326b66080417592794d4ed",
+      "board_operated": false
+    },
+    "occupancy": {
+      "status": "PASS_CPU_FIRMWARE_IDENTITY",
+      "task": "occupancy",
+      "bytes": 38224,
+      "sha256": "1a091da2d42c3adf8490e10f6be41e48b0026be6ac608b8fa810f6f9f9917075",
+      "board_operated": false
+    }
+  },
+  "full_test": {
+    "count": 11982,
+    "correct": 8160,
+    "recorded_prediction_disagreements": 0,
+    "software_only": true
+  },
+  "main_hardware_unchanged": true,
+  "final_report_revision": "V8",
+  "report_pages": 28,
+  "new_board_operation": false
+}

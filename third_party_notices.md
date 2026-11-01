@@ -9,3 +9,5 @@ The root MIT license covers original team contributions, not the third-party mat
 - RadioML 2016.10A sample subset and derived class test vectors: DeepSig Inc., https://www.deepsig.ai/datasets/ , CC BY-NC-SA 4.0, https://creativecommons.org/licenses/by-nc-sa/4.0/ . Selection/packaging and quantization are project transformations. The original data terms, attribution, noncommercial condition and share-alike terms are not replaced by MIT. The full dataset is not bundled.
 
 Tool dependencies must be obtained from their respective publishers. No credentials, activation files or installed vendor toolchain are included. Required third-party attribution is not the participating team's school affiliation.
+
+2026-11-01补充：data/fixtures/classification_test.npz为原四类固定留出集的11982帧子集，保留原始样本编号、标签和SNR，未平滑曲线或改标签。仍适用上述RadioML CC BY-NC-SA4.0条件；不包含训练集，不能将其宣称为团队原创数据。

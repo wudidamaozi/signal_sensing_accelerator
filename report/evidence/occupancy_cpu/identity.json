@@ -1,0 +1,24 @@
+{
+  "task": "occupancy",
+  "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+  "ram_bytes": 131072,
+  "CPU": "PicoRV32 RV32IM fast MUL, no DIV",
+  "clock_mhz": 50,
+  "expected_cycles": [
+    27075892,
+    27082616
+  ],
+  "execution": "software only; dedicated CNN RTL excluded",
+  "source": {
+    "expected_logits.hex": "a09f9444e38ed17088552bb67d9d9bbdaccc5f04fbd8d2b7a29795a028403788",
+    "inputs.hex": "3d351b4a0cbc0c4d541ebcf2f5d5025661cefeb202e8e9e59f877951fee86103",
+    "occupancy_data.h": "65dd36c3ffaf8f9625a1aae814836f7de824825d97e7fecfe06b54e6f4664724",
+    "program.hex": "ff4640b68c12b6e4b7953dbdcf4eb3b7693ebfccd2453944541160967ffe60a2",
+    "sources\\cpu_only_board_top.sv": "90217fbf130d65bf453ad20499feb3d4524ac18084a30ff4cb6e4acc9837a9f1",
+    "sources\\edgeai_axi_lite_bridge.sv": "9947dc2c55cd2d07f448c919b15161ad41a36b6abd321ad6caea5154a4622158",
+    "sources\\occupancy_mailbox.sv": "7499c2dfb61148f2ff3fff872395ee88b3a425f8ba77ea982d63e3ac1788f5ea",
+    "sources\\occupancy_service_soc.sv": "f941b8f1434db0d68955cc59ee1981632f422991729b4e6f2c4f98cf4d8ddb36",
+    "sources\\picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
+    "sources\\pynq_o55_jtag_stimulus.sv": "2ff87e59d2eacceda7d67124a436adb7ec6cc9029e509fba1ca320c69bbdf838"
+  }
+}

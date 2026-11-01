@@ -1,0 +1,65 @@
+{
+  "scope": "Selected original dialogue excerpts, not a full chat export. Result rows independently checked against source/board records.",
+  "entries": {
+    "A1": {
+      "path": "report/ai_collaboration.jsonl",
+      "record": 1,
+      "role": "user",
+      "text": "你从4乘8变成4 16了？？？？那不是和我们分类不一样了"
+    },
+    "A2": {
+      "path": "report/ai_collaboration.jsonl",
+      "record": 2,
+      "role": "assistant",
+      "text": "对，我试了 4×16，甚至 8×16。这是增加硬件并行度，不能说成“原来同一套 4×8 加速器优化后就这么快”。我刚才没把这个区别讲清楚。"
+    },
+    "A3": {
+      "path": "report/ai_collaboration.jsonl",
+      "record": 3,
+      "role": "user",
+      "text": "就同规格啊 48 试图优化"
+    },
+    "A4": {
+      "source": "src/rtl/common/occupancy_service_soc_cf51d80092.sv",
+      "sha256": "cf51d800929262e51f82458e742a99fcab441f643e04ceb6676c8946b1010ef9",
+      "lines": [
+        109,
+        110
+      ],
+      "excerpt": "    int8_accelerator_mmio_core_m30 #(.PACKED_READ_PIPELINE(1), .ZERO_LANE_ADVANCE_OPT(1), .INCREMENTAL_WEIGHT_ADDRESS(1), .OVERLAP_GEMM_WRITEBACK(1), .MAX_M(16), .MAX_N(64), .AUTONOMOUS_LAYER(1), .LAYER_INPUT_OVERLAP(1), .FUSED_LAYER_LAUNCH(0), .MAX_K(272), .TILE_ROWS(4),\n        .TILE_COLS(8), .PACKED_WINDOW_LOADER(1), .PIPELINED_POSTPROCESS(1), .DIRECT_WEIGHT_FEED(1), .CHAINED_POSTPROCESS(1), .WEIGHT_BYTES(38880), .WEIGHT_INIT_FILE(\"data/memory/occupancy_native/weight_init.hex\")) accel (",
+      "selector": "build/variants.json -> occupancy_native.source_map[occupancy_service_soc.sv]"
+    },
+    "A5": {
+      "path": "report/evidence/occupancy_native/board.json",
+      "fields": [
+        "status",
+        "cycles",
+        "unique_frames",
+        "calls",
+        "bit_sha256",
+        "model_sha256"
+      ],
+      "values": {
+        "status": "PASS_OCCUPANCY_LATENCY_USB_BOARD",
+        "board_tested": true,
+        "cycles": [
+          35629,
+          35629
+        ],
+        "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+        "bit_sha256": "2d67bcea1a5db3367a82f1075cd93f37921ba9c02a3acd26d2ef2cd5beeba1af",
+        "unique_frames": 2,
+        "calls": 4,
+        "scope": "8KiB CPU; CNN service rdcycle; nominal 50MHz; excludes JTAG/input quantization"
+      },
+      "matching_implementation": "report/evidence/occupancy_native/physical.json"
+    }
+  },
+  "file_sha256": {
+    "report\\ai_collaboration.jsonl": "d7189047afd495a8fa684ec5b7bc26bbc34441eaf5fb4e6919b77563685b700d",
+    "build\\variants.json": "ba1b3e8afe859af000239f2a2cf528690bb660f9a2f86522cdeaa47e02cd30a6",
+    "src\\rtl\\common\\occupancy_service_soc_cf51d80092.sv": "cf51d800929262e51f82458e742a99fcab441f643e04ceb6676c8946b1010ef9",
+    "report\\evidence\\occupancy_native\\board.json": "01e32d1907f388056e6aecf5bebf17c313277f7e7b8713936d7bfa30b9c40498",
+    "report\\evidence\\occupancy_native\\physical.json": "8c65185d70b01ea385d181eaa6cd97cacb8ad27bedc77b571aef85eafd181b2e"
+  }
+}

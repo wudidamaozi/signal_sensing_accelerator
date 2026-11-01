@@ -1,0 +1,17 @@
+{
+  "release": "final_20261101",
+  "parent_public_commit": "3c94f6b",
+  "research_commit": "ffe9c675e44e2f0a74b9eae884af72e15c702912",
+  "report_revision": "V8",
+  "report_docx_sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f",
+  "report_pdf_sha256": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923",
+  "changes": [
+    "portable full heldout classification reevaluation",
+    "CPU-only source/build/sim/board closure",
+    "four-way performance evidence",
+    "final design report and figures",
+    "formal AI collaboration summary plus original selected records"
+  ],
+  "main_accelerator_model_and_bitstreams_unchanged": true,
+  "new_board_measurements_this_release": false
+}

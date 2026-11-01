@@ -1,0 +1,16 @@
+{
+  "dataset": "RadioML2016.10A four-class fixed heldout subset",
+  "count": 11982,
+  "source_total": 80000,
+  "split": "original split==2; only test frames exported, no training data",
+  "source_commit": "7e55857",
+  "archive_sha256": "5a798e4cf768a415acff2a8ee33132f18e93d51fb8ef5fda93265a8eae81afbf",
+  "source_file_sha256": {
+    "samples.npy": "8db66c64d73fef7671384a90ff7c127aaebafaa42e515ac5f18a74f58c11d8c0",
+    "labels.npy": "c400880f39aba160aff8b6758b6de0d312c2ff01bd8b1a23b46272f277fd8a35",
+    "snr.npy": "4f3d71c113f4762b8ac5281cf07ab9cc3b97bb2685da00a6c5508383fe031ce1",
+    "split.npy": "41a5a623669c63d493473f284829bc16c240b21827bf2a578a58bf01c53a1af4"
+  },
+  "recorded_logits_sha256": "93f25152de10bf39251a5f3a143b9250d8ef298c91b1dee2cc4440cbd2de81fa",
+  "license": "CC BY-NC-SA 4.0; see third_party_notices.md"
+}

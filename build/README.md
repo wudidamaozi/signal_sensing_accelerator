@@ -28,3 +28,10 @@ python build/compile_occupancy.py --toolchain-prefix RISCV_GCC_PREFIX --output b
 ```
 
 前缀应指向xPack RISC-V GCC15.2.0的 `riscv-none-elf-`，程序会核对二进制SHA，不只检查编译退出值。工具链与AMD工具不随包分发。
+
+
+## 2026-11-01 最终补充
+
+新增classification_cpu和occupancy_cpu，共10个variant。CPU-only构建和仿真与原8个实现共用入口；其固件源码在src/firmware/cpu_only，已归档程序与128KiB RAM初始化在data/memory。编译CPU固件使用compile_cpu.py，需显式传入xPack RISC-V GCC15.2.0-1的bin目录，并核对最终program.bin身份。不会下载或打包工具链。
+
+网页现已接入完整分类测试集重评与四种实现对照；完整重评始终是本机软件计算。report/design_report.pdf和.docx为最终V8文档，报告图表、协作选段与CPU证据一起提供。旧的package_validation记录对应首版导出；本次验证见report/release_validation.json。

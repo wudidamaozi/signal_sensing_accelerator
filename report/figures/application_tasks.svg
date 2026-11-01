@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="720pt" height="331.2pt" viewBox="0 0 720 331.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-01T16:37:48.753228</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 331.2 
+L 720 331.2 
+L 720 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.256 105.624 
+L 211.824 105.624 
+Q 215.352 105.624 215.352 102.096 
+L 215.352 45.648 
+Q 215.352 42.12 211.824 42.12 
+L 14.256 42.12 
+Q 10.728 42.12 10.728 45.648 
+L 10.728 102.096 
+Q 10.728 105.624 14.256 105.624 
+z
+" clip-path="url(#p16074f6136)" style="fill: #f3f7fa; stroke: #2b6689; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 264.744 105.624 
+L 455.256 105.624 
+Q 458.784 105.624 458.784 102.096 
+L 458.784 45.648 
+Q 458.784 42.12 455.256 42.12 
+L 264.744 42.12 
+Q 261.216 42.12 261.216 45.648 
+L 261.216 102.096 
+Q 261.216 105.624 264.744 105.624 
+z
+" clip-path="url(#p16074f6136)" style="fill: #f3f7fa; stroke: #2b6689; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 508.176 105.624 
+L 698.688 105.624 
+Q 702.216 105.624 702.216 102.096 
+L 702.216 45.648 
+Q 702.216 42.12 698.688 42.12 
+L 508.176 42.12 
+Q 504.648 42.12 504.648 45.648 
+L 504.648 102.096 
+Q 504.648 105.624 508.176 105.624 
+z
+" clip-path="url(#p16074f6136)" style="fill: #f3f7fa; stroke: #2b6689; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 264.744 232.632 
+L 455.256 232.632 
+Q 458.784 232.632 458.784 229.104 
+L 458.784 172.656 
+Q 458.784 169.128 455.256 169.128 
+L 264.744 169.128 
+Q 261.216 169.128 261.216 172.656 
+L 261.216 229.104 
+Q 261.216 232.632 264.744 232.632 
+z
+" clip-path="url(#p16074f6136)" style="fill: #f3f7fa; stroke: #2b6689; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 508.176 232.632 
+L 698.688 232.632 
+Q 702.216 232.632 702.216 229.104 
+L 702.216 172.656 
+Q 702.216 169.128 698.688 169.128 
+L 508.176 169.128 
+Q 504.648 169.128 504.648 172.656 
+L 504.648 229.104 
+Q 504.648 232.632 508.176 232.632 
+z
+" clip-path="url(#p16074f6136)" style="fill: #f3f7fa; stroke: #2b6689; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(77.277656 67.034312)">IQ输入窗口</text>
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(71.963125 88.420625)">I与Q各128点</text>
+   </g>
+   <g id="text_2">
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(318 67.034312)">频谱占用检测</text>
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(311 88.420625)">判断有没有信号</text>
+   </g>
+   <g id="text_3">
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(568.298562 67.034312)">空闲 / 占用</text>
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(533.432 88.420625)">用于频段存在状态观察</text>
+   </g>
+   <g id="text_4">
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(318 194.042312)">无线调制识别</text>
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(304 215.428625)">区分已知调制方式</text>
+   </g>
+   <g id="text_5">
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(560.666375 194.042312)">BPSK / QPSK</text>
+    <text style="font: 14px 'Microsoft YaHei'" transform="translate(553.843562 215.428625)">8PSK / 16QAM</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 217.353511 73.872 
+Q 238.284839 73.872 257.650918 73.872 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 252.450918 71.272 
+L 257.650918 73.872 
+L 252.450918 76.472 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 216.030834 75.751849 
+Q 238.283508 137.374637 260.004554 197.525226 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 260.683843 191.751271 
+L 260.004554 197.525226 
+L 255.792963 193.517422 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 460.785511 73.872 
+Q 481.716839 73.872 501.082918 73.872 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 495.882918 71.272 
+L 501.082918 73.872 
+L 495.882918 76.472 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 460.785511 200.88 
+Q 481.716839 200.88 501.082918 200.88 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 495.882918 198.28 
+L 501.082918 200.88 
+L 495.882918 203.48 
+" style="fill: none; stroke: #2b6689; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="fill: #445563; font: 12px 'Microsoft YaHei'; text-anchor: middle" x="360" y="303.192" transform="rotate(-0 360 303.192)">两个独立任务 · 同规格4×8架构 · 分别加载对应镜像</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p16074f6136">
+   <rect x="7.2" y="3.312" width="705.6" height="324.576"/>
+  </clipPath>
+ </defs>
+</svg>

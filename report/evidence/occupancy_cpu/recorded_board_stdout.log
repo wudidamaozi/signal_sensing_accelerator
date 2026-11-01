@@ -1,0 +1,153 @@
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source {<research_workspace>\build\cpu_only_20261101\occupancy\board\program.tcl}
+# set build [file normalize [lindex $argv 0]]
+# if {![file exists $build/board.bit] || ![file exists $build/debug.ltx]} {error "Missing verified bit/LTX"}
+# open_hw_manager
+# connect_hw_server -url 127.0.0.1:3121
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:127.0.0.1:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 04 2020-05:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+# set targets [get_hw_targets -quiet *]
+# if {[llength $targets] != 1} {error "Expected exactly one JTAG target, found [llength $targets]"}
+# current_hw_target [lindex $targets 0]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target 127.0.0.1:3121/xilinx_tcf/Xilinx/1234-tulA
+# set devs [get_hw_devices -quiet xc7z020*]
+# if {[llength $devs] != 1} {error "Expected exactly one xc7z020 device; programming stopped"}
+# set d [lindex $devs 0]
+# puts "USB_BOARD_DEVICE=$d"
+USB_BOARD_DEVICE=xc7z020_1
+# current_hw_device $d
+# set_property PROGRAM.FILE $build/board.bit $d
+# set_property PROBES.FILE $build/debug.ltx $d
+# set_property FULL_PROBES.FILE $build/debug.ltx $d
+# program_hw_devices $d
+INFO: [Labtools 27-3164] End of startup status: HIGH
+# refresh_hw_device $d
+INFO: [Labtools 27-2302] Device xc7z020 (JTAG device index = 1) is programmed with a design that has 1 VIO core(s).
+INFO: [Labtools 27-1889] Uploading output probe values for VIO core [hw_vio_1]
+# set v [get_hw_vios -of_objects $d]
+# if {[llength $v] != 1} {error "Expected one VIO; check input clock and probes"}
+# set probes [get_hw_probes -of_objects $v]
+# foreach p $probes {puts "USB_BOARD_PROBE=[get_property NAME $p]"; if {[get_property TYPE $p] eq "vio_input"} {set_property INPUT_VALUE_RADIX HEX $p}}
+USB_BOARD_PROBE=<const0>
+USB_BOARD_PROBE=<const0>_1
+USB_BOARD_PROBE=<const0>_10
+USB_BOARD_PROBE=<const0>_11
+USB_BOARD_PROBE=<const0>_12
+USB_BOARD_PROBE=<const0>_13
+USB_BOARD_PROBE=<const0>_14
+USB_BOARD_PROBE=<const0>_15
+USB_BOARD_PROBE=<const0>_16
+USB_BOARD_PROBE=<const0>_17
+USB_BOARD_PROBE=<const0>_18
+USB_BOARD_PROBE=<const0>_19
+USB_BOARD_PROBE=<const0>_2
+USB_BOARD_PROBE=<const0>_20
+USB_BOARD_PROBE=<const0>_21
+USB_BOARD_PROBE=<const0>_22
+USB_BOARD_PROBE=<const0>_23
+USB_BOARD_PROBE=<const0>_24
+USB_BOARD_PROBE=<const0>_25
+USB_BOARD_PROBE=<const0>_26
+USB_BOARD_PROBE=<const0>_3
+USB_BOARD_PROBE=<const0>_4
+USB_BOARD_PROBE=<const0>_5
+USB_BOARD_PROBE=<const0>_6
+USB_BOARD_PROBE=<const0>_7
+USB_BOARD_PROBE=<const0>_8
+USB_BOARD_PROBE=<const0>_9
+USB_BOARD_PROBE=address_fault
+USB_BOARD_PROBE=cycles0
+USB_BOARD_PROBE=cycles1
+USB_BOARD_PROBE=failed
+USB_BOARD_PROBE=failure_code
+USB_BOARD_PROBE=finished
+USB_BOARD_PROBE=frames_done
+USB_BOARD_PROBE=heartbeat
+USB_BOARD_PROBE=locked
+USB_BOARD_PROBE=logits00
+USB_BOARD_PROBE=logits01
+USB_BOARD_PROBE=logits10
+USB_BOARD_PROBE=logits11
+USB_BOARD_PROBE=trap
+USB_BOARD_PROBE=reset_request
+# proc get_probe {probes n} {
+#  set hits [list]
+#  foreach p $probes {set name [get_property NAME $p];if {$name eq $n || [string match */$n $name]} {lappend hits $p}}
+#  if {[llength $hits] != 1} {error "Probe $n: expected one, got [llength $hits]"}
+#  return [lindex $hits 0]
+# }
+# proc number {probes name} {
+#  set p [get_probe $probes $name];set value [get_property INPUT_VALUE $p]
+#  if {[scan $value %x v] != 1} {error "Unreadable probe $name value=$value"}
+#  # Tcl scan can return signed 32-bit values for hex >= 0x80000000.
+#  return [expr {$v & 0xffffffff}]
+# }
+# set reset [get_probe $probes reset_request]
+# for {set run 1} {$run<=2} {incr run} {
+#  set_property OUTPUT_VALUE 1 $reset;commit_hw_vio $reset
+#  after 100;refresh_hw_vio $v
+#  if {[number $probes locked] != 1 || [number $probes frames_done] != 0} {error "MMCM not locked or reset did not clear"}
+#  set_property OUTPUT_VALUE 0 $reset;commit_hw_vio $reset
+#  for {set poll 0} {$poll<60} {incr poll} {
+#   after 500;refresh_hw_vio $v
+#   if {[number $probes finished]} {break}
+#  }
+#  foreach name {locked finished failed failure_code frames_done cycles0 cycles1 heartbeat trap} {
+#   puts "USB_BOARD_OBSERVED run=$run $name=[number $probes $name]"
+#  }
+#  if {[number $probes finished]!=1 || [number $probes failed]!=0 || [number $probes frames_done]!=2 || [number $probes trap]!=0} {error "Board test failed or timed out"}
+#  foreach {name expected} {cycles0 27075892 cycles1 27082616 failure_code 0} {
+#   if {[number $probes $name]!=$expected} {error "Mismatch $name actual=[number $probes $name] expected=$expected"}
+#  }
+#  puts "CPU_BOARD_PASS run=$run cycles0=[number $probes cycles0] cycles1=[number $probes cycles1] no_flash"
+# }
+USB_BOARD_OBSERVED run=1 locked=1
+USB_BOARD_OBSERVED run=1 finished=1
+USB_BOARD_OBSERVED run=1 failed=0
+USB_BOARD_OBSERVED run=1 failure_code=0
+USB_BOARD_OBSERVED run=1 frames_done=2
+USB_BOARD_OBSERVED run=1 cycles0=27075892
+USB_BOARD_OBSERVED run=1 cycles1=27082616
+USB_BOARD_OBSERVED run=1 heartbeat=75493891
+USB_BOARD_OBSERVED run=1 trap=0
+CPU_BOARD_PASS run=1 cycles0=27075892 cycles1=27082616 no_flash
+USB_BOARD_OBSERVED run=2 locked=1
+USB_BOARD_OBSERVED run=2 finished=1
+USB_BOARD_OBSERVED run=2 failed=0
+USB_BOARD_OBSERVED run=2 failure_code=0
+USB_BOARD_OBSERVED run=2 frames_done=2
+USB_BOARD_OBSERVED run=2 cycles0=27075892
+USB_BOARD_OBSERVED run=2 cycles1=27082616
+USB_BOARD_OBSERVED run=2 heartbeat=75465536
+USB_BOARD_OBSERVED run=2 trap=0
+CPU_BOARD_PASS run=2 cycles0=27075892 cycles1=27082616 no_flash
+# close_hw_target
+INFO: [Labtoolstcl 44-464] Closing hw_target 127.0.0.1:3121/xilinx_tcf/Xilinx/1234-tulA
+# disconnect_hw_server
+# close_hw_manager
+****** Webtalk v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source <research_workspace>/build/cpu_only_20261101/occupancy/board/.Xil/Vivado-29760-CHINAMI-JSEF94O/webtalk/labtool_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Sun Nov  1 15:51:16 2026...
+# exit 0
+INFO: [Common 17-206] Exiting Vivado at Sun Nov  1 15:51:17 2026...

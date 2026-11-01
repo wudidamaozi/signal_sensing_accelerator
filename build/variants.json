@@ -966,5 +966,73 @@
       "simple_dual_port_bram_32.sv": "src/rtl/common/simple_dual_port_bram_32_e016a6dd21.sv",
       "simple_dual_port_bram_8.sv": "src/rtl/common/simple_dual_port_bram_8_1390076600.sv"
     }
+  },
+  "classification_cpu": {
+    "sources": [
+      "src/rtl/cpu_only/classification/cpu_only_board_top.sv",
+      "src/rtl/cpu_only/classification/picorv32.v",
+      "src/rtl/cpu_only/classification/picorv32_accel_soc.sv",
+      "sim/classification_cpu/cpu_tb.sv"
+    ],
+    "tb_sources": [
+      "sim/classification_cpu/cpu_tb.sv"
+    ],
+    "memory": [
+      "data/memory/classification_cpu/full_network.hex"
+    ],
+    "top": "cpu_only_board_top",
+    "testbench": "cpu_tb",
+    "pass_marker": "CPU_SIM_PASS",
+    "source_map": {
+      "cpu_only_board_top.sv": "src/rtl/cpu_only/classification/cpu_only_board_top.sv",
+      "picorv32.v": "src/rtl/cpu_only/classification/picorv32.v",
+      "picorv32_accel_soc.sv": "src/rtl/cpu_only/classification/picorv32_accel_soc.sv"
+    },
+    "bit_sha256": "22a552d0c766ac311aa8a6470468eee59a43dea99428f9640ca0b6b3e2d11c99",
+    "model_sha256": "8f1dd19eb42ca02815781e9de03621ac232c86db1327c0c4a7e4ea1e01a861f3",
+    "archived_cycles": [
+      72713190,
+      72713190,
+      72713190,
+      72713190
+    ]
+  },
+  "occupancy_cpu": {
+    "sources": [
+      "src/rtl/cpu_only/occupancy/cpu_only_board_top.sv",
+      "src/rtl/cpu_only/occupancy/edgeai_axi_lite_bridge.sv",
+      "src/rtl/cpu_only/occupancy/occupancy_mailbox.sv",
+      "src/rtl/cpu_only/occupancy/occupancy_service_soc.sv",
+      "src/rtl/cpu_only/occupancy/picorv32.v",
+      "src/rtl/cpu_only/occupancy/pynq_o55_jtag_stimulus.sv",
+      "sim/occupancy_cpu/cpu_tb.sv"
+    ],
+    "tb_sources": [
+      "sim/occupancy_cpu/cpu_tb.sv"
+    ],
+    "memory": [
+      "data/memory/occupancy_cpu/program.hex",
+      "data/memory/occupancy_cpu/inputs.hex",
+      "data/memory/occupancy_cpu/expected_logits.hex"
+    ],
+    "top": "cpu_only_board_top",
+    "testbench": "cpu_tb",
+    "pass_marker": "CPU_SIM_PASS",
+    "source_map": {
+      "cpu_only_board_top.sv": "src/rtl/cpu_only/occupancy/cpu_only_board_top.sv",
+      "edgeai_axi_lite_bridge.sv": "src/rtl/cpu_only/occupancy/edgeai_axi_lite_bridge.sv",
+      "occupancy_mailbox.sv": "src/rtl/cpu_only/occupancy/occupancy_mailbox.sv",
+      "occupancy_service_soc.sv": "src/rtl/cpu_only/occupancy/occupancy_service_soc.sv",
+      "picorv32.v": "src/rtl/cpu_only/occupancy/picorv32.v",
+      "pynq_o55_jtag_stimulus.sv": "src/rtl/cpu_only/occupancy/pynq_o55_jtag_stimulus.sv"
+    },
+    "bit_sha256": "8dd106c2d342d6efa8df319ef2a07b2f4e1fad1ac9ec9a1de4d1fa7948c1c8ef",
+    "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+    "archived_cycles": [
+      27075892,
+      27082616,
+      27075892,
+      27082616
+    ]
   }
 }

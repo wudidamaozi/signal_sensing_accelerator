@@ -1,0 +1,45 @@
+
+****** xsim v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/cpu_run/xsim_script.tcl
+# xsim {cpu_run} -autoloadwcfg -tclbatch {run.tcl}
+Vivado Simulator 2020.2
+Time resolution is 1 ps
+source run.tcl
+## run all
+CPU_METRIC 1 9511
+CPU_METRIC 2 4700571
+CPU_METRIC 3 42270919
+CPU_METRIC 4 25664847
+CPU_METRIC 5 67342
+CPU_METRIC 40 4256362413
+CPU_METRIC 41 2681056120
+CPU_METRIC 42 2595630532
+CPU_METRIC 43 1392461722
+CPU_METRIC 44 5
+CPU_METRIC 45 4294967288
+CPU_METRIC 46 49
+CPU_METRIC 47 4294967257
+CPU_METRIC 14 72713190
+CPU_METRIC 17 9511
+CPU_METRIC 18 4700571
+CPU_METRIC 19 42270919
+CPU_METRIC 20 25664847
+CPU_METRIC 21 67342
+CPU_METRIC 48 4256362413
+CPU_METRIC 49 2681056120
+CPU_METRIC 50 2595630532
+CPU_METRIC 51 1392461722
+CPU_METRIC 52 5
+CPU_METRIC 53 4294967288
+CPU_METRIC 54 49
+CPU_METRIC 55 4294967257
+CPU_METRIC 30 72713190
+CPU_SIM_PASS
+$finish called at time : 2916519870 ns : File "<research_workspace>/build/cpu_only_20261101/classification/cpu_tb.sv" Line 10
+run: Time (s): cpu = 00:00:01 ; elapsed = 00:15:12 . Memory (MB): peak = 916.859 ; gain = 0.000
+## exit
+INFO: [Common 17-206] Exiting xsim at Sun Nov  1 16:09:14 2026...
