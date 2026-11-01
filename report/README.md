@@ -2,10 +2,10 @@
 
 本目录的正式提交文档为V8，共28页。
 
-- **[阅读技术文档 PDF](fpga_signal_sensing_acceleration_system_technical_document.pdf)**
-- **[下载技术文档 Word](fpga_signal_sensing_acceleration_system_technical_document.docx)**
+- **[阅读技术文档 PDF](基于FPGA的信号感知加速系统技术文档.pdf)**
+- **[下载技术文档 Word](基于FPGA的信号感知加速系统技术文档.docx)**
 
-文档内容、性能数据与已确认版本一致，本次只调整文件名称与阅读入口。工程文件名遵守比赛英文命名要求，显示标题使用完整中文作品名称。
+文档内容、性能数据与已确认版本一致，本次只调整文件名称与阅读入口。正式Word与PDF采用完整中文作品名称，源代码与脚本目录保留英文。
 
 ## 配套材料
 

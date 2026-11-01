@@ -16,7 +16,8 @@
   "new_board_measurements_this_release": false,
   "technical_document_title": "基于FPGA的信号感知加速系统技术文档",
   "technical_document_files": {
-    "docx": "report/fpga_signal_sensing_acceleration_system_technical_document.docx",
-    "pdf": "report/fpga_signal_sensing_acceleration_system_technical_document.pdf"
-  }
+    "docx": "report/基于FPGA的信号感知加速系统技术文档.docx",
+    "pdf": "report/基于FPGA的信号感知加速系统技术文档.pdf"
+  },
+  "document_filename_exception": "Chinese Word/PDF filenames explicitly requested for visibility; source and script paths remain English."
 }

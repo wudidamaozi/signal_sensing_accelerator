@@ -2,9 +2,9 @@
 
 ## 基于FPGA的信号感知加速系统技术文档
 
-**[在线阅读 PDF](report/fpga_signal_sensing_acceleration_system_technical_document.pdf) · [下载可编辑 Word](report/fpga_signal_sensing_acceleration_system_technical_document.docx)**
+**[在线阅读 PDF](report/基于FPGA的信号感知加速系统技术文档.pdf) · [下载可编辑 Word](report/基于FPGA的信号感知加速系统技术文档.docx)**
 
-这是已确认的V8最终技术文档，共28页。报告配图、实板照片、大模型协作记录及性能数据在[报告资料目录](report/README.md)。仓库实际文件名按比赛要求保持英文，入口使用完整中文题目。
+这是已确认的V8最终技术文档，共28页。报告配图、实板照片、大模型协作记录及性能数据在[报告资料目录](report/README.md)。正式技术文档采用中文文件名，便于直接查找。
 
 
 基于 AMD PYNQ-Z2（XC7Z020CLG400-1）的信号感知加速系统。RISC-V 软核负责任务配置，4×8 并行阵列执行 INT8 乘法、INT32 累加；支持无线调制识别与频谱占用检测。两个任务分别加载各自镜像，网页负责输入、量化与展示；分类另有主机 FP32 统计融合分支。
@@ -24,7 +24,7 @@
 | `skill/` | 两项可执行通用技能、三项工作流指南，含正反例和失效条件 |
 | `report/` | 当前设计说明、指标证据、AI 协作选段、规范对应表和来源 SHA |
 
-工程内路径采用英文小写；README.md、SKILL.md、LICENSE 和 Git 配置文件按约定保留名称。文件正文可用中文。研发仓库中未选中版本、工具安装目录、虚拟环境、完整数据集和旧历史不在本包内。
+除两份正式技术文档按展示需要采用中文文件名外，工程代码与脚本路径采用英文小写；README.md、SKILL.md、LICENSE 和 Git 配置文件按约定保留名称。文件正文可用中文。研发仓库中未选中版本、工具安装目录、虚拟环境、完整数据集和旧历史不在本包内。
 
 ## 从零检查
 
