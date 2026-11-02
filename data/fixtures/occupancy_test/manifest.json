@@ -1,0 +1,76 @@
+{
+  "n": 66000,
+  "scope": "post-model-selection new synthetic source groups from same declared generator family; not independent physics implementation or real measurements; no training or tuning on this data",
+  "master_seed": 2026103051,
+  "source_archive_sha256": "854a0b60db4e055bf745c4d0472ca953d75d5daf44915854b3d2a4852270c2b2",
+  "source_array_hashes": {
+    "iq.npy": {
+      "bytes": 67584128,
+      "sha256": "935622a023a26ddbdf47515dbc1b177d7db03028cde9e7e107679c093f33c11f"
+    },
+    "label.npy": {
+      "bytes": 66128,
+      "sha256": "5f012621f15436bef8ac10123e002f091465d30ab15fbecca6447528bfa5e8c3"
+    },
+    "nominal_snr_db.npy": {
+      "bytes": 66128,
+      "sha256": "2f71799e61c7a054479c1d0916587d29154aa8bbb22175d7e7abf7bba77a8113"
+    },
+    "group_id.npy": {
+      "bytes": 264128,
+      "sha256": "2e0162cb7a2fb94efad3fd6503840ef4acb68954c557b431b14d51bda648f69c"
+    },
+    "noise_complex_power.npy": {
+      "bytes": 528128,
+      "sha256": "8bd2df45db22d74e8e1ce74a2a53ae77cf89c12f79d26984774e1754097b985d"
+    }
+  },
+  "expected_int8_metrics": {
+    "n": 66000,
+    "tp": 31565,
+    "tn": 32241,
+    "fp": 759,
+    "fn": 1435,
+    "accuracy": 0.9667575757575757,
+    "Pd": 0.9565151515151515,
+    "Pfa": 0.023
+  },
+  "parts": [
+    {
+      "file": "part_000.npz",
+      "n": 11000,
+      "bytes": 10660097,
+      "sha256": "2ee9ada6484bead6d481385a14bdbe4c0827b9a4d4588c2210503302ed1b1401"
+    },
+    {
+      "file": "part_001.npz",
+      "n": 11000,
+      "bytes": 10661300,
+      "sha256": "51f5e4f1f7ee848c816e70618afca762431d54695a238706fecb138fe5bdb976"
+    },
+    {
+      "file": "part_002.npz",
+      "n": 11000,
+      "bytes": 10659526,
+      "sha256": "8ae3f521f8dac6ac6d7b0b5b3d595ba7b0541af5b2953e024ea9ed5bcbe0b33b"
+    },
+    {
+      "file": "part_003.npz",
+      "n": 11000,
+      "bytes": 10662274,
+      "sha256": "0a4501dc90886ac96aa563c390d9ade78aea600a64e3ee454a887663e33458ce"
+    },
+    {
+      "file": "part_004.npz",
+      "n": 11000,
+      "bytes": 10660850,
+      "sha256": "8f0e6db9fc30c721bc536c646d7d724641e96f60df6c4bb3bc1e6dd516b8cfaf"
+    },
+    {
+      "file": "part_005.npz",
+      "n": 11000,
+      "bytes": 10661070,
+      "sha256": "38bdc712a6532c719780c277f00a464d0d35c282a45fccddbe6e005373a7244c"
+    }
+  ]
+}

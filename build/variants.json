@@ -26,7 +26,7 @@
       "data/memory/classification_native/weights_words.hex"
     ],
     "top": "pynq_r14_m37_usb_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_r14_m37_usb_tb",
     "pass_marker": "R14_M37_USB_TOP_PASS",
     "original_sources": {
       "picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
@@ -145,7 +145,7 @@
       "data/memory/classification_hls4ml/public_cnn_dense_resource_rf_leq_nin_ap_int_8_ap_int_32_config11_s_w11_v_rom.dat"
     ],
     "top": "pynq_r14_hls_usb_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_r14_hls_usb_tb",
     "pass_marker": "R14_HLS_USB_TOP_PASS",
     "original_sources": {
       "picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
@@ -307,7 +307,7 @@
       "data/memory/classification_im2col/weights_words.hex"
     ],
     "top": "pynq_r14_im2col_usb_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_r14_im2col_usb_tb",
     "pass_marker": "R14_IM2COL_USB_TOP_PASS",
     "original_sources": {
       "picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",
@@ -390,7 +390,7 @@
       "data/memory/occupancy_native/weight_init_low.hex"
     ],
     "top": "pynq_o55_jtag_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_o55_jtag_top_tb",
     "pass_marker": "USB_TOP_PASS",
     "original_sources": {
       "edgeai_axi_lite_bridge.sv": "55b705aad1243abe3ca5bd0834d890332468d7533b52c94e65825fb2e5da20cb",
@@ -538,7 +538,7 @@
       "data/memory/occupancy_hls4ml/service_config.svh"
     ],
     "top": "pynq_o55_jtag_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_o55_jtag_top_tb",
     "pass_marker": "USB_TOP_PASS",
     "original_sources": {
       "edgeai_axi_lite_bridge.sv": "55b705aad1243abe3ca5bd0834d890332468d7533b52c94e65825fb2e5da20cb",
@@ -722,7 +722,7 @@
       "data/memory/occupancy_im2col/expected_logits.hex"
     ],
     "top": "pynq_o55_jtag_top",
-    "testbench": "edgeai_o55_usb_vio",
+    "testbench": "pynq_o55_jtag_top_tb",
     "pass_marker": "USB_TOP_PASS",
     "original_sources": {
       "picorv32.v": "0836050971b3c6cdd28ac3b1e5719a67fb645161912bef1e472e63995ceb0622",

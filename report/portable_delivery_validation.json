@@ -1,0 +1,212 @@
+{
+  "status": "PASS_PORTABLE_DELIVERY",
+  "date": "2026-11-02",
+  "baseline_public_commit": "fe73cd71feb0c46ab97f5e17bb9d252b8a5d5a22",
+  "frozen_report": {
+    "docx_sha256": "e6816cd700293c276f40569cea7d56cfd1aea5f95e6c3cbebb412da17fc93b0f",
+    "pdf_sha256": "e6a0a065d165b9f5fcd03b20e88f33f69946442862b7264d18a9c9afaadc3923",
+    "content_and_paths_unchanged": true,
+    "existing_reproduction_documents_unchanged": true
+  },
+  "protected_existing_files_unchanged": 625,
+  "rtl_hls_firmware_models_bitstreams_and_existing_metrics_unchanged": true,
+  "cold_install": {
+    "source_folder": "independent Chinese-and-space path",
+    "environment": "fresh venv, Python3.12.14 + NumPy2.4.6 only",
+    "release_check": {
+      "status": "PASS_FINAL_RELEASE_OFFLINE_HTTP",
+      "variants": 10,
+      "comparison_rows": 8,
+      "report_revision": "V8",
+      "full_test_recomputed": true,
+      "full_test_count": 11982,
+      "full_test_correct": 8160,
+      "board_operated": false
+    },
+    "software_http": {
+      "classification": {
+        "status": 200,
+        "backend": "software",
+        "board_measured": false,
+        "error": null,
+        "custom_status": 200,
+        "custom_logits_equal": true
+      },
+      "occupancy": {
+        "status": 200,
+        "backend": "software",
+        "board_measured": false,
+        "error": null,
+        "custom_status": 200,
+        "custom_logits_equal": true
+      },
+      "fpga_failure": {
+        "status": 500,
+        "error": "FPGA_TEST_SENTINEL"
+      },
+      "legacy_fpga_failure": {
+        "status": 500,
+        "error": "FPGA_TEST_SENTINEL"
+      },
+      "invalid_backend": {
+        "status": 400,
+        "error": "Unknown inference backend"
+      },
+      "overview": {
+        "status": 200,
+        "runtime": {
+          "default_backend": "software",
+          "available_backends": [
+            "software",
+            "fpga"
+          ]
+        },
+        "methods": [
+          4,
+          4
+        ]
+      },
+      "/": {
+        "status": 200,
+        "bytes": 14694
+      },
+      "/dual_live.js": {
+        "status": 200,
+        "bytes": 19500
+      },
+      "/dual.css": {
+        "status": 200,
+        "bytes": 6547
+      },
+      "/hardware-architecture.svg": {
+        "status": 200,
+        "bytes": 5543
+      },
+      "/project-readme": {
+        "status": 200,
+        "bytes": 2682
+      },
+      "/api/dual/metrics.csv": {
+        "status": 200,
+        "bytes": 6978
+      }
+    },
+    "rtl_sim": {
+      "status": "PASS_RELOCATED_XSIM",
+      "variant": "occupancy_native",
+      "marker": "USB_TOP_PASS"
+    }
+  },
+  "full_occupancy_recomputed": {
+    "status": "PASS_FROZEN_OCCUPANCY_FULL_TEST",
+    "metrics": {
+      "n": 66000,
+      "tp": 31565,
+      "tn": 32241,
+      "fp": 759,
+      "fn": 1435,
+      "accuracy": 0.9667575757575757,
+      "Pd": 0.9565151515151515,
+      "Pfa": 0.023,
+      "by_snr": {
+        "-10": {
+          "n": 2200,
+          "detected": 1233
+        },
+        "14": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "4": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "16": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "-2": {
+          "n": 2200,
+          "detected": 2195
+        },
+        "18": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "-4": {
+          "n": 2200,
+          "detected": 2184
+        },
+        "12": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "8": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "-6": {
+          "n": 2200,
+          "detected": 2125
+        },
+        "0": {
+          "n": 2200,
+          "detected": 2199
+        },
+        "-8": {
+          "n": 2200,
+          "detected": 1829
+        },
+        "10": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "2": {
+          "n": 2200,
+          "detected": 2200
+        },
+        "6": {
+          "n": 2200,
+          "detected": 2200
+        }
+      }
+    },
+    "model_sha256": "5bb9083956b92ef80b838e941cae29eb3ce8f320928efef4d763ae4aa3102e8b",
+    "board_operated": false,
+    "training_or_tuning": false
+  },
+  "original_cli_default": "fpga",
+  "convenience_launcher_default": "explicit software",
+  "browser_qa": {
+    "classification_software": "BPSK sample14001, SNR8, source explicitly software; waveform/scatter rendered",
+    "occupancy_software": "occupied sample320, SNR8, source explicitly software; waveform/spectrum rendered",
+    "race": "completed four-method archived-cycle replay",
+    "hardware": "architecture SVG loaded",
+    "console_errors": []
+  },
+  "root_causes": [
+    "Software backend selector was ignored by HTTP handler, which always invoked FPGA.",
+    "Six fixed-variant metadata entries selected the VIO stub instead of the actual testbench.",
+    "Legacy webpage links referenced an unpackaged8768 service; full occupancy holdout was not in the package.",
+    "Vivado2020.2 xelab failed with non-ASCII absolute memory paths."
+  ],
+  "modified_scope": [
+    "build/variants.json: six testbench fields",
+    "explicit HTTP software/fpga routing and UI selection",
+    "project-local setup/start entry points",
+    "simulation work-directory memory staging",
+    "six frozen holdout shards and independent reevaluation entry"
+  ],
+  "failure_policy": "Explicit software mode is genuine NumPy reference; FPGA errors remain errors with no fallback; invalid backend400. Legacy requests without backend still select FPGA.",
+  "justified_branches": [
+    "backend choice: user-requested no-board operation",
+    "default fpga for omitted backend: preserves existing clients/report CLI",
+    "Python3.12 check: frozen tool version",
+    "missing .venv: explain required setup",
+    "ASCII simulation output: reproduced Vivado2020.2 failure"
+  ],
+  "no_speculative_retries_or_silent_fallback": true,
+  "no_unrelated_hardware_refactor": true,
+  "board_operated": false,
+  "hardware_resynthesized_this_patch": false
+}

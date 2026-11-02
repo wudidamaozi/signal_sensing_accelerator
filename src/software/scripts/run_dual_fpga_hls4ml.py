@@ -69,6 +69,7 @@ def evaluate_full_test():
   with eval_lock:eval_state={'phase':'error','done':eval_state['done'],'total':11982,'error':str(exc)}
 
 class Handler(BaseHTTPRequestHandler):
+ default_backend='fpga'
  def reply(self,data,status=200):
   raw=json.dumps(data,ensure_ascii=False,allow_nan=False).encode('utf8');self.send_response(status);self.send_header('Content-Type','application/json; charset=utf-8');self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(raw)
  def do_GET(self):
@@ -80,10 +81,12 @@ class Handler(BaseHTTPRequestHandler):
    file={'/':'index.html','/dual_live.js':'dual_live.js','/dual.css':'dual.css'}[u.path];raw=(ROOT/'src/web'/file).read_bytes();self.send_response(200);self.send_header('Content-Type',('text/html' if u.path=='/' else 'text/css' if u.path.endswith('.css') else 'application/javascript')+'; charset=utf-8');self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(raw);return
   if u.path=='/hardware-architecture.svg':
    raw=(ROOT/'report/figures/hardware_architecture.svg').read_bytes();self.send_response(200);self.send_header('Content-Type','image/svg+xml; charset=utf-8');self.send_header('Cache-Control','no-store');self.end_headers();self.wfile.write(raw);return
+  if u.path=='/project-readme':
+   raw=(ROOT/'quickstart.md').read_bytes();self.send_response(200);self.send_header('Content-Type','text/plain; charset=utf-8');self.end_headers();self.wfile.write(raw);return
   if u.path=='/api/dual/overview':
    try:r=service.report();r['board_comparison']=load_board_comparison()
    except (ValueError,KeyError,OSError) as e:self.reply({'error':'对照证据不可用：'+str(e)},503);return
-   r['readiness']['occupancy_rtl']='固定4×8：30输入加重放，31调用、93层摘要、62logits一致；实板两输入各两次，35629周期';r['readiness']['hardware_backend']='USB FPGA动态样本；占用4×8双缓冲优化版，分类保持原版';r['live_occupancy']={'implementation':'fixed4x8-20261031','expected_cycles':35629,'array':[4,8],'assets':'board/live/occupancy'};r['occupancy']['accelerator']=r['board_comparison']['occupancy'][0];r['baseline_groups']=[{'name':'同任务：信号感知加速系统 / hls4ml / Caffe im2col移植 + 4×8 GEMM / RISC-V纯软件','scope':'7020实板周期；资源采用统一基准测试工程，交互接口另建镜像'}];self.reply(r);return
+   r['runtime']={'default_backend':self.default_backend,'available_backends':['software','fpga']};r['readiness']['occupancy_rtl']='固定4×8：30输入加重放，31调用、93层摘要、62logits一致；实板两输入各两次，35629周期';r['readiness']['hardware_backend']='USB FPGA动态样本；占用4×8双缓冲优化版，分类保持原版';r['live_occupancy']={'implementation':'fixed4x8-20261031','expected_cycles':35629,'array':[4,8],'assets':'board/live/occupancy'};r['occupancy']['accelerator']=r['board_comparison']['occupancy'][0];r['baseline_groups']=[{'name':'同任务：信号感知加速系统 / hls4ml / Caffe im2col移植 + 4×8 GEMM / RISC-V纯软件','scope':'7020实板周期；资源采用统一基准测试工程，交互接口另建镜像'}];self.reply(r);return
   if u.path=='/api/dual/metrics.csv':
    raw=service.metric_csv();self.send_response(200);self.send_header('Content-Type','text/csv; charset=utf-8');self.send_header('Content-Disposition','attachment; filename="dual-task-metrics.csv"');self.end_headers();self.wfile.write(raw);return
   self.reply({'error':'Not found'},404)
@@ -100,11 +103,12 @@ class Handler(BaseHTTPRequestHandler):
   try:
    n=int(self.headers['Content-Length']);
    if not 0<n<=65536:raise ValueError('Invalid request length')
-   x=json.loads(self.rfile.read(n));task=x['task'];
+   x=json.loads(self.rfile.read(n));task=x['task'];backend=x.get('backend','fpga')
+   if backend not in ('software','fpga'):raise ValueError('Unknown inference backend')
    with lock:
     if self.path=='/api/dual/sample':reference=service.sample(task,int(x['class_id']),int(x['snr']),backend='software')
     else:reference=service.infer(task,x['iq'])
-    result=infer_board(task,reference)
+    result=infer_board(task,reference) if backend=='fpga' else reference
    self.reply(result)
   except (ValueError,KeyError) as e:self.reply({'error':str(e)},400)
   except (RuntimeError,subprocess.TimeoutExpired) as e:self.reply({'error':str(e)},500)

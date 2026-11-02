@@ -1,5 +1,7 @@
 # 基于FPGA的信号感知加速系统
 
+换机快速启动：首次运行 `setup_windows.cmd`，随后运行 `start_web.cmd`。无板软件推理与USB FPGA推理可显式切换，详见[换机运行补充](quickstart.md)。技术文档保持冻结。
+
 ## 基于FPGA的信号感知加速系统技术文档
 
 **[在线阅读 PDF](report/基于FPGA的信号感知加速系统技术文档.pdf) · [下载可编辑 Word](report/基于FPGA的信号感知加速系统技术文档.docx)**
